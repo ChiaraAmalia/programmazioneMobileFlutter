@@ -97,11 +97,11 @@ class _RicetteCercaState extends State<RicetteCerca> {
                 builder: (BuildContext context) {
                   return Scaffold(
                     appBar: AppBar(
-                      title: const Text('Next page'),
+                      title: const Text('Info'),
                     ),
                     body: const Center(
                       child: Text(
-                        'This is the next page',
+                        'Come iniziare? \n Cerca Ricette:',
                         style: TextStyle(fontSize: 24),
                       ),
                     ),
