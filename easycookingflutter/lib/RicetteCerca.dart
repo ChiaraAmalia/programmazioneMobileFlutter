@@ -1,3 +1,4 @@
+import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -130,7 +131,7 @@ class _RicetteCercaState extends State<RicetteCerca> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,color: Colors.red),
+            icon: Icon(MyFlutterApp.rolling_pin ,color: Colors.red),
             label: 'Dispensa',
           ),
           BottomNavigationBarItem(
