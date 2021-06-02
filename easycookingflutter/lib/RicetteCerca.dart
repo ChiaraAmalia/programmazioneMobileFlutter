@@ -102,7 +102,7 @@ class _RicetteCercaState extends State<RicetteCerca> {
                 fit:BoxFit.cover)
               ),
               child: Text(
-                'Drawer Header',
+                'Easy Cooking',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -130,19 +130,19 @@ class _RicetteCercaState extends State<RicetteCerca> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home,color: Colors.red),
             label: 'Dispensa',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.business, color: Colors.red),
             label: 'Cerca Ricette',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.school, color: Colors.red),
             label: 'RicetteTue',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.agriculture_rounded),
+            icon: Icon(Icons.agriculture_rounded, color: Colors.red),
             label: 'ListaSpesa',
           ),
         ],
