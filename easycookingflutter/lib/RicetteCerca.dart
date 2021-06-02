@@ -90,7 +90,7 @@ class _RicetteCercaState extends State<RicetteCerca> {
         title: Text(widget.title),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.navigate_next),
+            icon: const Icon(MyFlutterApp.info_outline, color: Colors.white,),
             tooltip: 'Go to the next page',
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
