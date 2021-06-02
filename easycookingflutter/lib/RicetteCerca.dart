@@ -112,6 +112,9 @@ class _RicetteCercaState extends State<RicetteCerca> {
             ListTile(
               leading: Icon(Icons.message),
               title: Text('Contattaci'),
+              /*onTap: () {
+                Navigator.of(context).pop();
+              },*/
             ),
             ListTile(
               leading: Icon(Icons.wb_incandescent_outlined),
