@@ -106,12 +106,12 @@ class _RicetteCercaState extends State<RicetteCerca> {
             label: 'RicetteTue',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.agriculture_rounded),
             label: 'ListaSpesa',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.red,
         onTap: _onItemTapped,
       ),
     );
