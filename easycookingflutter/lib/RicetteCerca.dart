@@ -46,20 +46,24 @@ class RicetteCerca extends StatefulWidget {
 }
 
 class _RicetteCercaState extends State<RicetteCerca> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Home',
+      'Dispensa',
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'Cerca Ricette',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'RicetteTue',
+      style: optionStyle,
+    ),
+    Text(
+      'Lista della spesa',
       style: optionStyle,
     ),
   ];
@@ -96,6 +100,10 @@ class _RicetteCercaState extends State<RicetteCerca> {
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
