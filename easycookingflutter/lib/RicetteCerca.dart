@@ -98,6 +98,8 @@ class _RicetteCercaState extends State<RicetteCerca> {
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.deepOrange,
+                image: DecorationImage(image: AssetImage("assets/images/busta.png"),
+                fit:BoxFit.cover)
               ),
               child: Text(
                 'Drawer Header',
