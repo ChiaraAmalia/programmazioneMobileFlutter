@@ -101,7 +101,8 @@ class _RicetteCercaState extends State<RicetteCerca> {
                     ),
                     body: const Center(
                       child: Text(
-                        'Come iniziare? \n Cerca Ricette:',
+                        'Come iniziare? \nCerca Ricette:\n'
+                            'In questa prima sezione è possibile cercare le ricette secondo il nome, la categoria oppure la sua origine. ',
                         style: TextStyle(fontSize: 24),
                       ),
                     ),
