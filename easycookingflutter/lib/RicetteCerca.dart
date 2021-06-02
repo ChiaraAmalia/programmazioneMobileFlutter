@@ -131,19 +131,19 @@ class _RicetteCercaState extends State<RicetteCerca> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.rolling_pin ,color: Colors.red),
+            icon: Icon(MyFlutterApp.refrigerator ,color: Colors.red),
             label: 'Dispensa',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business, color: Colors.red),
+            icon: Icon(MyFlutterApp.rolling_pin, color: Colors.red),
             label: 'Cerca Ricette',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school, color: Colors.red),
+            icon: Icon(MyFlutterApp.apron, color: Colors.red),
             label: 'RicetteTue',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.agriculture_rounded, color: Colors.red),
+            icon: Icon(MyFlutterApp.vegetable_box, color: Colors.red),
             label: 'ListaSpesa',
           ),
         ],
