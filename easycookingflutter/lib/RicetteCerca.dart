@@ -95,19 +95,19 @@ class _RicetteCercaState extends State<RicetteCerca> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Dispensa',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Cerca Ricette',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
+            label: 'RicetteTue',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
+            label: 'ListaSpesa',
           ),
         ],
         currentIndex: _selectedIndex,
