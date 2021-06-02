@@ -97,7 +97,7 @@ class _RicetteCercaState extends State<RicetteCerca> {
           children: const <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.deepOrange,
               ),
               child: Text(
                 'Drawer Header',
@@ -109,15 +109,15 @@ class _RicetteCercaState extends State<RicetteCerca> {
             ),
             ListTile(
               leading: Icon(Icons.message),
-              title: Text('Messages'),
+              title: Text('Contattaci'),
             ),
             ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('Profile'),
+              leading: Icon(Icons.wb_incandescent_outlined),
+              title: Text('Ispirami'),
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
             ),
           ],
         ),
