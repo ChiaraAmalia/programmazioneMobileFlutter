@@ -43,6 +43,7 @@ class RicetteCerca extends StatefulWidget {
 class _RicetteCercaState extends State<RicetteCerca> {
   int _counter = 0;
 
+  //al posto di questa mettiamo la funzione per trovare le ricette
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
