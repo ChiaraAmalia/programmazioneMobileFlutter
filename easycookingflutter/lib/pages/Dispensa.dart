@@ -33,8 +33,8 @@ class _DispensaState extends State<Dispensa> {
   @override
   Widget build(BuildContext context){
 
-    return Center(
-      child:FutureBuilder(
+    return Scaffold(
+      body:FutureBuilder(
         future: this.handler.retriveProodotti(),
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
           if (snapshot.hasData) {
