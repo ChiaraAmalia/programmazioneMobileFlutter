@@ -1,5 +1,8 @@
 import 'package:easycookingflutter/MyFlutterApp.dart';
+import 'package:easycookingflutter/Prodotto.dart';
+import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
+import 'package:easycookingflutter/pages/Dispensa.dart';
 
 void main() {
   runApp(Ricette());
@@ -47,14 +50,12 @@ class RicetteCerca extends StatefulWidget {
 }
 
 class _RicetteCercaState extends State<RicetteCerca> {
+
   int _selectedIndex = 1;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Dispensa',
-      style: optionStyle,
-    ),
+   List _widgetOptions = [
+    Dispensa(),
     Text(
       'Cerca Ricette',
       style: optionStyle,
