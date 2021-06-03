@@ -1,8 +1,10 @@
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Prodotto.dart';
+import 'package:easycookingflutter/pages/Contattaci.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/pages/Dispensa.dart';
+import 'package:path/path.dart';
 
 void main() {
   runApp(Ricette());
@@ -27,6 +29,10 @@ class Ricette extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       home: RicetteCerca(title: 'Easy Cooking'),
+      routes: {
+        '/dispensa': (context) => Dispensa(),
+        '/contattaci': (context) => Contattaci(title: 'Contattaci'),
+      },
     );
   }
 }
@@ -147,7 +153,7 @@ class _RicetteCercaState extends State<RicetteCerca> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const <Widget>[
+          children:  <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.deepOrange,
@@ -165,9 +171,10 @@ class _RicetteCercaState extends State<RicetteCerca> {
             ListTile(
               leading: Icon(Icons.message),
               title: Text('Contattaci'),
-              /*onTap: () {
+              onTap: (){
                 Navigator.of(context).pop();
-              },*/
+                Navigator.pushNamed(context, '/contattaci');
+              },
             ),
             ListTile(
               leading: Icon(Icons.wb_incandescent_outlined),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easycookingflutter/MyFlutterApp.dart';
 
 
 class Contattaci extends StatefulWidget {
@@ -24,32 +25,69 @@ class _ContattaciState extends State<Contattaci> {
   @override
   Widget build(BuildContext context) {
         return Scaffold(
+          appBar: AppBar(
+            // Here we take the value from the MyHomePage object that was created by
+            // the App.build method, and use it to set our appbar title.
+            title: Text(widget.title),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(MyFlutterApp.info_outline, color: Colors.white,),
+                tooltip: 'Go to the next page',
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute<void>(
+                    builder: (BuildContext context) {
+                      return Scaffold(
+                        appBar: AppBar(
+                          title: const Text('Info'),
+                        ),
+                        body: SingleChildScrollView(
+                          child: RichText(
+                            text: TextSpan(
+                              text:'Come iniziare? \n',
+                              style: TextStyle(color: Colors.red, fontSize:24),
+                              children: <InlineSpan>[
+                                WidgetSpan(
+                                    child: SizedBox(
+                                      child:  Image.asset(
+                                        "assets/images/food.png",
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )),
+                                TextSpan(text:'Cerca Ricette:\n', style: TextStyle(color: Colors.red,fontSize: 24)),
+                                TextSpan(text:'In questa prima sezione è possibile cercare le ricette secondo il nome, la categoria oppure la sua origine. Cliccando su \'Vedi Ricette\' verranno restituite tutte le ricette presenti nel database. All\'interno della ricetta verranno visualizzate tutte le informazioni utili alla preparazione del piatto selezionato, inoltre è possibile condividere la ricetta oppure salvarla così da poterne usufruire senza la connessione ad internet.\n',
+                                    style: TextStyle(color: Colors.black, fontSize: 18)),
+                                TextSpan(text:'Dispensa\n',  style: TextStyle(color: Colors.red,fontSize: 24)),
+                                TextSpan(text:'Nella sezione Dispensa è possibile registrare gli alimenti presenti nella vostra dispensa:  cliccando su \'Aggiungi\', si aprirà una piccola form in cui è possibile aggiungere l\'ingrediente desiderato. Per eliminare un elemento è sufficiente scorrere lo stesso verso sinistra. Infine è possibile effettuare un ricerca delle ricette secondo gli elementi inseriti.\n', style: TextStyle(color: Colors.black, fontSize: 18)),
+                                TextSpan(text:'Lista Spesa\n',style: TextStyle(color: Colors.red, fontSize: 24)),
+                                TextSpan(text:'Consiste di un\'effettiva lista della spesa: se, una volta visionata una ricetta, l\'utente dovesse rendersi conto di non avere un ingrediente potrà andarlo ad aggiungere in questa area. Anche in questo caso, per eliminare un elemento sarà sufficiente scorrere lo stesso verso sinistra.\n',style: TextStyle(color: Colors.black, fontSize: 18)),
+                                TextSpan(text:'Tue Ricette\n',  style: TextStyle(color: Colors.red,fontSize: 24)),
+                                TextSpan(text:'\'Ricette Tue\' è una funzionalità disponibile solo per gli utenti che hanno effettuato la registrazione: permette di creare ricette personalizzate secondo i gusti e le idee dell\'utente\n',style: TextStyle(color: Colors.black, fontSize: 18)),
+                                TextSpan(text:'Login\n',  style: TextStyle(color: Colors.red,fontSize: 24)),
+                                TextSpan(text:'Questa sezione sarà visibile solo agli utenti che non hanno effettuato la registrazione. Consiste di una form simile a quella che si trova all\'avvio dell\'applicazione e permette di effettuare il login oppure di registrarsi.\n',style: TextStyle(color: Colors.black, fontSize: 18)),
+                                TextSpan(text:'Offline\n',  style: TextStyle(color: Colors.red,fontSize: 24)),
+                                TextSpan(text:'Possiamo accedere a questa sezione semplicemente cliccando sul pulsante offline presente nelle varie aree dell\'applicazione. Qui potremo visualizzare ed accedere alle ricette che abbiamo salvato in precedenza.\n',style: TextStyle(color: Colors.black, fontSize: 18)),
+                                TextSpan(text:'Ispirami\n',  style: TextStyle(color: Colors.red,fontSize: 24)),
+                                TextSpan(text:'Non sai cosa cucinare? Pur di non pensare accetteresti un piatto a base di frattaglie di cavallo? Questa è la funzione che fa per te. \'Ispierami\' genera per te una ricetta casuale dal nostro database, a tuo rischio e pericolo :)\n',style: TextStyle(color: Colors.black, fontSize: 18)),
+                                TextSpan(text:'Contattaci\n',  style: TextStyle(color: Colors.red,fontSize: 24)),
+                                TextSpan(text:'Se hai domande puoi inviarci una mail. Se invece sei interessato ad ulteriori ricette puoi trovarci su instagram, dove le nostre esperte sono pronte a deliziarti con fantastici piatti!\n',style: TextStyle(color: Colors.black, fontSize: 18)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ));
+                },
+              ),
+            ],
+          ),
 
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
 
-          ],
+        child: Card(
+          child: Image.asset("assets/images/mela.jpg"),
+          //child: Text('Mela Magno'),
+
         ),
       ),
 
