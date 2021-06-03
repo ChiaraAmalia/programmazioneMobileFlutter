@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
+import 'package:mailto/mailto.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class Contattaci extends StatefulWidget {
@@ -131,12 +133,55 @@ class _ContattaciState extends State<Contattaci> {
     ),
       Container(
           margin: const EdgeInsets.all(16),
-      child: CupertinoButton.filled(child: Text('Mandaci una E-mail'),onPressed: (){})
+      child: CupertinoButton.filled(child: Text('Mandaci una E-mail'),onPressed: () async {
+        final url = Mailto(
+          to: [
+            'easycookingclm@gmail.com',
+          ],
+          cc: [],
+          bcc: [],
+          subject: 'EasyCooking Aiutami Tu!',
+          body:
+          'Ciao Mi piace molto la vostra App!👍 Potreste aiutarmi con...',
+        ).toString();
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          showCupertinoDialog(
+            context: context,
+            builder: MailClientOpenErrorDialog(url: url).build,
+          );
+        }
+      },)
       ), ]
       ),
       ),
       )
       );
 
+  }
+}
+class MailClientOpenErrorDialog extends StatelessWidget {
+  final String url;
+
+  const MailClientOpenErrorDialog({Key? key, required this.url})
+      : assert(url != ''),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoAlertDialog(
+      title: Text('Launch Error'),
+      content: Text('We could not launch the following url:\n$url'),
+      actions: <Widget>[
+        CupertinoDialogAction(
+          isDefaultAction: true,
+          child: Text('OK'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
   }
 }
