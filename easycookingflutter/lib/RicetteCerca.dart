@@ -26,7 +26,7 @@ class Ricette extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.red,
       ),
-      home: RicetteCerca(title: 'Ricette Cerca'),
+      home: RicetteCerca(title: 'Easy Cooking'),
     );
   }
 }
