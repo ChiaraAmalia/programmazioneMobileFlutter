@@ -84,10 +84,28 @@ class _ContattaciState extends State<Contattaci> {
 
       body: Center(
 
-        child: Card(
+        child: Container(
+          decoration: ShapeDecoration(
+              color: Colors.orange[50],
+              image: DecorationImage(
+                  image: AssetImage("assets/images/mela.JPG"),
+                  fit: BoxFit.fitWidth),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusDirectional.circular(20))),
+          width: 350,
+          height: 400,
 
+            child:Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                  "Mela Magno", style:TextStyle(color: Colors.black)),
+            ),
+            ),
+          ),
       ),
-      ),
-    );
+      );
+
   }
 }
