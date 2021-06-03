@@ -48,7 +48,7 @@ class _DispensaState extends State<Dispensa> {
                   ),
                   key: ValueKey<String>(snapshot.data![index].nome_prodotto),
                   onDismissed: (DismissDirection direction) async {
-                    await this.handler.cancellaProdotto(snapshot.data![index].id!);
+                    await this.handler.cancellaProdotto(snapshot.data![index].nome_prodotto);
                     setState(() {
                       snapshot.data!.remove(snapshot.data![index]);
                     });
