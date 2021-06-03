@@ -23,12 +23,7 @@ class _DispensaState extends State<Dispensa> {
       setState(() {});
     });
   }
-  Future<int> aggiungiProdotti() async {
-    Prodotto firstProduct = Prodotto(nome_prodotto: "gelato");
-    Prodotto secondProduct = Prodotto(nome_prodotto: "patate");
-    List<Prodotto> listOfProdotti = [firstProduct, secondProduct];
-    return await this.handler.inserisciProdotto(listOfProdotti);
-  }
+
 
   @override
   Widget build(BuildContext context){
@@ -73,5 +68,12 @@ class _DispensaState extends State<Dispensa> {
         },
       ),
     );
+  }
+
+  Future<int> aggiungiProdotti() async {
+    Prodotto firstProduct = Prodotto(nome_prodotto: "gelato");
+    Prodotto secondProduct = Prodotto(nome_prodotto: "patate");
+    List<Prodotto> listOfProdotti = [firstProduct, secondProduct];
+    return await this.handler.inserisciProdotto(listOfProdotti);
   }
 }
