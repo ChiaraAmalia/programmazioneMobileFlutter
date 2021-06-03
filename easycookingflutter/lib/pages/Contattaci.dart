@@ -83,7 +83,8 @@ class _ContattaciState extends State<Contattaci> {
           ),
 
       body: SingleChildScrollView(
-      child: Column(
+      child: Center(
+        child:Column(
 
         children:[ Container(
           margin: const EdgeInsets.all(16),
@@ -127,6 +128,7 @@ class _ContattaciState extends State<Contattaci> {
     ),
     ),
     ),]
+      ),
       ),
       )
       );
