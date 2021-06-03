@@ -35,7 +35,7 @@ class _DispensaState extends State<Dispensa> {
 
     return Scaffold(
       body:FutureBuilder(
-        future: this.handler.retriveProodotti(),
+        future: this.handler.retriveProdotti(),
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -49,9 +49,9 @@ class _DispensaState extends State<Dispensa> {
                     padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Icon(Icons.delete_forever),
                   ),
-                  key: ValueKey<String>(snapshot.data![index].nome_prodotto!),
+                  key: ValueKey<String>(snapshot.data![index].nome_prodotto),
                   onDismissed: (DismissDirection direction) async {
-                    await this.handler.cancellaProdotto(snapshot.data![index].nome_prodotto!);
+                    await this.handler.cancellaProdotto(snapshot.data![index].nome_prodotto);
                     setState(() {
                       snapshot.data!.remove(snapshot.data![index]);
                     });
@@ -66,7 +66,8 @@ class _DispensaState extends State<Dispensa> {
 
               },
             );
-          } else {
+          }
+          else {
             return Center(child: CircularProgressIndicator());
           }
         },

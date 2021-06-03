@@ -25,7 +25,7 @@ class DatabaseHandler {
     return result;
   }
 
-  Future<List<Prodotto>> retriveProodotti() async {
+  Future<List<Prodotto>> retriveProdotti() async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.query('prodotti');
     return queryResult.map((e) => Prodotto.fromMap(e)).toList();
