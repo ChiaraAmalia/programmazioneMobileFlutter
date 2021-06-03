@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
 
@@ -127,7 +128,11 @@ class _ContattaciState extends State<Contattaci> {
     "Ricette a 8 bit", style:TextStyle(color: Colors.black)),
     ),
     ),
-    ),]
+    ),
+      Container(
+          margin: const EdgeInsets.all(16),
+      child: CupertinoButton.filled(child: Text('Mandaci una E-mail'),onPressed: (){})
+      ), ]
       ),
       ),
       )
