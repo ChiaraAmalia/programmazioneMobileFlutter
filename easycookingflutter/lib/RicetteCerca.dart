@@ -102,9 +102,17 @@ class _RicetteCercaState extends State<RicetteCerca> {
                     body: SingleChildScrollView(
                       child: RichText(
                         text: TextSpan(
-                        text:'Come iniziare? \nCerca Ricette:\n',
+                        text:'Come iniziare? \n',
                             style: TextStyle(color: Colors.red, fontSize:24),
-                           children: <TextSpan>[
+                           children: <InlineSpan>[
+                             WidgetSpan(
+                                 child: SizedBox(
+                                   child:  Image.asset(
+                                     "assets/images/food.png",
+                                     fit: BoxFit.cover,
+                                   ),
+                                 )),
+                             TextSpan(text:'Cerca Ricette:\n', style: TextStyle(color: Colors.red,fontSize: 24)),
                              TextSpan(text:'In questa prima sezione è possibile cercare le ricette secondo il nome, la categoria oppure la sua origine. Cliccando su \'Vedi Ricette\' verranno restituite tutte le ricette presenti nel database. All\'interno della ricetta verranno visualizzate tutte le informazioni utili alla preparazione del piatto selezionato, inoltre è possibile condividere la ricetta oppure salvarla così da poterne usufruire senza la connessione ad internet.\n',
                         style: TextStyle(color: Colors.black, fontSize: 18)),
                         TextSpan(text:'Dispensa\n',  style: TextStyle(color: Colors.red,fontSize: 24)),
