@@ -82,9 +82,11 @@ class _ContattaciState extends State<Contattaci> {
             ],
           ),
 
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
 
         children:[ Container(
+          margin: const EdgeInsets.all(16),
           decoration: ShapeDecoration(
               color: Colors.orange[50],
               image: DecorationImage(
@@ -105,6 +107,7 @@ class _ContattaciState extends State<Contattaci> {
             ),
           ),
     Container(
+      margin: const EdgeInsets.all(16),
     decoration: ShapeDecoration(
     color: Colors.orange[50],
     image: DecorationImage(
@@ -125,6 +128,7 @@ class _ContattaciState extends State<Contattaci> {
     ),
     ),]
       ),
+      )
       );
 
   }
