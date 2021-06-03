@@ -82,9 +82,9 @@ class _ContattaciState extends State<Contattaci> {
             ],
           ),
 
-      body: Center(
+      body: Column(
 
-        child: Container(
+        children:[ Container(
           decoration: ShapeDecoration(
               color: Colors.orange[50],
               image: DecorationImage(
@@ -104,6 +104,26 @@ class _ContattaciState extends State<Contattaci> {
             ),
             ),
           ),
+    Container(
+    decoration: ShapeDecoration(
+    color: Colors.orange[50],
+    image: DecorationImage(
+    image: AssetImage("assets/images/bitChia.JPG"),
+    fit: BoxFit.fitWidth),
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadiusDirectional.circular(20))),
+    width: 350,
+    height: 400,
+
+    child:Align(
+    alignment: Alignment.bottomCenter,
+    child: Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Text(
+    "Ricette a 8 bit", style:TextStyle(color: Colors.black)),
+    ),
+    ),
+    ),]
       ),
       );
 
