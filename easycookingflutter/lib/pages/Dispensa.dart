@@ -3,8 +3,10 @@ import 'package:easycookingflutter/Prodotto.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
 
-class Dispensa extends StatefulWidget{
 
+class Dispensa extends StatefulWidget{
+  Dispensa({Key? key, this.title}) : super(key: key);
+  final String? title;
   @override
   _DispensaState createState() => _DispensaState();
 }
@@ -46,7 +48,7 @@ class _DispensaState extends State<Dispensa> {
                   ),
                   key: ValueKey<String>(snapshot.data![index].nome_prodotto),
                   onDismissed: (DismissDirection direction) async {
-                    await this.handler.cancellaProdotto(snapshot.data![index].nome_prodotto);
+                    await this.handler.cancellaProdotto(snapshot.data![index].id!);
                     setState(() {
                       snapshot.data!.remove(snapshot.data![index]);
                     });

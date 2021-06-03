@@ -9,10 +9,10 @@ class DatabaseHandler {
       join(path, 'easyCooking.db'),
       onCreate: (database, version) async {
         await database.execute(
-          "CREATE TABLE prodotti(nome_prodotto TEXT PRIMARY KEY NOT NULL)",
+          "CREATE TABLE prodotti(id INTEGER PRIMARY KEY AUTOINCREMENT, nome_prodotto TEXT NOT NULL)",
         );
       },
-      version: 1,
+      version: 2,
     );
   }
 
@@ -31,12 +31,12 @@ class DatabaseHandler {
     return queryResult.map((e) => Prodotto.fromMap(e)).toList();
   }
 
-  Future<void> cancellaProdotto(String nome_prodotto) async {
+  Future<void> cancellaProdotto(int id) async {
     final db = await initializeDB();
     await db.delete(
       'prodotti',
-      where: "nome_prodotto = ?",
-      whereArgs: [nome_prodotto],
+      where: "id = ?",
+      whereArgs: [id],
     );
   }
 }
