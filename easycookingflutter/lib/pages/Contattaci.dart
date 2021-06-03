@@ -85,12 +85,9 @@ class _ContattaciState extends State<Contattaci> {
       body: Center(
 
         child: Card(
-          child: Image.asset("assets/images/mela.jpg"),
-          //child: Text('Mela Magno'),
 
-        ),
       ),
-
+      ),
     );
   }
 }
