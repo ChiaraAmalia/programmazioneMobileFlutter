@@ -20,10 +20,7 @@ class _DispensaState extends State<Dispensa> {
   void initState() {
     super.initState();
     this.handler = DatabaseHandler();
-    this.handler.initializeDB().whenComplete(() async {
-      await this.aggiungiProdotti();
-      setState(() {});
-    });
+    this.handler.initializeDB();
   }
 //DATABASE
   
@@ -114,7 +111,7 @@ class _DispensaState extends State<Dispensa> {
             );
           }
           else {
-            return Center(child: Text('La dispensa è vuota?'));
+            return Center(child: CircularProgressIndicator());
           }
         },
       ),
@@ -131,10 +128,10 @@ class _DispensaState extends State<Dispensa> {
     );
   }
 
-  Future<int> aggiungiProdotti() async {
+  /*Future<int> aggiungiProdotti() async {
     Prodotto firstProduct = Prodotto(nome_prodotto: "gelato");
     Prodotto secondProduct = Prodotto(nome_prodotto: "patate");
     List<Prodotto> listOfProdotti = [firstProduct, secondProduct];
     return await this.handler.inserisciProdotto(listOfProdotti);
-  }
+  }*/
 }
