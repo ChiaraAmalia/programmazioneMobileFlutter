@@ -55,6 +55,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
     return Scaffold(
     body: ricettaList.length == 0 ? Center(child: Text("Ricette non disponibili", style: TextStyle(fontSize: 30),)):
         ListView.builder(
+          itemCount: ricettaList.length,
             itemBuilder: (_, index){
               return CardUI(ricettaList[index].nome, ricettaList[index].image);
             })
