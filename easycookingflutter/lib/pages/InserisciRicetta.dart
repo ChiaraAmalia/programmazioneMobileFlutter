@@ -31,14 +31,7 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 //DATABASE
   TextEditingController _textFieldController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  late String valueNome;
-  late String valueCook;
-  late String valuePrep;
-  late String valuePorz;
-  late String valuePrepa;
-  late String valueAppoggio;
-  late String Ingre;
-  late List<String> valueIngr;
+
   File? _image;
 
 
@@ -86,21 +79,27 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                     ),
                   ),
                 ),
+                Text('Nome Ricetta: '),
                 TextFormField(
                   onSaved: (value) => this.valueNome = value!,
                 ),
+                Text('Tempo di cottura: '),
                 TextFormField(
                   onSaved: (value) => this.valueCook = value!,
                 ),
+                Text('Tempo preparazione: '),
                 TextFormField(
                   onSaved: (value) => this.valuePrep = value!,
                 ),
+                Text('Porzioni: '),
                 TextFormField(
                   onSaved: (value) => this.valuePorz = value!,
                 ),
+                Text('Procedimento: '),
                 TextFormField(
                   onSaved: (value) => this.valuePrepa = value!,
                 ),
+                Text('Ingredienti: '),
                 TextFormField(
                   onSaved: (value) => this.Ingre = value!,
                 ),
@@ -226,8 +225,8 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          String Ingre="";
-          valueIngr.forEach((ingr) { Ingre+=ingr+'\n'; });
+          /*String Ingre="";
+          valueIngr.forEach((ingr) { Ingre+=ingr+'\n'; });*/
           RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingre, cookTime: valueCook, prepTime: valuePrep, totalTime: "totalTime", fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
           this.handler.inserisciUnaRicetta(ric);
           Navigator.pop(context);
@@ -238,8 +237,16 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
       ),
 
     );
-  }
 
+  }
+  late String valueNome;
+  late String valueCook;
+  late String valuePrep;
+  late String valuePorz;
+  late String valuePrepa;
+  //late String valueAppoggio;
+  late String Ingre;
+  //late List<String> valueIngr;
   //per la foto
   _imgFromCamera() async {
     File image = await ImagePicker.pickImage(
