@@ -242,22 +242,23 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 
   //per la foto
   _imgFromCamera() async {
-    File image = (await ImagePicker.pickImage(
+    File image = await ImagePicker.pickImage(
         source: ImageSource.camera, imageQuality: 50
-    )) ;
-    _imgFromCamera().whenComplete(setState(() {
+    );
+        setState(() {
       _image = image;
-    }));
+    });
+
   }
 
 
   _imgFromGallery() async {
-    File image = (await  ImagePicker.pickImage(
+    File image = await  ImagePicker.pickImage(
         source: ImageSource.gallery, imageQuality: 50
-    )) ;
-    _imgFromGallery().whenComplete(setState(() {
+    );
+    setState(() {
       _image = image;
-    }));
+    });
 
   }
 
