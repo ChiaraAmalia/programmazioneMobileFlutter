@@ -103,124 +103,20 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                 TextFormField(
                   onSaved: (value) => this.Ingre = value!,
                 ),
-
+                RaisedButton(
+                  child: Text('Submit'),
+                  onPressed: () {
+                      setState(() {
+                        this._formKey.currentState!.save();
+                      });
+                    }
+                ),
               ],
             ),
           ),
         ),
       ),
       ),
-
-    /*Scaffold(
-      body: Column(
-        children: [
-          //inserimento nome ricetta
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                valueNome = value;
-              });
-            },
-            controller: _textFieldController,
-            decoration: InputDecoration(hintText: "Nome ricetta..."),
-          ),
-          //inserimento cookTime
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                valueCook = value;
-              });
-            },
-            controller: _textFieldController,
-            decoration: InputDecoration(hintText: "tempo di cottura"),
-          ),
-          //inserimento prepTime
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                valuePrep = value;
-              });
-            },
-            controller: _textFieldController,
-            decoration: InputDecoration(hintText: "tempo di preparazione"),
-          ),
-          //inserimento porzioni
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                valuePorz = value;
-              });
-            },
-            controller: _textFieldController,
-            decoration: InputDecoration(hintText: "porzioni"),
-          ),
-          //inserimento preparazione
-          TextField(
-            onChanged: (value) {
-              setState(() {
-                valuePrepa = value;
-              });
-            },
-            controller: _textFieldController,
-            decoration: InputDecoration(hintText: "procedimento"),
-          ),
-          Row(
-            children: [
-              //inserimento ingrediente
-              TextField(
-                onChanged: (value) {
-                  setState(() {
-                    valueAppoggio = value;
-                  });
-                },
-                controller: _textFieldController,
-                decoration: InputDecoration(hintText: "ingrediente"),
-              ),
-              FlatButton(
-                color: Colors.orange,
-                textColor: Colors.white,
-                child: Text('Aggiungi'),
-                onPressed: () {
-                  setState(() {
-                    valueIngr.add(valueAppoggio);
-                    valueAppoggio="";
-                  });
-                },
-              ),
-            ],
-          ),
-          //inserimento foto
-     GestureDetector(
-        onTap: () {
-        _showPicker(context);
-        },
-        child: CircleAvatar(
-          radius: 55,
-          backgroundColor: Color(0xffFDCF09),
-          child: _image != null
-          ? ClipRRect(
-          borderRadius: BorderRadius.circular(50),
-            child: Image.file(
-              _image!,
-              width: 100,
-              height: 100,
-              fit: BoxFit.fitHeight,
-              ),
-              )
-        : Container(
-            decoration: BoxDecoration(
-            color: Colors.grey[200],
-            borderRadius: BorderRadius.circular(50)),
-            width: 100,
-            height: 100,
-        child: Icon(
-          Icons.camera_alt,
-          color: Colors.grey[800],
-          ),
-          ),
-          ),
-           ),
-        ],*/
 
 
       floatingActionButton: FloatingActionButton.extended(
