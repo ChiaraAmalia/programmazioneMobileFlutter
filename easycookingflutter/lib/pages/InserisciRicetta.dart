@@ -31,7 +31,7 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 //DATABASE
   TextEditingController _textFieldController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
+  static List<String?> ingredientiList = [null];
   File? _image;
 
 
@@ -100,9 +100,10 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                   onSaved: (value) => this.valuePrepa = value!,
                 ),
                 Text('Ingredienti: '),
-                TextFormField(
+                ..._getIngredienti(),
+                /*TextFormField(
                   onSaved: (value) => this.Ingre = value!,
-                ),
+                ),*/
                 RaisedButton(
                   child: Text('Salva Ricetta'),
                   onPressed: () {
@@ -183,6 +184,90 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
             ),
           );
         }
+    );
+  }
+
+
+  List<Widget> _getIngredienti(){
+    List<Widget> ingredientiTextFieldsList = [];
+    for(int i=0; i<ingredientiList.length; i++){
+      ingredientiTextFieldsList.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            child: Row(
+              children: [
+                Expanded(child: IngredienteTextFields(i)),
+                SizedBox(width: 16,),
+                // we need add button at last friends row only
+                _addRemoveButton(i == ingredientiList.length-1, i),
+              ],
+            ),
+          )
+      );
+    }
+    return ingredientiTextFieldsList;
+  }
+  Widget _addRemoveButton(bool add, int index){
+    return InkWell(
+      onTap: (){
+        if(add){
+          // add new text-fields at the top of all friends textfields
+          ingredientiList.insert(0, null);
+        }
+        else ingredientiList.removeAt(index);
+        setState((){});
+      },
+      child: Container(
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          color: (add) ? Colors.green : Colors.red,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Icon(
+          (add) ? Icons.add : Icons.remove, color: Colors.white,
+        ),
+      ),
+    );
+  }
+
+}
+class IngredienteTextFields extends StatefulWidget {
+  late final int index;
+  IngredienteTextFields(this.index);
+  @override
+  _IngredienteTextFieldsState createState() => _IngredienteTextFieldsState();
+}
+class _IngredienteTextFieldsState extends State<IngredienteTextFields> {
+  late TextEditingController _nameController;
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+  }
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      _nameController.text = _InserisciRicettaState.ingredientiList[widget.index]
+          ?? '';
+    });
+    return TextFormField(
+      controller: _nameController,
+      // save text field data in friends list at index
+      // whenever text field value changes
+      onChanged: (v) => _InserisciRicettaState.ingredientiList[widget.index] = v,
+      decoration: InputDecoration(
+          hintText: 'Inserisci Ingrediente'
+      ),
+      validator: (v){
+        if(v!.trim().isEmpty) return 'Please enter something';
+        return null;
+      },
     );
   }
 }
