@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "295539785368",
+    "firebase_url": "https://gino-49a3d-default-rtdb.firebaseio.com",
+    "project_id": "gino-49a3d",
+    "storage_bucket": "gino-49a3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295539785368:android:e677b6a695ef3132481aed",
+        "android_client_info": {
+          "package_name": "com.example.easycooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295539785368-88park6pud2m0v7cffshe79sgi6mksto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.easycooking",
+            "certificate_hash": "8cf4ff202f79cbc6a5d2797c74a6a6c8ed685958"
+          }
+        },
+        {
+          "client_id": "295539785368-9g201lksjaig2dfgj4kevmogbcj6c14s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.easycooking",
+            "certificate_hash": "237b2743c5aa984a062eec85b8e056705eb0b25e"
+          }
+        },
+        {
+          "client_id": "295539785368-di4prg2uh7cb1d1d7djt4uco239h73lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_XSlgR6UEMIc9EaPppAiSVDFxLIhLq4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295539785368-di4prg2uh7cb1d1d7djt4uco239h73lv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295539785368:android:b1d77eeb8d5040e0481aed",
+        "android_client_info": {
+          "package_name": "com.example.easycookingflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295539785368-di4prg2uh7cb1d1d7djt4uco239h73lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_XSlgR6UEMIc9EaPppAiSVDFxLIhLq4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295539785368-di4prg2uh7cb1d1d7djt4uco239h73lv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
