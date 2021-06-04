@@ -31,7 +31,7 @@ class _SpesaState extends State<Spesa> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Aggiungi in Dispensa'),
+            title: Text('Aggiungi alla lista della spesa'),
             content: TextField(
               onChanged: (value) {
                 setState(() {
@@ -70,6 +70,7 @@ class _SpesaState extends State<Spesa> {
   }
 
   late String valueText;
+
   //ALERT DIALOG
 
   @override
