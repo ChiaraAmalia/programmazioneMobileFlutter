@@ -1,6 +1,7 @@
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Prodotto.dart';
 import 'package:easycookingflutter/pages/Contattaci.dart';
+import 'package:easycookingflutter/pages/Spesa.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/pages/Dispensa.dart';
@@ -32,6 +33,7 @@ class Ricette extends StatelessWidget {
       routes: {
         '/dispensa': (context) => Dispensa(),
         '/contattaci': (context) => Contattaci(title: 'Contattaci'),
+        '/spesa': (context) => Spesa(),
       },
     );
   }
@@ -70,10 +72,7 @@ class _RicetteCercaState extends State<RicetteCerca> {
       'RicetteTue',
       style: optionStyle,
     ),
-    Text(
-      'Lista della spesa',
-      style: optionStyle,
-    ),
+    Spesa(),
   ];
 
   void _onItemTapped(int index) {

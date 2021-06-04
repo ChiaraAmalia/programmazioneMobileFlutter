@@ -22,10 +22,12 @@ class _SpesaState extends State<Spesa> {
     this.handler = DatabaseHandler();
     this.handler.initializeDB();
   }
+
 //DATABASE
 
   //ALERT DIALOG
   TextEditingController _textFieldController = TextEditingController();
+
   Future<void> _displayTextInputDialog(BuildContext context) async {
     return showDialog(
         context: context,
@@ -59,7 +61,7 @@ class _SpesaState extends State<Spesa> {
                 onPressed: () {
                   setState(() {
                     Prodotto prod = Prodotto(nome_prodotto: valueText);
-                    this.handler.inserisciUno(prod);
+                    this.handler.inserisciUnoSpesa(prod);
                     Navigator.pop(context);
                   });
                 },
@@ -74,13 +76,13 @@ class _SpesaState extends State<Spesa> {
   //ALERT DIALOG
 
   @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     return Scaffold(
-      body:Center(
-        child:FutureBuilder(
-          future: this.handler.retriveProdotti(),
-          builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
+      body: Center(
+        child: FutureBuilder(
+          future: this.handler.retriveSpesa(),
+          builder: (BuildContext context,
+              AsyncSnapshot<List<Prodotto>> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                 itemCount: snapshot.data?.length,
@@ -95,7 +97,8 @@ class _SpesaState extends State<Spesa> {
                     ),
                     key: ValueKey<String>(snapshot.data![index].nome_prodotto),
                     onDismissed: (DismissDirection direction) async {
-                      await this.handler.cancellaProdotto(snapshot.data![index].nome_prodotto);
+                      await this.handler.cancellaProdottoSpesa(snapshot
+                          .data![index].nome_prodotto);
                       setState(() {
                         snapshot.data!.remove(snapshot.data![index]);
                       });
@@ -107,7 +110,6 @@ class _SpesaState extends State<Spesa> {
                       ),
                     ),
                   );
-
                 },
               );
             }
@@ -121,10 +123,11 @@ class _SpesaState extends State<Spesa> {
         onPressed: () {
           _displayTextInputDialog(context);
         },
-        label: const Text('Aggiungi'),
-        icon: const Icon(Icons.add),
+        label: const Text('Devo Comprare'),
+        icon: const Icon(Icons.shopping_cart),
         backgroundColor: Colors.redAccent,
       ),
 
     );
   }
+}

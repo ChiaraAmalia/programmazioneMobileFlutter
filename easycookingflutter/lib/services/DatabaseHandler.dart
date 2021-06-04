@@ -6,13 +6,16 @@ class DatabaseHandler {
   Future<Database> initializeDB() async {
     String path = await getDatabasesPath();
     return openDatabase(
-      join(path, 'easyCooking.db'),
+      join(path, 'easyCooking1.db'),
       onCreate: (database, version) async {
         await database.execute(
           "CREATE TABLE prodotti(nome_prodotto TEXT PRIMARY KEY NOT NULL)",
         );
+        await database.execute(
+          "CREATE TABLE spesa(nome_prodotto TEXT PRIMARY KEY NOT NULL)",
+        );
       },
-      version: 2,
+      version: 3,
     );
   }
 
@@ -42,6 +45,28 @@ class DatabaseHandler {
     final db = await initializeDB();
     await db.delete(
       'prodotti',
+      where: "nome_prodotto = ?",
+      whereArgs: [nome_prodotto],
+    );
+  }
+
+  Future<void> inserisciUnoSpesa(Prodotto prodotto) async {
+
+    final Database db = await initializeDB();
+    await db.insert('spesa', prodotto.toMap());
+
+  }
+
+  Future<List<Prodotto>> retriveSpesa() async {
+    final Database db = await initializeDB();
+    final List<Map<String, Object?>> queryResult = await db.query('spesa');
+    return queryResult.map((e) => Prodotto.fromMap(e)).toList();
+  }
+
+  Future<void> cancellaProdottoSpesa(String nome_prodotto) async {
+    final db = await initializeDB();
+    await db.delete(
+      'spesa',
       where: "nome_prodotto = ?",
       whereArgs: [nome_prodotto],
     );
