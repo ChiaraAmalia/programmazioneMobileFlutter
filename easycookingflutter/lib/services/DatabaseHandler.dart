@@ -1,4 +1,5 @@
-import 'package:easycookingflutter/Prodotto.dart';
+import 'package:easycookingflutter/Model/Prodotto.dart';
+import 'package:easycookingflutter/Model/RicettaInserimento.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -6,7 +7,7 @@ class DatabaseHandler {
   Future<Database> initializeDB() async {
     String path = await getDatabasesPath();
     return openDatabase(
-      join(path, 'easyCooking1.db'),
+      join(path, 'easyCooking2.db'),
       onCreate: (database, version) async {
         await database.execute(
           "CREATE TABLE prodotti(nome_prodotto TEXT PRIMARY KEY NOT NULL)",
@@ -14,8 +15,11 @@ class DatabaseHandler {
         await database.execute(
           "CREATE TABLE spesa(nome_prodotto TEXT PRIMARY KEY NOT NULL)",
         );
+        await database.execute(
+          "CREATE TABLE ricettetue(nome_ricetta TEXT PRIMARY KEY NOT NULL, ingredienti_ricetta TEXT NOT NULL, cookTime TEXT NOT NULL, prepTime TEXT NOT NULL, totalTime TEXT NOT NULL, fotoRicetta TEXT NOT NULL, porzioni TEXT NOT NULL, preparazione TEXT NOT NULL)",
+        );
       },
-      version: 3,
+      version: 1,
     );
   }
 
@@ -69,6 +73,28 @@ class DatabaseHandler {
       'spesa',
       where: "nome_prodotto = ?",
       whereArgs: [nome_prodotto],
+    );
+  }
+
+  Future<void> inserisciUnaRicetta(RicettaInserimento ricetta) async {
+
+    final Database db = await initializeDB();
+    await db.insert('ricettetue', ricetta.toMap());
+
+  }
+
+  Future<List<RicettaInserimento>> retriveRicetteTue() async {
+    final Database db = await initializeDB();
+    final List<Map<String, Object?>> queryResult = await db.query('ricettetue');
+    return queryResult.map((e) => RicettaInserimento.fromMap(e)).toList();
+  }
+
+  Future<void> cancellaRicettaTua(String nome_ricetta) async {
+    final db = await initializeDB();
+    await db.delete(
+      'ricettetue',
+      where: "nome_ricetta = ?",
+      whereArgs: [nome_ricetta],
     );
   }
 }
