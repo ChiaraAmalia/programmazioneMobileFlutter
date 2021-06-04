@@ -25,14 +25,62 @@ class _DispensaState extends State<Dispensa> {
       setState(() {});
     });
   }
-
+//DATABASE
+  
+  //ALERT DIALOG
+  TextEditingController _textFieldController = TextEditingController();
+  Future<void> _displayTextInputDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Aggiungi in Dispensa'),
+            content: TextField(
+              onChanged: (value) {
+                setState(() {
+                  valueText = value;
+                });
+              },
+              controller: _textFieldController,
+              decoration: InputDecoration(hintText: "Nome prodotto..."),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                color: Colors.red,
+                textColor: Colors.white,
+                child: Text('Annulla'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              FlatButton(
+                color: Colors.green,
+                textColor: Colors.white,
+                child: Text('Aggiungi'),
+                onPressed: () {
+                  setState(() {
+                    Prodotto prod = Prodotto(nome_prodotto: valueText);
+                    this.handler.inserisciUno(prod);
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
+  }
+  
+  late String valueText;
+  //ALERT DIALOG
 
   @override
   Widget build(BuildContext context){
 
     return Scaffold(
-      body:Column(
-        children: [FutureBuilder(
+      body:Center(
+        child:FutureBuilder(
         future: this.handler.retriveProdotti(),
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
           if (snapshot.hasData) {
@@ -69,11 +117,11 @@ class _DispensaState extends State<Dispensa> {
             return Center(child: Text('La dispensa è vuota?'));
           }
         },
-      ),]
+      ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // Add your onPressed code here!
+          _displayTextInputDialog(context);
         },
         label: const Text('Aggiungi'),
         icon: const Icon(Icons.add),
