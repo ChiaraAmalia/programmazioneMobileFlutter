@@ -1,12 +1,12 @@
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
-import 'file:///D:/Lezioni/programmazioneMobileFlutter/easycookingflutter/lib/pages/Contattaci.dart';
+import 'package:easycookingflutter/pages/Contattaci.dart';
 import 'package:easycookingflutter/pages/InserisciRicetta.dart';
 import 'package:easycookingflutter/pages/RicetteTue.dart';
 import 'package:easycookingflutter/pages/Spesa.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
-import 'file:///D:/Lezioni/programmazioneMobileFlutter/easycookingflutter/lib/pages/Dispensa.dart';
+import 'package:easycookingflutter/pages/Dispensa.dart';
 import 'package:path/path.dart';
 
 void main() {
