@@ -16,7 +16,7 @@ class DatabaseHandler {
           "CREATE TABLE spesa(nome_prodotto TEXT PRIMARY KEY NOT NULL)",
         );
         await database.execute(
-          "CREATE TABLE ricettetue(nome_ricetta TEXT PRIMARY KEY NOT NULL, ingredienti_ricetta TEXT NOT NULL, cookTime TEXT NOT NULL, prepTime TEXT NOT NULL, totalTime TEXT NOT NULL, fotoRicetta TEXT NOT NULL, porzioni TEXT NOT NULL, preparazione TEXT NOT NULL)",
+          "CREATE TABLE ricettetue(nome_ricetta TEXT PRIMARY KEY NOT NULL, ingredienti_ricetta TEXT NOT NULL, cookTime TEXT NOT NULL, prepTime TEXT NOT NULL, totalTime TEXT NOT NULL, fotoRicetta BLOB, porzioni TEXT NOT NULL, preparazione TEXT NOT NULL)",
         );
       },
       version: 1,

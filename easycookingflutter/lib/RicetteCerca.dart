@@ -1,6 +1,8 @@
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/pages/Contattaci.dart';
+import 'package:easycookingflutter/pages/InserisciRicetta.dart';
+import 'package:easycookingflutter/pages/RicetteTue.dart';
 import 'package:easycookingflutter/pages/Spesa.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +36,8 @@ class Ricette extends StatelessWidget {
         '/dispensa': (context) => Dispensa(),
         '/contattaci': (context) => Contattaci(title: 'Contattaci'),
         '/spesa': (context) => Spesa(),
+        '/ricetteTue':(context) => RicetteTue(),
+        '/inserisciRicetta': (context) => InserisciRicetta(),
       },
     );
   }
@@ -68,10 +72,7 @@ class _RicetteCercaState extends State<RicetteCerca> {
       'Cerca Ricette',
       style: optionStyle,
     ),
-    Text(
-      'RicetteTue',
-      style: optionStyle,
-    ),
+    RicetteTue(),
     Spesa(),
   ];
 

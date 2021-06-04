@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 
 class RicettaInserimento {
@@ -7,7 +9,7 @@ class RicettaInserimento {
   final String cookTime;
   final String prepTime;
   final String totalTime;
-  final String fotoRicetta;
+  final Uint8List fotoRicetta;
   final String porzioni;
   final String preparazione;
 
