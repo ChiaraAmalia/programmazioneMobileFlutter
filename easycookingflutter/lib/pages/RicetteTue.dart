@@ -3,6 +3,7 @@ import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/pages/InserisciRicetta.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -60,6 +61,15 @@ class _RicetteTueState extends State<RicetteTue> {
                       child: ListTile(
                         contentPadding: EdgeInsets.all(8.0),
                         title: Text(snapshot.data![index].nome_ricetta),
+                        leading: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minWidth: 44,
+                            minHeight: 44,
+                            maxWidth: 44,
+                            maxHeight: 44,
+                          ),
+                          child: Image.memory(snapshot.data![index].fotoRicetta, fit: BoxFit.cover),
+                        ),
 
                     ),
                     ),
