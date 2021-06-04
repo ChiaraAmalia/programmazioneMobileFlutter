@@ -46,7 +46,8 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
+        child:Center(
         child: Form(
           key: this._formKey,
           child: Padding(
@@ -55,24 +56,6 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text('Insrisci la tua ricetta'),
-                TextFormField(
-                  onSaved: (value) => this.valueNome = value!,
-                ),
-                TextFormField(
-                  onSaved: (value) => this.valueCook = value!,
-                ),
-                TextFormField(
-                  onSaved: (value) => this.valuePrep = value!,
-                ),
-                TextFormField(
-                  onSaved: (value) => this.valuePorz = value!,
-                ),
-                TextFormField(
-                  onSaved: (value) => this.valuePrepa = value!,
-                ),
-                TextFormField(
-                  onSaved: (value) => this.Ingre = value!,
-                ),
                 GestureDetector(
                   onTap: () {
                     _showPicker(context);
@@ -103,12 +86,32 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                     ),
                   ),
                 ),
+                TextFormField(
+                  onSaved: (value) => this.valueNome = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valueCook = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valuePrep = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valuePorz = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valuePrepa = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.Ingre = value!,
+                ),
+
               ],
             ),
           ),
         ),
       ),
-    
+      ),
+
     /*Scaffold(
       body: Column(
         children: [
