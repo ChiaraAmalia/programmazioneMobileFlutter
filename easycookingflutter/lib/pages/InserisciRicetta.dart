@@ -109,7 +109,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                   onPressed: () {
                       setState(() {
                         this._formKey.currentState!.save();
-                        RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingre, cookTime: valueCook, prepTime: valuePrep, totalTime: "totalTime", fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
+                        String Ingredi="";
+                        ingredientiList.forEach((ing) { Ingredi+=ing!+'\n'; });
+                        RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingredi, cookTime: valueCook, prepTime: valuePrep, totalTime: "totalTime", fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
                         this.handler.inserisciUnaRicetta(ric);
                         Navigator.pop(context);
                       });
@@ -132,7 +134,7 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
   late String valuePorz;
   late String valuePrepa;
   //late String valueAppoggio;
-  late String Ingre;
+  //late String Ingre;
   //late List<String> valueIngr;
   //per la foto
   _imgFromCamera() async {
