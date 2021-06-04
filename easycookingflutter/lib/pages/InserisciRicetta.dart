@@ -30,12 +30,14 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 
 //DATABASE
   TextEditingController _textFieldController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   late String valueNome;
   late String valueCook;
   late String valuePrep;
   late String valuePorz;
   late String valuePrepa;
   late String valueAppoggio;
+  late String Ingre;
   late List<String> valueIngr;
   File? _image;
 
@@ -44,6 +46,70 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(
+        child: Form(
+          key: this._formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text('Insrisci la tua ricetta'),
+                TextFormField(
+                  onSaved: (value) => this.valueNome = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valueCook = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valuePrep = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valuePorz = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.valuePrepa = value!,
+                ),
+                TextFormField(
+                  onSaved: (value) => this.Ingre = value!,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _showPicker(context);
+                  },
+                  child: CircleAvatar(
+                    radius: 55,
+                    backgroundColor: Color(0xffFDCF09),
+                    child: _image != null
+                        ? ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Image.file(
+                        _image!,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    )
+                        : Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(50)),
+                      width: 100,
+                      height: 100,
+                      child: Icon(
+                        Icons.camera_alt,
+                        color: Colors.grey[800],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    
+    /*Scaffold(
       body: Column(
         children: [
           //inserimento nome ricetta
@@ -152,9 +218,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
           ),
           ),
            ),
-        ],
+        ],*/
 
-      ),
+
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           String Ingre="";
