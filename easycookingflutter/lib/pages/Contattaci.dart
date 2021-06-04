@@ -98,7 +98,7 @@ class _ContattaciState extends State<Contattaci> {
       if (await canLaunch(url)) {
       await launch(url, universalLinksOnly: true,);
       } else {
-      throw 'There was a problem to open the url: $url';
+      throw 'Non riesco ad aprire Instagram';
       }},
           child:Container(
           margin: const EdgeInsets.all(16),
@@ -130,7 +130,7 @@ class _ContattaciState extends State<Contattaci> {
     if (await canLaunch(url)) {
     await launch(url, universalLinksOnly: true,);
     } else {
-    throw 'There was a problem to open the url: $url';
+    throw 'Non riesco ad aprire Instagram';
     }},
       child:Container(
           margin: const EdgeInsets.all(16),

@@ -31,7 +31,8 @@ class _DispensaState extends State<Dispensa> {
   Widget build(BuildContext context){
 
     return Scaffold(
-      body:FutureBuilder(
+      body:Column(
+        children: [FutureBuilder(
         future: this.handler.retriveProdotti(),
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
           if (snapshot.hasData) {
@@ -65,10 +66,20 @@ class _DispensaState extends State<Dispensa> {
             );
           }
           else {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: Text('La dispensa è vuota?'));
           }
         },
+      ),]
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        label: const Text('Aggiungi'),
+        icon: const Icon(Icons.add),
+        backgroundColor: Colors.redAccent,
+      ),
+
     );
   }
 

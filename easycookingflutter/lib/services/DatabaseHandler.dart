@@ -25,6 +25,13 @@ class DatabaseHandler {
     return result;
   }
 
+  Future<void> inserisciUno(Prodotto prodotto) async {
+
+    final Database db = await initializeDB();
+    await db.insert('prodotti', prodotto.toMap());
+
+  }
+
   Future<List<Prodotto>> retriveProdotti() async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.query('prodotti');
