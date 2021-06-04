@@ -89,7 +89,18 @@ class _ContattaciState extends State<Contattaci> {
       child: Center(
         child:Column(
 
-        children:[ Container(
+        children:[
+            GestureDetector(
+            // When the child is tapped, show a snackbar.
+            onTap: () async {
+      var url = 'https://www.instagram.com/mela_magno/';
+
+      if (await canLaunch(url)) {
+      await launch(url, universalLinksOnly: true,);
+      } else {
+      throw 'There was a problem to open the url: $url';
+      }},
+          child:Container(
           margin: const EdgeInsets.all(16),
           decoration: ShapeDecoration(
               color: Colors.orange[50],
@@ -110,24 +121,36 @@ class _ContattaciState extends State<Contattaci> {
             ),
             ),
           ),
-    Container(
-      margin: const EdgeInsets.all(16),
-    decoration: ShapeDecoration(
-    color: Colors.orange[50],
-    image: DecorationImage(
-    image: AssetImage("assets/images/bitChia.JPG"),
-    fit: BoxFit.fitWidth),
-    shape: RoundedRectangleBorder(
-    borderRadius: BorderRadiusDirectional.circular(20))),
-    width: 350,
-    height: 400,
+            ),
+    GestureDetector(
+    // When the child is tapped, show a snackbar.
+    onTap: () async {
+      var url = 'https://www.instagram.com/ricette_a_8bit/';
 
-    child:Align(
-    alignment: Alignment.bottomCenter,
-    child: Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Text(
-    "Ricette a 8 bit", style:TextStyle(color: Colors.black)),
+    if (await canLaunch(url)) {
+    await launch(url, universalLinksOnly: true,);
+    } else {
+    throw 'There was a problem to open the url: $url';
+    }},
+      child:Container(
+          margin: const EdgeInsets.all(16),
+      decoration: ShapeDecoration(
+      color: Colors.orange[50],
+      image: DecorationImage(
+      image: AssetImage("assets/images/bitChia.JPG"),
+      fit: BoxFit.fitWidth),
+      shape: RoundedRectangleBorder(
+      borderRadius: BorderRadiusDirectional.circular(20))),
+      width: 350,
+      height: 400,
+
+      child:Align(
+      alignment: Alignment.bottomCenter,
+      child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+      "Ricette a 8 bit", style:TextStyle(color: Colors.black)),
+    ),
     ),
     ),
     ),
