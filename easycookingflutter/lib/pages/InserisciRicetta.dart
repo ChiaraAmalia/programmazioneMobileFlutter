@@ -104,10 +104,13 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                   onSaved: (value) => this.Ingre = value!,
                 ),
                 RaisedButton(
-                  child: Text('Submit'),
+                  child: Text('Salva Ricetta'),
                   onPressed: () {
                       setState(() {
                         this._formKey.currentState!.save();
+                        RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingre, cookTime: valueCook, prepTime: valuePrep, totalTime: "totalTime", fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
+                        this.handler.inserisciUnaRicetta(ric);
+                        Navigator.pop(context);
                       });
                     }
                 ),
@@ -118,19 +121,6 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
       ),
       ),
 
-
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          /*String Ingre="";
-          valueIngr.forEach((ingr) { Ingre+=ingr+'\n'; });*/
-          RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingre, cookTime: valueCook, prepTime: valuePrep, totalTime: "totalTime", fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
-          this.handler.inserisciUnaRicetta(ric);
-          Navigator.pop(context);
-        },
-        label: const Text('Fatto'),
-        icon: const Icon(Icons.add_box),
-        backgroundColor: Colors.redAccent,
-      ),
 
     );
 
