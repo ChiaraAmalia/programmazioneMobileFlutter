@@ -91,7 +91,7 @@ class _ContattaciState extends State<Contattaci> {
 
         children:[
             GestureDetector(
-            // When the child is tapped, show a snackbar.
+              // Quando il child è cliccato apre la pagina istagram.
             onTap: () async {
       var url = 'https://www.instagram.com/mela_magno/';
 
@@ -123,7 +123,7 @@ class _ContattaciState extends State<Contattaci> {
           ),
             ),
     GestureDetector(
-    // When the child is tapped, show a snackbar.
+    // Quando il child è cliccato apre la pagina istagram.
     onTap: () async {
       var url = 'https://www.instagram.com/ricette_a_8bit/';
 
