@@ -5,6 +5,7 @@ import 'package:easycookingflutter/Model/RicettaInserimento.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -84,12 +85,26 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                   onSaved: (value) => this.valueNome = value!,
                 ),
                 Text('Tempo di cottura: '),
-                TextFormField(
-                  onSaved: (value) => this.valueCook = value!,
-                ),
+              CupertinoTimerPicker(
+                mode: CupertinoTimerPickerMode.hms,
+                minuteInterval: 1,
+                secondInterval: 1,
+                onTimerDurationChanged: (Duration changedtimer) {
+                  setState(() {
+                    this.valueCook = changedtimer;
+                  });
+                },
+              ),
                 Text('Tempo preparazione: '),
-                TextFormField(
-                  onSaved: (value) => this.valuePrep = value!,
+                CupertinoTimerPicker(
+                  mode: CupertinoTimerPickerMode.hms,
+                  minuteInterval: 1,
+                  secondInterval: 1,
+                  onTimerDurationChanged: (Duration changedtimer) {
+                    setState(() {
+                      this.valuePrep = changedtimer;
+                    });
+                  },
                 ),
                 Text('Porzioni: '),
                 TextFormField(
@@ -111,7 +126,17 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                         this._formKey.currentState!.save();
                         String Ingredi="";
                         ingredientiList.forEach((ing) { Ingredi+=ing!+'\n'; });
-                        RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingredi, cookTime: valueCook, prepTime: valuePrep, totalTime: "totalTime", fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
+                        String cot= valueCook.toString();
+                        String cottura = cot.substring(0, cot.indexOf('.'));
+                        String prepa = valuePrep.toString();
+                        String preparazione = prepa.substring(0, prepa.indexOf('.'));
+                        Duration valueTot = valueCook+valuePrep;
+                        String tot = valueTot.toString();
+                        String totale = tot.substring(0, tot.indexOf('.'));
+
+
+
+                        RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingredi, cookTime: cottura, prepTime: preparazione, totalTime: totale, fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
                         this.handler.inserisciUnaRicetta(ric);
                         Navigator.pop(context);
                       });
@@ -129,8 +154,8 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 
   }
   late String valueNome;
-  late String valueCook;
-  late String valuePrep;
+  late Duration valueCook;
+  late Duration valuePrep;
   late String valuePorz;
   late String valuePrepa;
   //late String valueAppoggio;
