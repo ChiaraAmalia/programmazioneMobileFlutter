@@ -42,10 +42,11 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
     return Scaffold(
       body: SingleChildScrollView(
         child:Center(
+
         child: Form(
           key: this._formKey,
           child: Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: const EdgeInsets.only(left:20.0, top:32.0,right:50.0,bottom: 32.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
