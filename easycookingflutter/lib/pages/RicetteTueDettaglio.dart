@@ -95,8 +95,9 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
                         args.nome_ricetta, style:TextStyle(color: Colors.red,fontSize: 30)),
                 ),
 
-      //tabella con tempi
-      DataTable(
+        FittedBox(
+          fit: BoxFit.fitWidth,//tabella con tempi
+      child:  DataTable(
         columns: const <DataColumn>[
           DataColumn(
             label: Text(
@@ -127,6 +128,7 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
           ),
         ],
       ),
+        ),
               Text("Ingredienti:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
               Text(args.ingredienti_ricetta),
               Text("Procedimento:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
