@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:easycookingflutter/Model/RicettaInserimento.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
+import 'package:easycookingflutter/RicetteCerca.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
