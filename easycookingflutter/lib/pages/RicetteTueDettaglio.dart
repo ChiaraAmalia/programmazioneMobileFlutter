@@ -85,12 +85,7 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
               child: Column(
                 children:[
                   ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minWidth: 400,
-                    minHeight: 200,
-                    maxWidth: 400,
-                    maxHeight: 200,
-                  ),
+                  constraints: BoxConstraints.expand(height: 210.0),
                   child: Image.memory(args.fotoRicetta, fit: BoxFit.cover),
                 ),
 
