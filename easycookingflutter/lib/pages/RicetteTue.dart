@@ -1,7 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:easycookingflutter/Model/RicettaInserimento.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/pages/InserisciRicetta.dart';
+import 'package:easycookingflutter/pages/RicetteTueDettaglio.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +44,15 @@ class _RicetteTueState extends State<RicetteTue> {
               return ListView.builder(
                 itemCount: snapshot.data?.length,
                 itemBuilder: (BuildContext context, int index) {
+                  String nome=snapshot.data![index].nome_ricetta.toString();
+                  String ingr = snapshot.data![index].ingredienti_ricetta.toString();
+                  String cook = snapshot.data![index].cookTime.toString();
+                  String prep = snapshot.data![index].prepTime.toString();
+                  String tot = snapshot.data![index].totalTime.toString();
+                  Uint8List foto = snapshot.data![index].fotoRicetta;
+                  String porz = snapshot.data![index].porzioni.toString();
+                  String prepa = snapshot.data![index].preparazione.toString();
+                  RicettaDettaglioArgomenti argomento = RicettaDettaglioArgomenti(nome,ingr,cook,prep,tot,foto,porz,prepa);
                   return Dismissible(
                     direction: DismissDirection.endToStart,
                     background: Container(
@@ -59,6 +71,13 @@ class _RicetteTueState extends State<RicetteTue> {
                     },
                     child: Card(
                       child: ListTile(
+                        onTap: (){
+
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => RicetteTueDettaglio(),
+                            settings: RouteSettings(
+                              arguments: argomento,
+                            ),));
+                        },
                         contentPadding: EdgeInsets.all(8.0),
                         title: Text(snapshot.data![index].nome_ricetta),
                         leading: ConstrainedBox(
@@ -94,4 +113,17 @@ class _RicetteTueState extends State<RicetteTue> {
 
     );
   }
+}
+
+class RicettaDettaglioArgomenti{
+  final String nome_ricetta;
+  final String ingredienti_ricetta;
+  final String cookTime;
+  final String prepTime;
+  final String totalTime;
+  final Uint8List fotoRicetta;
+  final String porzioni;
+  final String preparazione;
+
+  RicettaDettaglioArgomenti(this.nome_ricetta, this.ingredienti_ricetta, this.cookTime,this.prepTime,this.totalTime,this.fotoRicetta,this.porzioni,this.preparazione);
 }
