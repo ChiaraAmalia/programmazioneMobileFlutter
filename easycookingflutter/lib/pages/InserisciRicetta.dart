@@ -113,6 +113,7 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                 ),
                 Text('Procedimento: '),
                 TextFormField(
+                  maxLines: null,
                   onSaved: (value) => this.valuePrepa = value!,
                 ),
                 Text('Ingredienti: '),
@@ -290,7 +291,7 @@ class _IngredienteTextFieldsState extends State<IngredienteTextFields> {
       // whenever text field value changes
       onChanged: (v) => _InserisciRicettaState.ingredientiList[widget.index] = v,
       decoration: InputDecoration(
-          hintText: 'Inserisci Ingrediente'
+          hintText: 'Ingrediente, quantità'
       ),
       validator: (v){
         if(v!.trim().isEmpty) return 'Please enter something';
