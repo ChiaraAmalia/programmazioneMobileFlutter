@@ -1,10 +1,13 @@
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
+import 'package:easycookingflutter/model/Ricetta.dart';
 import 'package:easycookingflutter/pages/Contattaci.dart';
 import 'package:easycookingflutter/pages/InserisciRicetta.dart';
+import 'package:easycookingflutter/pages/RicetteCercaPage.dart';
 import 'package:easycookingflutter/pages/RicetteTue.dart';
 import 'package:easycookingflutter/pages/Spesa.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/pages/Dispensa.dart';
 import 'package:path/path.dart';
@@ -36,6 +39,7 @@ class Ricette extends StatelessWidget {
         '/dispensa': (context) => Dispensa(),
         '/contattaci': (context) => Contattaci(title: 'Contattaci'),
         '/spesa': (context) => Spesa(),
+        '/cerca':(context) => RicetteCercaPage(),
         '/ricetteTue':(context) => RicetteTue(),
         '/inserisciRicetta': (context) => InserisciRicetta(),
       },
@@ -63,15 +67,13 @@ class RicetteCerca extends StatefulWidget {
 
 class _RicetteCercaState extends State<RicetteCerca> {
 
+
   int _selectedIndex = 1;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
    List _widgetOptions = [
     Dispensa(),
-    Text(
-      'Cerca Ricette',
-      style: optionStyle,
-    ),
+    RicetteCercaPage(),
     RicetteTue(),
     Spesa(),
   ];
@@ -81,6 +83,8 @@ class _RicetteCercaState extends State<RicetteCerca> {
       _selectedIndex = index;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
