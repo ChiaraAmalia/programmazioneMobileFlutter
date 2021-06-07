@@ -20,26 +20,26 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
     DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("");
     dbRef.once().then((DataSnapshot dataSnapshot){
       ricettaList.clear();
-      var keys = dataSnapshot.value.keys;
+      //var keys = dataSnapshot.value.keys;
       var values = dataSnapshot.value;
 
-      for(var key in keys){
+      for(var val in values){
         Ricetta ric = new Ricetta(
-          values[key]["cookTime"],
-          values[key]["descrizione"],
-          values[key]["image"],
+          val["cookTime"],
+          val["descrizione"],
+          val["image"],
          // values[key][k]["Ingredienti"],
          // values[key][k]["unita"],
          // values[key][k]["quantita"],
           //values[key][k]["keywords"],
-          values[key]["nome"],
-          values[key]["porzioni"],
-          values[key]["preparazione"],
-          values[key]["prepTime"],
-          values[key]["recipeCategory"] ,
-          values[key]["recipeCuisine"],
-          values[key]["totalTime"],
-          values[key]["vegano"],
+          val["nome"],
+          val["porzioni"],
+          val["preparazione"],
+          val["prepTime"],
+          val["recipeCategory"] ,
+          val["recipeCuisine"],
+          val["totalTime"],
+          val["vegano"],
         );
         ricettaList.add(ric);
       }
