@@ -42,9 +42,11 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
           val["porzioni"],
           val["preparazione"],
           val["prepTime"],
+          val["quantita"],
           val["recipeCategory"] ,
           val["recipeCuisine"],
           val["totalTime"],
+          val["unita"],
           val["vegano"],
         );
         ricettaList.add(ric);

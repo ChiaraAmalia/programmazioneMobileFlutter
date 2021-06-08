@@ -194,7 +194,19 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                         ),
                       ),
                       Text("Ingredienti:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
-                      Text(args.ingredienti.toString()),
+                       Row(
+                        children:[
+                          Spacer(),
+                          Text(leggiLista(args.ingredienti)),
+                          SizedBox(width: 15,),
+                          Text(leggiLista(args.quantita)),
+                          SizedBox(width: 15,),
+                          Text(leggiLista(args.unita)),
+                          Spacer(),
+                      ]
+                      ),
+
+
                       Text("Procedimento:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
                       Text(args.preparazione),
                     ],
@@ -204,4 +216,12 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
       ),
     );
   }
+  String leggiLista(List<Object> lista){
+    String str="";
+    for (var val in lista){
+      str=str+val.toString()+'\n';
+    }
+    return str;
+  }
+
 }
