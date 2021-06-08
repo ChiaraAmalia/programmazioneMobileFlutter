@@ -59,7 +59,7 @@ class _IspiramiState extends State<Ispirami> {
   @override
   Widget build(BuildContext context) {
     Randomizer randomizer = Randomizer();
-    var args=randomizer.getrandomelementfromlist(ricettaList);
+    var ind=randomizer.getrandomnumber(0,414);
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -156,12 +156,12 @@ class _IspiramiState extends State<Ispirami> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: ricettaList.length == 0 ? Column(children:[ Text("Ricette non disponibili", style: TextStyle(fontSize: 30),),CircularProgressIndicator()]): SingleChildScrollView(
         child: Column(
             children: [
               ElevatedButton(
                 onPressed: () {
-
+                  ind=randomizer.getrandomnumber(0, 414);
                 },
                 child: const Text('Ispirami!'),
               ),
@@ -173,7 +173,7 @@ class _IspiramiState extends State<Ispirami> {
                         constraints: BoxConstraints.expand(height: 210.0),
                         child: Image.network(
                           "https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F" +
-                              args.image +
+                              ricettaList[ind].image +
                               "?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29",
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
@@ -188,7 +188,7 @@ class _IspiramiState extends State<Ispirami> {
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: Text(
-                            args.nome,
+                            ricettaList[ind].nome,
                             style: TextStyle(color: Colors.red, fontSize: 30)),
                       ),
 
@@ -218,9 +218,9 @@ class _IspiramiState extends State<Ispirami> {
                           rows: <DataRow>[
                             DataRow(
                               cells: <DataCell>[
-                                DataCell(Text(args.prepTime)),
-                                DataCell(Text(args.cookTime)),
-                                DataCell(Text(args.totalTime)),
+                                DataCell(Text(ricettaList[ind].prepTime)),
+                                DataCell(Text(ricettaList[ind].cookTime)),
+                                DataCell(Text(ricettaList[ind].totalTime)),
                               ],
                             ),
                           ],
@@ -246,8 +246,8 @@ class _IspiramiState extends State<Ispirami> {
                           rows: <DataRow>[
                             DataRow(
                               cells: <DataCell>[
-                                DataCell(Text(args.recipeCategory)),
-                                DataCell(Text(args.recipeCuisine)),
+                                DataCell(Text(ricettaList[ind].recipeCategory)),
+                                DataCell(Text(ricettaList[ind].recipeCuisine)),
                               ],
                             ),
                           ],
@@ -274,8 +274,8 @@ class _IspiramiState extends State<Ispirami> {
                           rows: <DataRow>[
                             DataRow(
                               cells: <DataCell>[
-                                DataCell(Text(leggiLista(args.intolleranze))),
-                                DataCell(Text(leggiBooleano(args.vegano))),
+                                DataCell(Text(leggiLista(ricettaList[ind].intolleranze))),
+                                DataCell(Text(leggiBooleano(ricettaList[ind].vegano))),
                               ],
                             ),
                           ],
@@ -287,11 +287,11 @@ class _IspiramiState extends State<Ispirami> {
                       Row(
                           children: [
                             Spacer(),
-                            Text(leggiLista(args.ingredienti)),
+                            Text(leggiLista(ricettaList[ind].ingredienti)),
                             SizedBox(width: 15,),
-                            Text(leggiLista(args.quantita)),
+                            Text(leggiLista(ricettaList[ind].quantita)),
                             SizedBox(width: 15,),
-                            Text(leggiLista(args.unita)),
+                            Text(leggiLista(ricettaList[ind].unita)),
                             Spacer(),
                           ]
                       ),
@@ -300,7 +300,7 @@ class _IspiramiState extends State<Ispirami> {
                       Text("Procedimento:", style: TextStyle(color: Colors.red,
                           fontSize: 24,
                           fontStyle: FontStyle.italic)),
-                      Text(args.preparazione),
+                      Text(ricettaList[ind].preparazione),
                     ],
                   )
               ),
