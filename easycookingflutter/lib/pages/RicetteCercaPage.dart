@@ -81,7 +81,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
       child: Container(
         color: Colors.white,
         margin: EdgeInsets.all(1),
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(8),
         child: Column(
           children:<Widget> [
             Image.network(
