@@ -156,7 +156,7 @@ class _IspiramiState extends State<Ispirami> {
           ),
         ],
       ),
-      body: ricettaList.length == 0 ? Column(children:[CircularProgressIndicator()]): SingleChildScrollView(
+      body: ricettaList.length == 0 ? Center(child:CircularProgressIndicator()): SingleChildScrollView(
         child: Column(
             children: [
               ElevatedButton(

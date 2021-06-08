@@ -61,7 +61,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body: ricettaList.length == 0 ? Column(children:[ Text("Ricette non disponibili", style: TextStyle(fontSize: 30),),CircularProgressIndicator()]):
+    body: ricettaList.length == 0 ? Align(alignment:Alignment.topCenter,child:Column(children:[ Text("Ricette non disponibili", style: TextStyle(fontSize: 30,),textAlign: TextAlign.center),CircularProgressIndicator()])):
         ListView.builder(
           itemCount: ricettaList.length,
             itemBuilder: (_, index){
@@ -102,6 +102,10 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
               fit: BoxFit.cover,
               height: 100,
               width: 100,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(child:CircularProgressIndicator());
+              },
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset(
                   "assets/images/coltforc.png",
