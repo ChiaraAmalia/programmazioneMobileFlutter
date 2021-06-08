@@ -76,8 +76,9 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
 
   Widget CardUI(String nome, String image){
     return Card(
-      margin: EdgeInsets.all(15),
-      color: Color(0xfff13746),
+      elevation: 10,
+      margin: EdgeInsets.all(5),
+      //color: Color(0xfff13746),
       child: Container(
         color: Colors.white,
         margin: EdgeInsets.all(1),
