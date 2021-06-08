@@ -146,9 +146,13 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
               ),
               Align(
                 alignment: Alignment.bottomLeft,
-                child: Text(args.nome_ricetta,
-                    style: TextStyle(color: Colors.red, fontSize: 30)),
-              ),
+                child:
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child:Text(
+                    args.nome_ricetta,
+                    style: TextStyle(color: Colors.red, fontSize: 22,),maxLines: 5,textAlign: TextAlign.center,),
+                ),),
               FittedBox(
                 fit: BoxFit.fitWidth, //tabella con tempi
                 child: DataTable(

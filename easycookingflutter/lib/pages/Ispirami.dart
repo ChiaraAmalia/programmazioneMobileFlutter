@@ -157,10 +157,13 @@ class _IspiramiState extends State<Ispirami> {
 
                       Align(
                         alignment: Alignment.bottomLeft,
-                        child: Text(
+                        child:
+                        Padding(
+                          padding: EdgeInsets.all(8),
+                          child:Text(
                             ricettaList[ind].nome,
-                            style: TextStyle(color: Colors.red, fontSize: 30)),
-                      ),
+                            style: TextStyle(color: Colors.red, fontSize: 22,),maxLines: 5,textAlign: TextAlign.center,),
+                      ),),
 
                       FittedBox(
                         fit: BoxFit.fitWidth, //tabella con tempi
