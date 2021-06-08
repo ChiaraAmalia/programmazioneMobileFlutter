@@ -58,7 +58,7 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                   },
                   child: CircleAvatar(
                     radius: 55,
-                    backgroundColor: Color(0xffFDCF09),
+                    backgroundColor: Color(0xff790707),
                     child: _image != null
                         ? ClipRRect(
                       borderRadius: BorderRadius.circular(50),

@@ -44,19 +44,22 @@ class _ContattaciState extends State<Contattaci> {
                       body: SingleChildScrollView(
                         child:Column(
                             children:[
-                              RichText(
-                                text: TextSpan(
-                                  text:'Come iniziare? \n',
-                                  style: TextStyle(color: Colors.red, fontSize:24, ),
-                                  children: <InlineSpan>[
-                                    WidgetSpan(
-                                        child: SizedBox(
-                                          child:  Image.asset(
-                                            "assets/images/food.png",
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )),
-                                    TextSpan(text:'Cerca Ricette:\n', style: TextStyle(color: Colors.red,fontSize: 24)),],),),
+                              Align(
+                                alignment: Alignment.center,
+                                child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                    text:'Come iniziare? \n',
+                                    style: TextStyle(color: Colors.red, fontSize:24,),
+                                    children: <InlineSpan>[
+                                      WidgetSpan(
+                                          child: SizedBox(
+                                            child:  Image.asset(
+                                              "assets/images/food.png",
+                                              fit: BoxFit.cover,
+                                            ),
+                                          )),
+                                      TextSpan(text:'Cerca Ricette:\n', style: TextStyle(color: Colors.red,fontSize: 24)),],),),),
                               Text('In questa prima sezione è possibile cercare le ricette secondo il nome, la categoria oppure la sua origine. Cliccando su \'Vedi Ricette\' verranno restituite tutte le ricette presenti nel database. All\'interno della ricetta verranno visualizzate tutte le informazioni utili alla preparazione del piatto selezionato, inoltre è possibile condividere la ricetta oppure salvarla così da poterne usufruire senza la connessione ad internet.\n'),
                               RichText(text:TextSpan(text:'Dispensa\n',  style: TextStyle(color: Colors.red,fontSize: 24))),
                               Text('Nella sezione Dispensa è possibile registrare gli alimenti presenti nella vostra dispensa:  cliccando su \'Aggiungi\', si aprirà una piccola form in cui è possibile aggiungere l\'ingrediente desiderato. Per eliminare un elemento è sufficiente scorrere lo stesso verso sinistra. Infine è possibile effettuare un ricerca delle ricette secondo gli elementi inseriti.\n'),
