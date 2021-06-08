@@ -92,7 +92,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
       margin: EdgeInsets.all(5),
       //color: Color(0xfff13746),
       child: Container(
-        color: Colors.white,
+        //color: Colors.white,
         margin: EdgeInsets.all(1),
         padding: EdgeInsets.all(8),
         child: Column(
