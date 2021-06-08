@@ -1,5 +1,5 @@
 
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:easycookingflutter/Model/ricetta.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,7 +60,15 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
         ListView.builder(
           itemCount: ricettaList.length,
             itemBuilder: (_, index){
-              return CardUI(ricettaList[index].nome, ricettaList[index].image);
+              //var urlImage="https://upload.wikimedia.org/wikipedia/commons/6/61/Crystal_128_error.png";
+           /* var storage = FirebaseStorage.instance.ref().child("images").child(ricettaList[index].image).getDownloadURL().then((result) {
+              setState(() {
+                if (result is String)
+                   urlImage = result.toString(); //use toString to convert as String
+              });
+            });*/
+              var urlImage="https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F"+ricettaList[index].image+"?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
+              return CardUI(ricettaList[index].nome, urlImage);
             })
     );
   }
