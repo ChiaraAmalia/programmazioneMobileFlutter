@@ -156,12 +156,14 @@ class _IspiramiState extends State<Ispirami> {
           ),
         ],
       ),
-      body: ricettaList.length == 0 ? Column(children:[ Text("Ricette non disponibili", style: TextStyle(fontSize: 30),),CircularProgressIndicator()]): SingleChildScrollView(
+      body: ricettaList.length == 0 ? Column(children:[CircularProgressIndicator()]): SingleChildScrollView(
         child: Column(
             children: [
               ElevatedButton(
                 onPressed: () {
-                  ind=randomizer.getrandomnumber(0, 414);
+                  setState(() {
+                    ind = randomizer.getrandomnumber(0, 414);
+                  });
                 },
                 child: const Text('Ispirami!'),
               ),
