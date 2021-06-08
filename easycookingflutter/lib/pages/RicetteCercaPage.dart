@@ -1,5 +1,6 @@
 
-import 'package:easycookingflutter/model/Ricetta.dart';
+
+import 'package:easycookingflutter/Model/ricetta.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
           val["cookTime"],
           val["descrizione"],
           val["image"],
+          val["Ingredienti"],
+          val["intolleranze"],
          // values[key][k]["Ingredienti"],
          // values[key][k]["unita"],
          // values[key][k]["quantita"],
