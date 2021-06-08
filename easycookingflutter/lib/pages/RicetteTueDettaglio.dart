@@ -145,7 +145,7 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
                 child: Image.memory(args.fotoRicetta, fit: BoxFit.cover),
               ),
               Align(
-                alignment: Alignment.bottomLeft,
+                alignment: Alignment.center,
                 child:
                 Padding(
                   padding: EdgeInsets.all(8),

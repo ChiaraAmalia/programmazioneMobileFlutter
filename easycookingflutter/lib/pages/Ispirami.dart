@@ -156,7 +156,7 @@ class _IspiramiState extends State<Ispirami> {
                       ),
 
                       Align(
-                        alignment: Alignment.bottomLeft,
+                        alignment: Alignment.center,
                         child:
                         Padding(
                           padding: EdgeInsets.all(8),
@@ -259,13 +259,13 @@ class _IspiramiState extends State<Ispirami> {
                           fontStyle: FontStyle.italic)),
                       Row(
                           children: [
-                            Spacer(),
-                            Text(leggiLista(ricettaList[ind].ingredienti)),
-                            SizedBox(width: 15,),
+
+                            Text(leggiLista(ricettaList[ind].ingredienti),maxLines: 3,),
+                            SizedBox(width: 7,),
                             Text(leggiLista(ricettaList[ind].quantita)),
-                            SizedBox(width: 15,),
+                            SizedBox(width: 7,),
                             Text(leggiLista(ricettaList[ind].unita)),
-                            Spacer(),
+
                           ]
                       ),
 

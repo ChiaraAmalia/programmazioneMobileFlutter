@@ -106,7 +106,7 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                       ),
 
                       Align(
-                        alignment: Alignment.bottomLeft,
+                        alignment: Alignment.center,
                         child:
                         Padding(
                           padding: EdgeInsets.all(8),
@@ -205,15 +205,16 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                         ),
                       ),
                       Text("Ingredienti:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
+
                        Row(
                         children:[
-                          Spacer(),
-                          Text(leggiLista(args.ingredienti)),
-                          SizedBox(width: 15,),
+
+                          Text(leggiLista(args.ingredienti),maxLines: 3,),
+                          SizedBox(width: 7,),
                           Text(leggiLista(args.quantita)),
-                          SizedBox(width: 15,),
+                          SizedBox(width: 7,),
                           Text(leggiLista(args.unita)),
-                          Spacer(),
+
                       ]
                       ),
 
