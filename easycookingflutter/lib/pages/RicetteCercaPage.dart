@@ -5,6 +5,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'RicetteDettaglio.dart';
+
 
 
 class RicetteCercaPage extends StatefulWidget{
@@ -69,13 +71,21 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
               });
             });*/
               var urlImage="https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F"+ricettaList[index].image+"?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
-              return CardUI(ricettaList[index].nome, urlImage);
+              return GestureDetector(
+                  // Quando il child è cliccato apre la pagina istagram.
+                  onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RicetteDettaglio(),
+                  settings: RouteSettings(
+                    arguments: ricettaList[index],
+                  ),));
+              },
+              child: CardUI(ricettaList[index].nome, urlImage));
             })
     );
   }
 
   Widget CardUI(String nome, String image){
-    return Card(
+    return  Card(
       elevation: 10,
       margin: EdgeInsets.all(5),
       //color: Color(0xfff13746),
