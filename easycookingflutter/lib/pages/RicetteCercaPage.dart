@@ -99,13 +99,13 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                 );//do something
               },
             ),
-            SizedBox(height: 1,),
-            Text(nome),
+            //SizedBox(height: 1,),
+            Text(nome,maxLines: 3,),
 
           ],
         ),
-      ),
 
+        ),
     );
   }
   }
