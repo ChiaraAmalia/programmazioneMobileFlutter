@@ -77,7 +77,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
   Widget CardUI(String nome, String image){
     return Card(
       margin: EdgeInsets.all(15),
-      color: Color(0xff122fc3),
+      color: Color(0xfff13746),
       child: Container(
         color: Colors.white,
         margin: EdgeInsets.all(1),
@@ -88,10 +88,13 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
               image,
               fit: BoxFit.cover,
               height: 100,
+              width: 100,
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset(
                   "assets/images/coltforc.png",
                   fit: BoxFit.cover,
+                  height: 100,
+                  width: 100,
                 );//do something
               },
             ),
