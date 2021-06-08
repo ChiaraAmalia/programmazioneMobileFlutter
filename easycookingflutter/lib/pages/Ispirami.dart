@@ -178,6 +178,10 @@ class _IspiramiState extends State<Ispirami> {
                               ricettaList[ind].image +
                               "?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29",
                           fit: BoxFit.cover,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) return child;
+                            return Center(child:CircularProgressIndicator());
+                          },
                           errorBuilder: (context, error, stackTrace) {
                             return Image.asset(
                               "assets/images/coltforc.png",
