@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
+
 class RicetteCercaPage extends StatefulWidget{
   RicetteCercaPage({Key? key, this.title}) : super(key: key);
   final String? title;
@@ -83,7 +84,17 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
         padding: EdgeInsets.all(10),
         child: Column(
           children:<Widget> [
-            Image.network(image, fit: BoxFit.cover, height: 100,),
+            Image.network(
+              image,
+              fit: BoxFit.cover,
+              height: 100,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset(
+                  "assets/images/coltforc.png",
+                  fit: BoxFit.cover,
+                );//do something
+              },
+            ),
             SizedBox(height: 1,),
             Text(nome),
 
