@@ -56,7 +56,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body: ricettaList.length == 0 ? Center(child: Text("Ricette non disponibili", style: TextStyle(fontSize: 30),)):
+    body: ricettaList.length == 0 ? Column(children:[ Text("Ricette non disponibili", style: TextStyle(fontSize: 30),),CircularProgressIndicator()]):
         ListView.builder(
           itemCount: ricettaList.length,
             itemBuilder: (_, index){
