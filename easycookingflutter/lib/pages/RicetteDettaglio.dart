@@ -186,8 +186,8 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                           rows: <DataRow>[
                             DataRow(
                               cells: <DataCell>[
-                                DataCell(Text(args.intolleranze.toString())),
-                                DataCell(Text(args.vegano.toString())),
+                                DataCell(Text(leggiLista(args.intolleranze))),
+                                DataCell(Text(leggiBooleano(args.vegano))),
                               ],
                             ),
                           ],
@@ -220,6 +220,13 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
     String str="";
     for (var val in lista){
       str=str+val.toString()+'\n';
+    }
+    return str;
+  }
+  String leggiBooleano(bool booleano){
+    String str="No";
+    if(booleano==true){
+      str="Si";
     }
     return str;
   }
