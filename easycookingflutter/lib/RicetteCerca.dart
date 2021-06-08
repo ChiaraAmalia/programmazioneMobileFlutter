@@ -3,6 +3,7 @@ import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/model/Ricetta.dart';
 import 'package:easycookingflutter/pages/Contattaci.dart';
 import 'package:easycookingflutter/pages/InserisciRicetta.dart';
+import 'package:easycookingflutter/pages/Ispirami.dart';
 import 'package:easycookingflutter/pages/RicetteCercaPage.dart';
 import 'package:easycookingflutter/pages/RicetteTue.dart';
 import 'package:easycookingflutter/pages/Spesa.dart';
@@ -38,6 +39,7 @@ class Ricette extends StatelessWidget {
       routes: {
         '/dispensa': (context) => Dispensa(),
         '/contattaci': (context) => Contattaci(title: 'Contattaci'),
+        '/ispirami': (cintext) => Ispirami(),
         '/spesa': (context) => Spesa(),
         '/cerca':(context) => RicetteCercaPage(),
         '/ricetteTue':(context) => RicetteTue(),
@@ -183,6 +185,10 @@ class _RicetteCercaState extends State<RicetteCerca> {
             ListTile(
               leading: Icon(Icons.wb_incandescent_outlined),
               title: Text('Ispirami'),
+              onTap: (){
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/ispirami');
+              },
             ),
             ListTile(
               leading: Icon(Icons.logout),
