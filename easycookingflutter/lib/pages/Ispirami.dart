@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
-import "dart:math";
+import 'package:randomizer/randomizer.dart';
 import 'package:mailto/mailto.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -58,8 +58,8 @@ class _IspiramiState extends State<Ispirami> {
 
   @override
   Widget build(BuildContext context) {
-    var indi=Random().nextInt(ricettaList.length);
-    var args=ricettaList[indi];
+    Randomizer randomizer = Randomizer();
+    var args=randomizer.getrandomelementfromlist(ricettaList);
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -159,6 +159,12 @@ class _IspiramiState extends State<Ispirami> {
       body: SingleChildScrollView(
         child: Column(
             children: [
+              ElevatedButton(
+                onPressed: () {
+
+                },
+                child: const Text('Ispirami!'),
+              ),
               //foto con titolo
               Container(
                   child: Column(
