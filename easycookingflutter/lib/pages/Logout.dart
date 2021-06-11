@@ -1,10 +1,12 @@
 
+import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:easycookingflutter/services/auth.dart';
 
 import '../MyFlutterApp.dart';
 
 class Logout extends StatelessWidget {
-  const Logout({Key? key}) : super(key: key);
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,15 @@ class Logout extends StatelessWidget {
           ),
         ],
       ),
-
+        body: Container(
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+          child: RaisedButton(
+            child: Text('logout'),
+            onPressed: () async{
+              await _auth.signOut();
+            },
+          ),
+        )
     );
   }
 }
