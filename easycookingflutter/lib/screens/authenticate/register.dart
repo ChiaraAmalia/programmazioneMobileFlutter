@@ -19,11 +19,12 @@ class _RegisterState extends State<Register> {
   String cognome = '';
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+        body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child:Column(
             children:[
@@ -115,13 +116,18 @@ class _RegisterState extends State<Register> {
                       ),
                       onPressed: () async {
                           if(_formKey.currentState!.validate()) {
-                            print(nome);
-                            print(cognome);
-                            print(email);
-                            print(password);
+                            dynamic result = await _auth.registerWithEmailAndPassword(nome, cognome, email, password);
+                            if(result == null){
+                              setState(() => error = 'Inserisci un indirizzo email valido');
+                            }
                           }
                       },
-                    )
+                    ),
+                    SizedBox(height: 12.0),
+                    Text(
+                      error,
+                      style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    ),
                   ],
                 ),
               ),
