@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:easycookingflutter/services/auth.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+  const SignIn({Key? key, required this.toggleView}) : super(key: key);
+
+  final Function toggleView;
 
   @override
   _SignInState createState() => _SignInState();
@@ -46,12 +48,30 @@ class _SignInState extends State<SignIn> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
+              Align(
+                alignment: Alignment.topLeft,
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text:'',
+                    style: TextStyle(color: Colors.red, fontSize:1,),
+                    children: <InlineSpan>[
+                      TextSpan(text:'\nEmail:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
                 onChanged: (val) {
                   setState(() => email = val);
                 }
               ),
               SizedBox(height: 20.0),
+              Align(
+                alignment: Alignment.topLeft,
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text:'',
+                    style: TextStyle(color: Colors.red, fontSize:1,),
+                    children: <InlineSpan>[
+                      TextSpan(text:'\nPassword:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
                 obscureText: true,
                 onChanged: (val) {
@@ -81,7 +101,7 @@ class _SignInState extends State<SignIn> {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () async {
-
+              widget.toggleView();
             },
           )
         ],

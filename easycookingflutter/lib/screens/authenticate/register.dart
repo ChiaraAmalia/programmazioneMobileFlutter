@@ -2,7 +2,9 @@ import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  const Register({Key? key, required this.toggleView}) : super(key: key);
+
+  final Function toggleView;
 
   @override
   _RegisterState createState() => _RegisterState();
@@ -36,12 +38,61 @@ class _RegisterState extends State<Register> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 20.0),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text:'',
+                          style: TextStyle(color: Colors.red, fontSize:1,),
+                          children: <InlineSpan>[
+                            TextSpan(text:'\nNome:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
                     TextFormField(
                         onChanged: (val) {
                           setState(() => email = val);
                         }
                     ),
                     SizedBox(height: 20.0),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text:'',
+                          style: TextStyle(color: Colors.red, fontSize:1,),
+                          children: <InlineSpan>[
+                            TextSpan(text:'\nCognome:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
+                    TextFormField(
+                        obscureText: true,
+                        onChanged: (val) {
+                          setState(() => password = val);
+                        }
+                    ),
+                    SizedBox(height: 20.0),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text:'',
+                          style: TextStyle(color: Colors.red, fontSize:1,),
+                          children: <InlineSpan>[
+                            TextSpan(text:'\nEmail:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
+                    TextFormField(
+                        onChanged: (val) {
+                          setState(() => email = val);
+                        }
+                    ),
+                    SizedBox(height: 20.0),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text:'',
+                          style: TextStyle(color: Colors.red, fontSize:1,),
+                          children: <InlineSpan>[
+                            TextSpan(text:'\nPassword:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
                     TextFormField(
                         obscureText: true,
                         onChanged: (val) {
@@ -67,11 +118,11 @@ class _RegisterState extends State<Register> {
               RaisedButton(
                 color: Colors.red,
                 child: Text(
-                  'Registrati',
+                  'Accedi',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-
+                  widget.toggleView();
                 },
               )
             ],
