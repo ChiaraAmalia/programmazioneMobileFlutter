@@ -4,6 +4,7 @@ import 'package:easycookingflutter/Model/ricetta.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'RicetteDettaglio.dart';
 
@@ -18,32 +19,38 @@ class RicetteCercaPage extends StatefulWidget{
 
 class _RicetteCercaPageState extends State<RicetteCercaPage> {
   List<Ricetta> ricettaList = [];
+  List<Ricetta> ricetteFilter = [];
+  //late String Categoria;
+  List<String> Categorie = [
+    "Dolci", "Bevande & Cocktail", "Pane & Pizza", "Ricette base", "Marmellate & Conserve", "Secondi Piatti", "Primi"
+  ];
+
   @override
   void initState() {
     super.initState();
     DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("");
-    dbRef.once().then((DataSnapshot dataSnapshot){
+    dbRef.once().then((DataSnapshot dataSnapshot) {
       ricettaList.clear();
       //var keys = dataSnapshot.value.keys;
       var values = dataSnapshot.value;
 
-      for(var val in values){
+      for (var val in values) {
         Ricetta ric = new Ricetta(
           val["cookTime"],
           val["descrizione"],
           val["image"],
           val["Ingredienti"],
           val["intolleranze"],
-         // values[key][k]["Ingredienti"],
-         // values[key][k]["unita"],
-         // values[key][k]["quantita"],
+          // values[key][k]["Ingredienti"],
+          // values[key][k]["unita"],
+          // values[key][k]["quantita"],
           //values[key][k]["keywords"],
           val["nome"],
           val["porzioni"],
           val["preparazione"],
           val["prepTime"],
           val["quantita"],
-          val["recipeCategory"] ,
+          val["recipeCategory"],
           val["recipeCuisine"],
           val["totalTime"],
           val["unita"],
@@ -51,40 +58,105 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
         );
         ricettaList.add(ric);
       }
+      ricetteFilter = ricettaList;
       setState(() {
         //
       });
-
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body: ricettaList.length == 0 ? Align(alignment:Alignment.topCenter,child:Column(children:[ Text("Ricette non disponibili", style: TextStyle(fontSize: 30,),textAlign: TextAlign.center),CircularProgressIndicator()])):
-        ListView.builder(
-          itemCount: ricettaList.length,
-            itemBuilder: (_, index){
-              //var urlImage="https://upload.wikimedia.org/wikipedia/commons/6/61/Crystal_128_error.png";
-           /* var storage = FirebaseStorage.instance.ref().child("images").child(ricettaList[index].image).getDownloadURL().then((result) {
-              setState(() {
-                if (result is String)
-                   urlImage = result.toString(); //use toString to convert as String
-              });
-            });*/
-              var urlImage="https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F"+ricettaList[index].image+"?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
-              return GestureDetector(
-                  // Quando il child è cliccato apre la pagina istagram.
-                  onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RicetteDettaglio(),
-                  settings: RouteSettings(
-                    arguments: ricettaList[index],
-                  ),));
-              },
-              child: CardUI(ricettaList[index].nome, urlImage));
-            })
-    );
+        body: ricettaList.length == 0 ? Align(
+            alignment: Alignment.center, child: Center(
+            child:
+            SpinKitCubeGrid(
+              color: Colors.red,
+              size: 80.0,
+            ))) :
+        Column(
+            children: <Widget>[
+              Row(
+            children: <Widget>[
+
+              Container(
+                width: 100.0,
+                child: Text('Ricerca per nome:'
+                ),
+              ),
+              Container(
+                width: 100.0,
+              child: TextField(
+                decoration: InputDecoration(
+                    hintText: 'Digita'
+                ),
+                onChanged: (text) {
+                  text = text.toLowerCase();
+                  setState(() {
+                    ricetteFilter = ricettaList.where((ric) {
+                      var recipe = ric.nome.toLowerCase();
+                      return recipe.contains(text);
+                    }).toList();
+                  });
+                },
+
+              ),),]),
+              Column(
+                children:<Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey, width: 1),
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                  child:
+                    DropdownButton(
+                      hint: Text('Seleziona Categoria'),
+                      //value: String,
+                      onChanged: (newCat){
+                        setState(() {
+                          ricetteFilter = ricettaList.where((ric) {
+                            var recipe = ric.recipeCategory.toLowerCase();
+                            return recipe.contains(newCat.toString());
+                          }).toList();
+
+                          });
+                        },
+
+                      items: Categorie.map((valueItem) {
+
+                        return DropdownMenuItem(
+                          value: valueItem,
+                          child: Text(valueItem),
+                        );
+                      }).toList(),
+                    )
+
+              ),]),
+              Expanded(
+                  child:
+                  ListView.builder(
+                      itemCount: ricetteFilter.length,
+                      itemBuilder: (_, index) {
+                        var urlImage = "https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F" +
+                            ricetteFilter[index].image +
+                            "?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
+                        return GestureDetector(
+                          // Quando il child è cliccato apre la pagina istagram.
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => RicetteDettaglio(),
+                                settings: RouteSettings(
+                                  arguments: ricetteFilter[index],
+                                ),));
+                            },
+
+                            child: CardUI(ricetteFilter[index].nome, urlImage));
+                      })
+              )
+            ]));
   }
+}
 
   Widget CardUI(String nome, String image){
     return  Card(
@@ -104,7 +176,8 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
               width: 100,
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) return child;
-                return Center(child:CircularProgressIndicator());
+                return Center(child:SpinKitPouringHourglass(
+                    color: Colors.red,));
               },
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset(
@@ -124,4 +197,4 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
         ),
     );
   }
-  }
+
