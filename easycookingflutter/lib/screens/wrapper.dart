@@ -1,5 +1,6 @@
 import 'package:easycookingflutter/Model/user.dart';
 import 'package:easycookingflutter/RicetteCerca.dart';
+import 'package:easycookingflutter/RicetteCercaNoLogin.dart';
 import 'package:easycookingflutter/screens/authenticate/authenticate.dart';
 import 'package:easycookingflutter/screens/home/home.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,9 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<User?>(context);
 
     if(user == null){
-      return Authenticate();
-    } else {
+      return RicetteCercaNoLogin(title: 'Easy Cooking');
+    }
+    else {
       return RicetteCerca(title: 'Easy Cooking');
     }
   }
