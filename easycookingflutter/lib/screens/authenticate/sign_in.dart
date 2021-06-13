@@ -5,13 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 
-class EmailFieldValidator {
+class EmailValidator {
   static String? validate(String value) {
     return value.isEmpty ? 'Email non può essere vuoto' : null;
   }
 }
 
-class PasswordFieldValidator {
+class PasswordValidator {
   static String? validate(String value) {
     return value.length < 6 ? 'Inserisci una password più lunga di 6 caratteri' : null;
   }
@@ -79,7 +79,7 @@ class _SignInState extends State<SignIn> {
                     children: <InlineSpan>[
                       TextSpan(text:'\nEmail:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
-                validator: (val) => EmailFieldValidator.validate(val!),
+                validator: (val) => EmailValidator.validate(val!),
                 onChanged: (val) {
                   setState(() => email = val);
                 }
@@ -96,7 +96,7 @@ class _SignInState extends State<SignIn> {
                       TextSpan(text:'\nPassword:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
                 obscureText: true,
-                validator: (val) => PasswordFieldValidator.validate(val!),
+                validator: (val) => PasswordValidator.validate(val!),
                 onChanged: (val) {
                   setState(() => password = val);
                 }
