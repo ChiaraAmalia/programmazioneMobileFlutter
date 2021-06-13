@@ -20,11 +20,15 @@ class RicetteCercaPage extends StatefulWidget{
 class _RicetteCercaPageState extends State<RicetteCercaPage> {
   List<Ricetta> ricettaList = [];
   List<Ricetta> ricetteFilter = [];
-  //late String Categoria;
+  //late Object Categoria;
   List<String> Categorie = [
     "Dolci", "Bevande & Cocktail", "Pane & Pizza", "Ricette base", "Marmellate & Conserve", "Secondi Piatti", "Primi"
   ];
-
+  List<String> Cucine = [
+    "Italiana", "Indiana", "Americana", "Cinese", "Francese", "Spagnola", "Giapponese","Austriaca","Marocchina","Australiana",
+    "Hawaiiana","Brasiliana","Cubana","Inglese","Messicana","Polinesiana","Portoricana","Singaporiana","Turca","Tedesca",
+    "Tunisina","Greca","Ungherese","Svedese","Africana","SriLanka","Taiwan","Tailandese"
+  ];
   @override
   void initState() {
     super.initState();
@@ -77,19 +81,13 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
             ))) :
         Column(
             children: <Widget>[
-              Row(
-            children: <Widget>[
-
+              Column(
+                  children: <Widget>[
               Container(
-                width: 100.0,
-                child: Text('Ricerca per nome:'
-                ),
-              ),
-              Container(
-                width: 100.0,
+                width: 200.0,
               child: TextField(
                 decoration: InputDecoration(
-                    hintText: 'Digita'
+                    hintText: 'Cerca una ricetta'
                 ),
                 onChanged: (text) {
                   text = text.toLowerCase();
@@ -105,6 +103,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
               Column(
                 children:<Widget>[
                   Container(
+                    width: 200.0,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey, width: 1),
                       borderRadius: BorderRadius.circular(15)
@@ -112,8 +111,10 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                   child:
                     DropdownButton(
                       hint: Text('Seleziona Categoria'),
-                      //value: String,
+                      //value: Categoria,
                       onChanged: (newCat){
+                        //Categoria = newCat.toString();
+                        newCat = newCat.toString().toLowerCase();
                         setState(() {
                           ricetteFilter = ricettaList.where((ric) {
                             var recipe = ric.recipeCategory.toLowerCase();
@@ -133,6 +134,40 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                     )
 
               ),]),
+              Column(
+                  children:<Widget>[
+                    Container(
+                      width: 200.0,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 1),
+                            borderRadius: BorderRadius.circular(15)
+                        ),
+                        child:
+                        DropdownButton(
+                          hint: Text('Seleziona Origine'),
+                          //value: Categoria,
+                          onChanged: (newCat){
+                            //Categoria = newCat.toString();
+                            newCat = newCat.toString().toLowerCase();
+                            setState(() {
+                              ricetteFilter = ricettaList.where((ric) {
+                                var recipe = ric.recipeCuisine.toLowerCase();
+                                return recipe.contains(newCat.toString());
+                              }).toList();
+
+                            });
+                          },
+
+                          items: Cucine.map((valueItem) {
+
+                            return DropdownMenuItem(
+                              value: valueItem,
+                              child: Text(valueItem),
+                            );
+                          }).toList(),
+                        )
+
+                    ),]),
               Expanded(
                   child:
                   ListView.builder(

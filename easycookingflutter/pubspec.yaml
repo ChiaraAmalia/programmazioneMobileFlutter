@@ -43,6 +43,7 @@ dependencies:
   randomizer: ^0.0.2
   provider: ^5.0.0
   flutter_spinkit: ^5.0.0
+  google_sign_in: ^4.5.9
 
 
 
@@ -61,7 +62,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/images/google_logo.png
+    - assets/images/firebase_logo.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
