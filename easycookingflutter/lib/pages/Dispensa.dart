@@ -93,6 +93,7 @@ class _DispensaState extends State<Dispensa> {
                 child: Text('Annulla'),
                 onPressed: () {
                   setState(() {
+                    _textFieldController.clear();
                     Navigator.pop(context);
                   });
                 },
@@ -106,6 +107,7 @@ class _DispensaState extends State<Dispensa> {
                     Prodotto prod = Prodotto(nome_prodotto: valueText);
                     this.handler.inserisciUno(prod);
                     ingredientiFilter.add(prod);
+                    _textFieldController.clear();
                     Navigator.pop(context);
                   });
                 },

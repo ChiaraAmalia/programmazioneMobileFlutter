@@ -50,6 +50,7 @@ class _SpesaState extends State<Spesa> {
                 child: Text('Annulla'),
                 onPressed: () {
                   setState(() {
+                    _textFieldController.clear();
                     Navigator.pop(context);
                   });
                 },
@@ -62,6 +63,7 @@ class _SpesaState extends State<Spesa> {
                   setState(() {
                     Prodotto prod = Prodotto(nome_prodotto: valueText);
                     this.handler.inserisciUnoSpesa(prod);
+                    _textFieldController.clear();
                     Navigator.pop(context);
                   });
                 },
