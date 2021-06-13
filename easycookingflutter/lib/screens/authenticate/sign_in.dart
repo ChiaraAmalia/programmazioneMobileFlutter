@@ -5,6 +5,18 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 
+class EmailFieldValidator {
+  static String? validate(String value) {
+    return value.isEmpty ? 'Email non può essere vuoto' : null;
+  }
+}
+
+class PasswordFieldValidator {
+  static String? validate(String value) {
+    return value.length < 6 ? 'Inserisci una password più lunga di 6 caratteri' : null;
+  }
+}
+
 class SignIn extends StatefulWidget {
   const SignIn({Key? key, required this.toggleView}) : super(key: key);
 
@@ -67,7 +79,7 @@ class _SignInState extends State<SignIn> {
                     children: <InlineSpan>[
                       TextSpan(text:'\nEmail:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
-                validator: (val) => val!.isEmpty ? 'Inserisci la tua e-mail' : null,
+                validator: (val) => EmailFieldValidator.validate(val!),
                 onChanged: (val) {
                   setState(() => email = val);
                 }
@@ -84,7 +96,7 @@ class _SignInState extends State<SignIn> {
                       TextSpan(text:'\nPassword:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
                 obscureText: true,
-                validator: (val) => val!.length < 6 ? 'Inserisci una password più lunga di 6 caratteri' : null,
+                validator: (val) => PasswordFieldValidator.validate(val!),
                 onChanged: (val) {
                   setState(() => password = val);
                 }
@@ -113,6 +125,7 @@ class _SignInState extends State<SignIn> {
             ],
           ),
         ),
+
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               primary: Colors.white,

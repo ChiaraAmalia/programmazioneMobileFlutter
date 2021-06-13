@@ -1,6 +1,30 @@
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
 
+class NomeFieldValidator {
+  static String? validate(String value) {
+    return value.isEmpty ? 'Nome non può essere vuoto' : null;
+  }
+}
+
+class CognomeFieldValidator {
+  static String? validate(String value) {
+    return value.isEmpty ? 'Cognome non può essere vuoto' : null;
+  }
+}
+
+class EmailFieldValidator {
+  static String? validate(String value) {
+    return value.isEmpty ? 'Email non può essere vuoto' : null;
+  }
+}
+
+class PasswordFieldValidator {
+  static String? validate(String value) {
+    return value.length < 6 ? 'Inserisci una password più lunga di 6 caratteri' : null;
+  }
+}
+
 class Register extends StatefulWidget {
   const Register({Key? key, required this.toggleView}) : super(key: key);
 
@@ -53,7 +77,7 @@ class _RegisterState extends State<Register> {
                           children: <InlineSpan>[
                             TextSpan(text:'\nNome:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
                     TextFormField(
-                        validator: (val) => val!.isEmpty ? 'Inserisci il tuo nome' : null,
+                        validator: (val) => NomeFieldValidator.validate(val!),
                         onChanged: (val) {
                           setState(() => nome = val);
                         }
@@ -69,7 +93,7 @@ class _RegisterState extends State<Register> {
                           children: <InlineSpan>[
                             TextSpan(text:'\nCognome:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
                     TextFormField(
-                        validator: (val) => val!.isEmpty ? 'Inserisci il tuo cognome' : null,
+                        validator: (val) => CognomeFieldValidator.validate(val!),
                         onChanged: (val) {
                           setState(() => cognome = val);
                         }
@@ -85,7 +109,7 @@ class _RegisterState extends State<Register> {
                           children: <InlineSpan>[
                             TextSpan(text:'\nEmail:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
                     TextFormField(
-                        validator: (val) => val!.isEmpty ? 'Inserisci la tua e-mail' : null,
+                        validator: (val) => EmailFieldValidator.validate(val!),
                         onChanged: (val) {
                           setState(() => email = val);
                         }
@@ -102,7 +126,7 @@ class _RegisterState extends State<Register> {
                             TextSpan(text:'\nPassword:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
                     TextFormField(
                         obscureText: true,
-                        validator: (val) => val!.length < 6 ? 'Inserisci una password più lunga di 6 caratteri' : null,
+                        validator: (val) =>  PasswordFieldValidator.validate(val!),
                         onChanged: (val) {
                           setState(() => password = val);
                         }
