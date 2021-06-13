@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:mailto/mailto.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'RicetteTue.dart';
@@ -88,7 +89,13 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
               Container(
                   child: Column(
                     children:[
-                      ConstrainedBox(
+
+                      RaisedButton(
+                        child: Text('condividi'),
+                        onPressed: () async{
+                          share(context, args);
+                        },
+                      ),                      ConstrainedBox(
                         constraints: BoxConstraints.expand(height: 210.0),
                         child: Image.network("https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F"+args.image+"?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29",
                             fit: BoxFit.cover,
@@ -207,6 +214,7 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                       Text("Ingredienti:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
 
                        Row(
+
                         children:[
 
                           Text(leggiLista(args.ingredienti)),
@@ -243,4 +251,13 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
     return str;
   }
 
+  void share(BuildContext context, Ricetta ricetta) {
+
+    final RenderObject? box = context.findRenderObject();
+    final String text = "Scarica la app EasyCooking per provare ricette come ${ricetta.nome}";
+
+    Share.share(text, subject: "EasyCooking - " + ricetta.nome);
+  }
+
 }
+

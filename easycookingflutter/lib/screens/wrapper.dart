@@ -2,7 +2,6 @@ import 'package:easycookingflutter/Model/user.dart';
 import 'package:easycookingflutter/RicetteCerca.dart';
 import 'package:easycookingflutter/RicetteCercaNoLogin.dart';
 import 'package:easycookingflutter/screens/authenticate/authenticate.dart';
-import 'package:easycookingflutter/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -59,7 +59,7 @@ class _SignInState extends State<SignIn> {
                         "assets/images/frigologo.png",
                         width: 100,
                         height: 100,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     )),
                 TextSpan(text:'\nAccedi o Registrati\n', style: TextStyle(color: Colors.red,fontSize: 24, height: 2.3)),], ),),),
