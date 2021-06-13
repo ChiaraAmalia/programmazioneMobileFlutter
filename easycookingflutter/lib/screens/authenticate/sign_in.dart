@@ -1,6 +1,9 @@
 import 'package:easycookingflutter/RicetteCerca.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/services/auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key, required this.toggleView}) : super(key: key);
@@ -15,6 +18,9 @@ class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool _isLoggedIn = false;
+  late GoogleSignInAccount _userObj;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
 
   //text field state
   String email = '';
@@ -107,7 +113,25 @@ class _SignInState extends State<SignIn> {
             ],
           ),
         ),
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.white,
+              onPrimary: Colors.red,
 
+            ),
+            icon: FaIcon(FontAwesomeIcons.google),
+            label: Text('Sign Up with Google'),
+            onPressed: (){
+              _googleSignIn.signIn().then((userData) {
+                setState(() {
+                  _isLoggedIn = true;
+                  _userObj = userData;
+                });
+              }).catchError((e) {
+                print(e);
+              });
+            },
+          ),
           RaisedButton(
             color: Colors.red,
             child: Text(
