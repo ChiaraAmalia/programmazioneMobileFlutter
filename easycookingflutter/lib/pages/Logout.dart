@@ -72,13 +72,27 @@ class Logout extends StatelessWidget {
         ],
       ),
         body: Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-          child: RaisedButton(
-            child: Text('logout'),
-            onPressed: () async{
-              await _auth.signOut();
-            }
-          ),
+          padding: EdgeInsets.symmetric(vertical: 150.0, horizontal: 50.0),
+          alignment: Alignment.center,
+
+            child:Column(
+                children: [
+
+                  RichText(text:TextSpan(text:'Sei sicuro di voler effettuare il logout? Se non sei loggato non potrai inserire le tue ricette!',  style: TextStyle(color: Colors.red,fontSize: 24))),
+
+                  SizedBox(height: 30.0),
+                  RaisedButton(
+                      color: Colors.red,
+                      child: Text(
+                        'Logout',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    onPressed: () async{
+                    await _auth.signOut();
+                    }
+                  ),
+                ])
+
         )
     );
   }

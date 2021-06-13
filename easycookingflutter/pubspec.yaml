@@ -64,10 +64,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/google_logo.png
-    - assets/images/firebase_logo.png
-    - assets/images/frigologo.png
-    - assets/images/food.png
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

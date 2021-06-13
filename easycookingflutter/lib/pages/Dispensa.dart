@@ -178,7 +178,6 @@ class _DispensaState extends State<Dispensa> {
                         ricetteFilter[index].image +
                         "?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
                     return GestureDetector(
-                      // Quando il child è cliccato apre la pagina istagram.
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) => RicetteDettaglio(),
@@ -197,8 +196,9 @@ class _DispensaState extends State<Dispensa> {
               ingredientiFilter.addAll(listaa);
 
               //ricetteFilter = ricettaList;
+              for (var ric in ricettaList){
               for (var ingr in ingredientiFilter){
-                for (var ric in ricettaList){
+
                   List<String> ingedients = [];
                   for (var ingre in ric.ingredienti){
 
@@ -208,9 +208,8 @@ class _DispensaState extends State<Dispensa> {
                     ricetteFilter.add(ric);
                    }
                 }
-
               }
-              
+
               setState(() {
                 //
               });
@@ -219,6 +218,7 @@ class _DispensaState extends State<Dispensa> {
             icon: const Icon(Icons.search),
             backgroundColor: Colors.redAccent,
           ),
+          SizedBox(height: 12.0),
           FloatingActionButton.extended(
             onPressed: () {
               _displayTextInputDialog(context);
@@ -234,13 +234,6 @@ class _DispensaState extends State<Dispensa> {
 
     );
   }
-
-  /*Future<int> aggiungiProdotti() async {
-    Prodotto firstProduct = Prodotto(nome_prodotto: "gelato");
-    Prodotto secondProduct = Prodotto(nome_prodotto: "patate");
-    List<Prodotto> listOfProdotti = [firstProduct, secondProduct];
-    return await this.handler.inserisciProdotto(listOfProdotti);
-  }*/
 }
 Widget CardUI(String nome, String image){
   return  Card(
