@@ -49,11 +49,11 @@ class _RegisterState extends State<Register> {
                         textAlign: TextAlign.center,
                         text: TextSpan(
                           text:'',
-                          style: TextStyle(color: Colors.red, fontSize:1,),
+                          style: TextStyle(color: Colors.red, fontSize:1),
                           children: <InlineSpan>[
                             TextSpan(text:'\nNome:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
                     TextFormField(
-                      validator: (val) => val!.isEmpty ? 'Inserisci il tuo nome' : null,
+                        validator: (val) => val!.isEmpty ? 'Inserisci il tuo nome' : null,
                         onChanged: (val) {
                           setState(() => nome = val);
                         }

@@ -14,10 +14,12 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   //text field state
   String email = '';
   String password = '';
+  String error = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +47,7 @@ class _SignInState extends State<SignIn> {
                 TextSpan(text:'\nAccedi o Registrati\n', style: TextStyle(color: Colors.red,fontSize: 24, height: 2.3)),], ),),),
 
            Form(
+             key: _formKey,
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
@@ -58,6 +61,7 @@ class _SignInState extends State<SignIn> {
                     children: <InlineSpan>[
                       TextSpan(text:'\nEmail:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
+                validator: (val) => val!.isEmpty ? 'Inserisci la tua e-mail' : null,
                 onChanged: (val) {
                   setState(() => email = val);
                 }
@@ -74,6 +78,7 @@ class _SignInState extends State<SignIn> {
                       TextSpan(text:'\nPassword:\n', style: TextStyle(color: Colors.red,fontSize: 15, height: 1)),], ),),),
               TextFormField(
                 obscureText: true,
+                validator: (val) => val!.length < 6 ? 'Inserisci una password più lunga di 6 caratteri' : null,
                 onChanged: (val) {
                   setState(() => password = val);
                 }
@@ -86,10 +91,19 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  print(email);
-                  print(password);
+                  if(_formKey.currentState!.validate()) {
+                    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+                    if(result == null){
+                      setState(() => error = 'Indirizzo email o password non validi');
+                    }
+                  }
                 },
-              )
+              ),
+              SizedBox(height: 12.0),
+              Text(
+                error,
+                style: TextStyle(color: Colors.red, fontSize: 14.0),
+              ),
             ],
           ),
         ),

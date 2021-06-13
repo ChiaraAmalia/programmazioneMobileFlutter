@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:easycookingflutter/Model/user.dart';
+import 'package:easycookingflutter/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
@@ -34,12 +35,9 @@ class AuthService {
   }
 
   //sign in with email & password
-
-
-  //register with email & password
-  Future registerWithEmailAndPassword(String nome, String cognome, String email, String password) async{
+  Future signInWithEmailAndPassword(String email, String password) async{
     try{
-      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
       return _userFromFirebaseUser(user);
     } catch(e) {
@@ -47,6 +45,23 @@ class AuthService {
       return null;
     }
 
+  }
+
+
+  //register with email & password
+  Future registerWithEmailAndPassword(String nome, String cognome, String email, String password) async{
+    try{
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      FirebaseUser user = result.user;
+
+      //create a new document for the user with the uid
+      await DatabaseService(uid: user.uid).updateUserData(nome, cognome);
+
+      return _userFromFirebaseUser(user);
+    } catch(e) {
+      print(e.toString());
+      return null;
+    }
   }
 
   //sign out
