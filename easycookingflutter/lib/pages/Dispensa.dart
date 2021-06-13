@@ -77,7 +77,11 @@ class _DispensaState extends State<Dispensa> {
 
     return Scaffold(
       body:Center(
-        child:FutureBuilder(
+        child:Column(
+        children:[
+          Expanded(child: SizedBox(
+        height:200.0,
+        child: FutureBuilder(
         future: this.handler.retriveProdotti(),
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
           if (snapshot.hasData) {
@@ -115,15 +119,28 @@ class _DispensaState extends State<Dispensa> {
           }
         },
       ),
+        ),
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {
+
+            },
+            label: const Text('Cerca'),
+            icon: const Icon(Icons.search),
+            backgroundColor: Colors.redAccent,
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {
+              _displayTextInputDialog(context);
+            },
+            label: const Text('Aggiungi'),
+            icon: const Icon(Icons.add),
+            backgroundColor: Colors.redAccent,
+          ),
+      ]
+        ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          _displayTextInputDialog(context);
-        },
-        label: const Text('Aggiungi'),
-        icon: const Icon(Icons.add),
-        backgroundColor: Colors.redAccent,
-      ),
+
 
     );
   }
