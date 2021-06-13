@@ -100,6 +100,8 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                 },
 
               ),),]),
+
+              SizedBox(height: 12.0),
               Column(
                 children:<Widget>[
                   Container(
@@ -108,7 +110,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                       border: Border.all(color: Colors.grey, width: 1),
                       borderRadius: BorderRadius.circular(15)
                     ),
-                  child:
+                      child:
                     DropdownButton(
                       hint: Text('Seleziona Categoria'),
                       //value: Categoria,
@@ -134,6 +136,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                     )
 
               ),]),
+              SizedBox(height: 12.0),
               Column(
                   children:<Widget>[
                     Container(

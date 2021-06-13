@@ -1,4 +1,5 @@
 import 'package:easycookingflutter/RicetteCerca.dart';
+import 'package:easycookingflutter/screens/authenticate/ResetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -126,6 +127,7 @@ class _SignInState extends State<SignIn> {
           ),
         ),
 
+          /*
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               primary: Colors.white,
@@ -144,7 +146,7 @@ class _SignInState extends State<SignIn> {
                 print(e);
               });
             },
-          ),
+          ),*/
           RaisedButton(
             color: Colors.red,
             child: Text(
@@ -154,9 +156,16 @@ class _SignInState extends State<SignIn> {
             onPressed: () async {
               widget.toggleView();
             },
+          ),
+
+          TextButton(
+            child: Text('Password dimenticata?'),
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResetScreen()))
           )
+
         ],
     ),
+
       )
     );
   }

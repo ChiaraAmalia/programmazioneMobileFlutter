@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:randomizer/randomizer.dart';
 import 'package:mailto/mailto.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'RicetteTue.dart';
@@ -135,6 +136,12 @@ class _IspiramiState extends State<Ispirami> {
               Container(
                   child: Column(
                     children: [
+                      RaisedButton(
+                        child: Text('condividi'),
+                        onPressed: () async{
+                          share(context, ricettaList[ind]);
+                        },
+                      ),
                       ConstrainedBox(
                         constraints: BoxConstraints.expand(height: 210.0),
                         child: Image.network(
@@ -260,7 +267,7 @@ class _IspiramiState extends State<Ispirami> {
                       Row(
                           children: [
 
-                            Text(leggiLista(ricettaList[ind].ingredienti),maxLines: 3,),
+                            Text(leggiLista(ricettaList[ind].ingredienti),),
                             SizedBox(width: 7,),
                             Text(leggiLista(ricettaList[ind].quantita)),
                             SizedBox(width: 7,),
@@ -296,5 +303,13 @@ class _IspiramiState extends State<Ispirami> {
       str = "Si";
     }
     return str;
+  }
+
+  void share(BuildContext context, Ricetta ricetta) {
+
+    final RenderObject? box = context.findRenderObject();
+    final String text = "Scarica la app EasyCooking per provare ricette come ${ricetta.nome}";
+
+    Share.share(text, subject: "EasyCooking - " + ricetta.nome);
   }
 }

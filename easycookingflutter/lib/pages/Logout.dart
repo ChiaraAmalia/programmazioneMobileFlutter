@@ -1,4 +1,5 @@
 
+import 'package:easycookingflutter/RicetteCercaNoLogin.dart';
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/services/auth.dart';
@@ -76,7 +77,7 @@ class Logout extends StatelessWidget {
             child: Text('logout'),
             onPressed: () async{
               await _auth.signOut();
-            },
+            }
           ),
         )
     );
