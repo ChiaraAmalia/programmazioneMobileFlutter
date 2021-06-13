@@ -106,7 +106,7 @@ class _DispensaState extends State<Dispensa> {
                   setState(() {
                     Prodotto prod = Prodotto(nome_prodotto: valueText);
                     this.handler.inserisciUno(prod);
-                    ingredientiFilter.add(prod);
+                    //ingredientiFilter.add(prod);
                     _textFieldController.clear();
                     Navigator.pop(context);
                   });
@@ -191,7 +191,8 @@ class _DispensaState extends State<Dispensa> {
                   })
           ),
           FloatingActionButton.extended(
-            onPressed: () {
+            onPressed: () async {
+              ingredientiFilter.clear();
               //ricetteFilter = ricettaList;
               for (var ingr in ingredientiFilter){
                 for (var ric in ricettaList){
@@ -205,6 +206,8 @@ class _DispensaState extends State<Dispensa> {
                 }
 
               }
+              var listaa = await this.handler.retriveProdotti();
+              ingredientiFilter.addAll(listaa);
 
               setState(() {
                 //
