@@ -58,8 +58,10 @@ class _DispensaState extends State<Dispensa> {
           val["unita"],
           val["vegano"],
         );
+
         ricettaList.add(ric);
       }
+      //ricetteFilter = ricettaList;
       setState(() {
         //
       });
@@ -103,6 +105,7 @@ class _DispensaState extends State<Dispensa> {
                   setState(() {
                     Prodotto prod = Prodotto(nome_prodotto: valueText);
                     this.handler.inserisciUno(prod);
+                    ingredientiFilter.add(prod);
                     Navigator.pop(context);
                   });
                 },
@@ -128,7 +131,6 @@ class _DispensaState extends State<Dispensa> {
         future: this.handler.retriveProdotti(),
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
           if (snapshot.hasData) {
-            ingredientiFilter.addAll(snapshot.requireData);
             return ListView.builder(
               itemCount: snapshot.data?.length,
               itemBuilder: (BuildContext context, int index) {
@@ -188,13 +190,23 @@ class _DispensaState extends State<Dispensa> {
           ),
           FloatingActionButton.extended(
             onPressed: () {
+              //ricetteFilter = ricettaList;
               for (var ingr in ingredientiFilter){
                 for (var ric in ricettaList){
-                  if (ric.ingredienti.contains(ingr)){
+                   List<String> ingedienti = [];
+                  for (var ingre in ric.ingredienti){
+                    ingedienti.add(ingre.toString().toLowerCase());
+                    //ricetteFilter.add(ric);
+                  } if (ingedienti.contains(ingr.nome_prodotto.toLowerCase())){
                     ricetteFilter.add(ric);
-                  }
+                   }
                 }
+
               }
+
+              setState(() {
+                //
+              });
             },
             label: const Text('Cerca'),
             icon: const Icon(Icons.search),
