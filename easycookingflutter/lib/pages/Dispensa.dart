@@ -195,14 +195,16 @@ class _DispensaState extends State<Dispensa> {
               ingredientiFilter.clear();
               var listaa = await this.handler.retriveProdotti();
               ingredientiFilter.addAll(listaa);
-              List<String> ingedients = [];
+
               //ricetteFilter = ricettaList;
               for (var ingr in ingredientiFilter){
                 for (var ric in ricettaList){
+                  List<String> ingedients = [];
                   for (var ingre in ric.ingredienti){
+
                     ingedients.add(ingre.toString().toLowerCase());
                     //ricetteFilter.add(ric);
-                  } if (ingedients.contains(ingr.nome_prodotto.toLowerCase())){
+                  } if (ingedients.contains(ingr.nome_prodotto.toString().toLowerCase())){
                     ricetteFilter.add(ric);
                    }
                 }

@@ -209,7 +209,7 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                        Row(
                         children:[
 
-                          Text(leggiLista(args.ingredienti),maxLines: 3,),
+                          Text(leggiLista(args.ingredienti)),
                           SizedBox(width: 7,),
                           Text(leggiLista(args.quantita)),
                           SizedBox(width: 7,),
