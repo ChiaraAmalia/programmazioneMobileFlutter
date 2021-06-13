@@ -193,21 +193,22 @@ class _DispensaState extends State<Dispensa> {
           FloatingActionButton.extended(
             onPressed: () async {
               ingredientiFilter.clear();
+              var listaa = await this.handler.retriveProdotti();
+              ingredientiFilter.addAll(listaa);
+              List<String> ingedients = [];
               //ricetteFilter = ricettaList;
               for (var ingr in ingredientiFilter){
                 for (var ric in ricettaList){
-                   List<String> ingedienti = [];
                   for (var ingre in ric.ingredienti){
-                    ingedienti.add(ingre.toString().toLowerCase());
+                    ingedients.add(ingre.toString().toLowerCase());
                     //ricetteFilter.add(ric);
-                  } if (ingedienti.contains(ingr.nome_prodotto.toLowerCase())){
+                  } if (ingedients.contains(ingr.nome_prodotto.toLowerCase())){
                     ricetteFilter.add(ric);
                    }
                 }
 
               }
-              var listaa = await this.handler.retriveProdotti();
-              ingredientiFilter.addAll(listaa);
+
 
               setState(() {
                 //
