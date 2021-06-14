@@ -8,7 +8,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'RicetteDettaglio.dart';
 
-
+/*
+Schermata che mostra gli alimenti presenti in dispensa e al click sui relativi bottoni attiva
+i diversi metodi
+ */
 class Dispensa extends StatefulWidget{
   Dispensa({Key? key, this.title}) : super(key: key);
   final String? title;
@@ -30,6 +33,10 @@ class _DispensaState extends State<Dispensa> {
     this.handler = DatabaseHandler();
     this.handler.initializeDB();
 
+    /*
+    Prende le ricette dal database presente su firebase e per effettuare la ricerca di quelle che contengono
+    gli ingredienti presenti in dispensa
+     */
     DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("");
     dbRef.once().then((DataSnapshot dataSnapshot) {
       ricettaList.clear();
@@ -70,6 +77,11 @@ class _DispensaState extends State<Dispensa> {
 //DATABASE
   
   //ALERT DIALOG
+  /*
+  Apre un Alert Dialog mediante il quale è possibile aggiungere un prodotto in dispensa,
+  al click su annulla, non si effettua l'inserimento,
+  al click su aggiungi viene aggiunto il prodotto nel database in maniera tale che si possano salvare i dati in maniera persistente
+   */
   TextEditingController _textFieldController = TextEditingController();
   Future<void> _displayTextInputDialog(BuildContext context) async {
     return showDialog(
@@ -122,7 +134,6 @@ class _DispensaState extends State<Dispensa> {
 
   @override
   Widget build(BuildContext context){
-
     return Scaffold(
       body:Center(
         child:Column(
@@ -134,6 +145,10 @@ class _DispensaState extends State<Dispensa> {
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+              /*
+              Se il DataBase contiene prodotti, mostra una lista di quest'ultimi, con la possibilità di
+              cancellarli scorrendo da destra a sinistra
+              */
               itemCount: snapshot.data?.length,
               itemBuilder: (BuildContext context, int index) {
                 return Dismissible(
@@ -163,6 +178,9 @@ class _DispensaState extends State<Dispensa> {
             );
           }
           else {
+            /*
+            Se lo snapshot non contiene dati, viene mostrato un indicatore di progresso circolare (rotellina che gira)
+             */
             return Center(child: CircularProgressIndicator());
           }
         },
@@ -171,6 +189,10 @@ class _DispensaState extends State<Dispensa> {
           ),
           Expanded(
               child:
+                  /*
+                  Lista che mostra, se esistono, le ricette presenti nel database di firebase,
+                  che tra i loro ingredienti hanno quelli in dispensa
+                   */
               ListView.builder(
                   itemCount: ricetteFilter.length,
                   itemBuilder: (_, index) {
@@ -178,6 +200,10 @@ class _DispensaState extends State<Dispensa> {
                         ricetteFilter[index].image +
                         "?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
                     return GestureDetector(
+                      /*
+                      Al clic sulla card relativa ad una specifica ricetta, ti rimanda a quella ricetta nel dettaglio
+                      dove sono presenti tutte le informazioni relative a quest'ultima
+                       */
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) => RicetteDettaglio(),
@@ -190,6 +216,10 @@ class _DispensaState extends State<Dispensa> {
                   })
           ),
           FloatingActionButton.extended(
+            /*
+            Bottone che se cliccato, cerca le ricette di Firebase che contengono tra gli ingredienti, gli
+             elementi presenti nella dispensa
+             */
             onPressed: () async {
               ingredientiFilter.clear();
               var listaa = await this.handler.retriveProdotti();
@@ -220,6 +250,10 @@ class _DispensaState extends State<Dispensa> {
           ),
           SizedBox(height: 12.0),
           FloatingActionButton.extended(
+            /*
+            Bottone che mostra l'Alert Dialog (descritto sopra), per aggiungere un prodotto
+            in dispensa
+             */
             onPressed: () {
               _displayTextInputDialog(context);
             },
@@ -236,6 +270,9 @@ class _DispensaState extends State<Dispensa> {
   }
 }
 Widget CardUI(String nome, String image){
+  /*
+  Card che viene mostrata nella ListView, e che contiene nome e foto delle singole ricette
+   */
   return  Card(
     elevation: 10,
     margin: EdgeInsets.all(5),

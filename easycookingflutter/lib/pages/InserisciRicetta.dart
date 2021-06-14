@@ -36,7 +36,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
   static List<String?> ingredientiList = [null];
   File? _image;
 
-
+/*
+Schermata mediante la quale si può inserire una ricetta, nel database contenente le ricette "personali"
+ */
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,7 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('Insrisci la tua ricetta'),
+                Text('Inserisci la tua ricetta'),
                 GestureDetector(
                   onTap: () {
                     _showPicker(context);
@@ -127,6 +129,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
                 ),*/
                 RaisedButton(
                   child: Text('Salva Ricetta'),
+                  /*
+                  Bottone che salva la ricetta nel database
+                   */
                   onPressed: () {
                       setState(() {
                         this._formKey.currentState!.save();
@@ -168,6 +173,10 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
   //late String Ingre;
   //late List<String> valueIngr;
   //per la foto
+
+  /*
+  Metodo che prende l'immagine dalla fotocamera
+   */
   _imgFromCamera() async {
     File image = await ImagePicker.pickImage(
         source: ImageSource.camera, imageQuality: 50
@@ -178,7 +187,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 
   }
 
-
+  /*
+  Metodo che prende l'immagine dalla galleria
+   */
   _imgFromGallery() async {
     File image = await  ImagePicker.pickImage(
         source: ImageSource.gallery, imageQuality: 50
@@ -189,6 +200,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
 
   }
 
+  /*
+  Metodo che apre il menù, dove selezionare la modalità di inserimento dell'immagine
+   */
   void _showPicker(context) {
     showModalBottomSheet(
         context: context,
@@ -220,7 +234,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
     );
   }
 
-
+/*
+Metodo che permette di aggiungere dinamicamente dei campi di input per l'inserimento degli ingredienti
+ */
   List<Widget> _getIngredienti(){
     List<Widget> ingredientiTextFieldsList = [];
     for(int i=0; i<ingredientiList.length; i++){
@@ -240,6 +256,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
     }
     return ingredientiTextFieldsList;
   }
+  /*
+  Metodo che aggiunge a fianco del campo di input il tasto per rimuovere il campo ad esso affiancato
+   */
   Widget _addRemoveButton(bool add, int index){
     return InkWell(
       onTap: (){

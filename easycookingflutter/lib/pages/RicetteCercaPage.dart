@@ -8,7 +8,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'RicetteDettaglio.dart';
 
-
+/*
+Schermata nella quale vengono mostrate tutte le ricette presenti su firebase e dove si può
+eseguire una ricerca basata sul nome della ricetta, sulla sua categoria e sulla sua origine .
+La ricerca può essere combinata e ciò viene fatto in AND
+ */
 
 class RicetteCercaPage extends StatefulWidget{
   RicetteCercaPage({Key? key, this.title}) : super(key: key);
@@ -94,6 +98,10 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                     hintText: 'Cerca una ricetta'
                 ),
                 onChanged: (text) {
+                  /*
+                  ricerca le ricette che all'interno del loro nome hanno il testo scritto
+                  nell'input text
+                   */
                   text = text.toLowerCase();
                   setState(() {
                     ricetteFilter = ricetteFilter.where((ric) {
@@ -125,6 +133,10 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                         //Categoria = newCat.toString();
                         newCat = newCat.toString().toLowerCase();
                         setState(() {
+                          /*
+                          Se viene selezionata una categoria, mostra solo le ricette appartenenti a
+                          quest'ultima
+                           */
                           if (newCat.toString()=="Seleziona Categoria"){
                             ricetteFilter = ricettaList;
                           } else {
@@ -165,6 +177,10 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                             //Categoria = newCat.toString();
                             newCat = newCat.toString().toLowerCase();
                             setState(() {
+                          /*
+                          Se viene selezionata un'origine, mostra solo le ricette appartenenti a
+                          quest'ultima
+                           */
                             if (newCat.toString()=="Seleziona Origine"){
                              ricetteFilter = ricettaList;
                              } else {
@@ -190,6 +206,10 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                       child: Column(
                       children: [
                         ElevatedButton(onPressed: () { setState(() {
+                          /*
+                          Bottone che se premuto azzera la ricerca e mostra nuovamente tutte le ricette
+                          presenti su firebase
+                           */
                         ricetteFilter=ricettaList;
                         cate="Seleziona Categoria";
                         ori="Seleziona Origine";
@@ -198,6 +218,9 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
 
                       ),
                         ElevatedButton(onPressed: () { setState(() {
+                          /*
+                          Bottone che se premuto aggiorna la ricerca con i nuovi parametri passati
+                           */
                           ricetteFilter=ricettaList;
                           if(nomeController.text.isNotEmpty){
                             ricetteFilter=ricettaList.where((element) {

@@ -3,7 +3,9 @@ import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
 
-
+/*
+Schermata che mostra la lista della spesa
+ */
 class Spesa extends StatefulWidget{
   Spesa({Key? key, this.title}) : super(key: key);
   final String? title;
@@ -28,6 +30,11 @@ class _SpesaState extends State<Spesa> {
   //ALERT DIALOG
   TextEditingController _textFieldController = TextEditingController();
 
+  /*
+  Apre un Alert Dialog mediante il quale è possibile aggiungere un prodotto alla lista della spesa,
+  al click su annulla, non si effettua l'inserimento,
+  al click su aggiungi viene aggiunto il prodotto nel database in maniera tale che si possano salvare i dati in maniera persistente
+   */
   Future<void> _displayTextInputDialog(BuildContext context) async {
     return showDialog(
         context: context,
@@ -87,6 +94,10 @@ class _SpesaState extends State<Spesa> {
               AsyncSnapshot<List<Prodotto>> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
+                /*
+              Se il DataBase contiene prodotti, mostra una lista di quest'ultimi, con la possibilità di
+              cancellarli scorrendo da destra a sinistra
+              */
                 itemCount: snapshot.data?.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Dismissible(
@@ -122,6 +133,10 @@ class _SpesaState extends State<Spesa> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        /*
+            Bottone che mostra l'Alert Dialog (descritto sopra), per aggiungere un prodotto
+            nella lista della spesa
+             */
         onPressed: () {
           _displayTextInputDialog(context);
         },

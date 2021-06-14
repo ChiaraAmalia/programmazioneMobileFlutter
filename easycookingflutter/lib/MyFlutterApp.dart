@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
-
+/*
+Classe contenente le icone personalizzate
+ */
 class MyFlutterApp {
   MyFlutterApp._();
 

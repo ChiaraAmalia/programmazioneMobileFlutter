@@ -3,18 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:easycookingflutter/MyFlutterApp.dart';
 import 'package:mailto/mailto.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+/*
+Schermata che visualizza i contatti dell'applicazione, ovvero che permette
+di visitare le pagine Istagram @ricette_a_8bit, @mela_magno o di mandare una
+mail all'indirizzo e-mail predisposto per l'applicazione
+ */
 class Contattaci extends StatefulWidget {
   Contattaci({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -27,13 +23,14 @@ class _ContattaciState extends State<Contattaci> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
           title: Text(widget.title),
           actions: <Widget>[
             IconButton(
+              /*
+              Icona che se cliccata porta ad un'altra schermata dove si possono leggere le info relative all'applicazione
+               */
               icon: const Icon(MyFlutterApp.info_outline, color: Colors.white,),
-              tooltip: 'Go to the next page',
+              tooltip: 'Info',
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute<void>(
                   builder: (BuildContext context) {
@@ -89,7 +86,9 @@ class _ContattaciState extends State<Contattaci> {
           child: Center(
             child: Column(children: [
               GestureDetector(
-                // Quando il child è cliccato apre la pagina istagram.
+                /* Quando il child è cliccato apre la pagina istagram.
+                @mela_magno
+                 */
                 onTap: () async {
                   var url = 'https://www.instagram.com/mela_magno/';
 
@@ -124,7 +123,10 @@ class _ContattaciState extends State<Contattaci> {
                 ),
               ),
               GestureDetector(
-                // Quando il child è cliccato apre la pagina istagram.
+                /*
+                 Quando il child è cliccato apre la pagina istagram.
+                 @ricette_a_8bit
+                 */
                 onTap: () async {
                   var url = 'https://www.instagram.com/ricette_a_8bit/';
 
@@ -160,6 +162,10 @@ class _ContattaciState extends State<Contattaci> {
               ),
               Container(
                   margin: const EdgeInsets.all(16),
+                  /*
+                  Bottone che se cliccato ti permette di inviare una mail all'indirizzo
+                  predisposto per l'app
+                   */
                   child: CupertinoButton.filled(
                     child: Text('Mandaci una E-mail'),
                     onPressed: () async {
@@ -189,6 +195,11 @@ class _ContattaciState extends State<Contattaci> {
   }
 }
 
+
+/*
+    Metodo che lancia un Alert Dialog se l'URL specificato non riesce
+    ad essere lanciato
+*/
 class MailClientOpenErrorDialog extends StatelessWidget {
   final String url;
 
@@ -200,7 +211,7 @@ class MailClientOpenErrorDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
       title: Text('Launch Error'),
-      content: Text('We could not launch the following url:\n$url'),
+      content: Text('Non riesco ad aprire:\n$url'),
       actions: <Widget>[
         CupertinoDialogAction(
           isDefaultAction: true,

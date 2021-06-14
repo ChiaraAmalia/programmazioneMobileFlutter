@@ -29,8 +29,11 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
         title: Text("Easy Cooking"),
         actions: <Widget>[
           IconButton(
+            /*
+              Icona che se cliccata porta ad un'altra schermata dove si possono leggere le info relative all'applicazione
+               */
             icon: const Icon(MyFlutterApp.info_outline, color: Colors.white,),
-            tooltip: 'Go to the next page',
+            tooltip: 'Info',
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
                 builder: (BuildContext context) {
@@ -236,6 +239,11 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
       ),
     );
   }
+
+  /*
+  Metodo che trasforma una lista di oggetti in una stringa in modo da poterla
+  visualizzare correttamente
+   */
   String leggiLista(List<Object> lista){
     String str="";
     for (var val in lista){
@@ -243,6 +251,11 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
     }
     return str;
   }
+
+  /*
+  Metodo che trasforma un booleano in una striga che è "Si", se il booleano restituisce true,
+  "No" se il booleano restituisce false.
+   */
   String leggiBooleano(bool booleano){
     String str="No";
     if(booleano==true){
@@ -251,6 +264,10 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
     return str;
   }
 
+  /*
+  Metodo che genera la stringa contenente il nome della ricetta e l'invito a scaricare l'applicazione
+  per la condivisione
+   */
   void share(BuildContext context, Ricetta ricetta) {
 
     final RenderObject? box = context.findRenderObject();

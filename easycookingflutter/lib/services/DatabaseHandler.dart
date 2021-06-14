@@ -3,6 +3,10 @@ import 'package:easycookingflutter/Model/RicettaInserimento.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+/*
+Classe per la gestione del database, dove vengono create le tabelle e vengono
+creati i metodi che con esse interagiscono
+ */
 class DatabaseHandler {
   Future<Database> initializeDB() async {
     String path = await getDatabasesPath();
@@ -23,6 +27,9 @@ class DatabaseHandler {
     );
   }
 
+  /*
+  Metodo che aggiunge, con un singolo comando, diversi prodotti nella dispensa
+   */
   Future<int> inserisciProdotto(List<Prodotto> prodotti) async {
     int result = 0;
     final Database db = await initializeDB();
@@ -32,6 +39,9 @@ class DatabaseHandler {
     return result;
   }
 
+  /*
+  Metodo che aggiunge un solo prodotto nella dispensa
+   */
   Future<void> inserisciUno(Prodotto prodotto) async {
 
     final Database db = await initializeDB();
@@ -39,12 +49,18 @@ class DatabaseHandler {
 
   }
 
+  /*
+  Metodo che restituisce la lista dei prodotti presenti nella dispensa
+   */
   Future<List<Prodotto>> retriveProdotti() async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.query('prodotti');
     return queryResult.map((e) => Prodotto.fromMap(e)).toList();
   }
 
+  /*
+  Metodo che elimina un solo prodotto dalla dispensa
+   */
   Future<void> cancellaProdotto(String nome_prodotto) async {
     final db = await initializeDB();
     await db.delete(
@@ -54,6 +70,9 @@ class DatabaseHandler {
     );
   }
 
+  /*
+  Metodo che aggiunge un solo prodotto alla lista della spesa
+   */
   Future<void> inserisciUnoSpesa(Prodotto prodotto) async {
 
     final Database db = await initializeDB();
@@ -61,12 +80,18 @@ class DatabaseHandler {
 
   }
 
+  /*
+  Metodo che restituisce la lista dei prodotti presenti nella lista della spesa
+   */
   Future<List<Prodotto>> retriveSpesa() async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.query('spesa');
     return queryResult.map((e) => Prodotto.fromMap(e)).toList();
   }
 
+  /*
+  Metodo che elimina un solo prodotto dalla lista della spesa
+   */
   Future<void> cancellaProdottoSpesa(String nome_prodotto) async {
     final db = await initializeDB();
     await db.delete(
@@ -76,6 +101,9 @@ class DatabaseHandler {
     );
   }
 
+  /*
+  Metodo che aggiunge una sola ricetta al database contenente quelle personali
+   */
   Future<void> inserisciUnaRicetta(RicettaInserimento ricetta) async {
 
     final Database db = await initializeDB();
@@ -83,12 +111,18 @@ class DatabaseHandler {
 
   }
 
+  /*
+  Metodo che restituisce la lista delle ricette presenti nel database di quelle personali
+   */
   Future<List<RicettaInserimento>> retriveRicetteTue() async {
     final Database db = await initializeDB();
     final List<Map<String, Object?>> queryResult = await db.query('ricettetue');
     return queryResult.map((e) => RicettaInserimento.fromMap(e)).toList();
   }
 
+  /*
+  Metodo che elimina una ricetta dalle ricette presenti nel database delle ricette personali
+   */
   Future<void> cancellaRicettaTua(String nome_ricetta) async {
     final db = await initializeDB();
     await db.delete(

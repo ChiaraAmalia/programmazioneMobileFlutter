@@ -6,6 +6,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'RicetteTue.dart';
 
+/*
+Schermata che mostra il dettaglio delle ricette inserite dall'utente
+ */
 class RicetteTueDettaglio extends StatefulWidget {
   RicetteTueDettaglio({Key? key}) : super(key: key);
 
@@ -26,11 +29,14 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
         title: Text('Easy Cooking'),
         actions: <Widget>[
           IconButton(
+            /*
+              Icona che se cliccata porta ad un'altra schermata dove si possono leggere le info relative all'applicazione
+               */
             icon: const Icon(
               MyFlutterApp.info_outline,
               color: Colors.white,
             ),
-            tooltip: 'Go to the next page',
+            tooltip: 'Info',
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
                 builder: (BuildContext context) {

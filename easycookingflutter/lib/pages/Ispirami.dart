@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'RicetteTue.dart';
 /*
-Sezione che prende in maniera randomica una ricetta dalla raccolta di Firebase e la mostra all'utente
+Schermata che prende in maniera randomica una ricetta dalla raccolta di Firebase e la mostra all'utente
 in cerca di ispirazione.
  */
 class Ispirami extends StatefulWidget {
@@ -62,16 +62,21 @@ class _IspiramiState extends State<Ispirami> {
   @override
   Widget build(BuildContext context) {
     Randomizer randomizer = Randomizer();
+    /*
+    Prendo un numero a random e lo passo come indice alla lista contenente le ricette in modo da visualizzare
+    la ricetta che si trova nella posizione indicata dall'indice
+     */
     var ind=randomizer.getrandomnumber(0,414);
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text("Easy Cooking"),
         actions: <Widget>[
           IconButton(
+            /*
+              Icona che se cliccata porta ad un'altra schermata dove si possono leggere le info relative all'applicazione
+               */
             icon: const Icon(MyFlutterApp.info_outline, color: Colors.white,),
-            tooltip: 'Go to the next page',
+            tooltip: 'Info',
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
                 builder: (BuildContext context) {
@@ -127,6 +132,9 @@ class _IspiramiState extends State<Ispirami> {
         child: Column(
             children: [
               ElevatedButton(
+                /*
+                Bottone che se premuto genera un nuovo indice, in modo da visulizzare un'altra ricetta
+                 */
                 onPressed: () {
                   setState(() {
                     ind = randomizer.getrandomnumber(0, 414);
@@ -139,6 +147,9 @@ class _IspiramiState extends State<Ispirami> {
                   child: Column(
                     children: [
                       RaisedButton(
+                        /*
+                        Bottone che se cliccato permette la condivisione
+                         */
                         child: Text('condividi'),
                         onPressed: () async{
                           share(context, ricettaList[ind]);
@@ -291,6 +302,10 @@ class _IspiramiState extends State<Ispirami> {
     );
   }
 
+  /*
+  Metodo che trasforma una lista di oggetti in una stringa in modo da poterla
+  visualizzare correttamente
+   */
   String leggiLista(List<Object> lista) {
     String str = "";
     for (var val in lista) {
@@ -299,6 +314,10 @@ class _IspiramiState extends State<Ispirami> {
     return str;
   }
 
+  /*
+  Metodo che trasforma un booleano in una striga che è "Si", se il booleano restituisce true,
+  "No" se il booleano restituisce false.
+   */
   String leggiBooleano(bool booleano) {
     String str = "No";
     if (booleano == true) {
@@ -307,6 +326,10 @@ class _IspiramiState extends State<Ispirami> {
     return str;
   }
 
+  /*
+  Metodo che genera la stringa contenente il nome della ricetta e l'invito a scaricare l'applicazione
+  per la condivisione
+   */
   void share(BuildContext context, Ricetta ricetta) {
 
     final RenderObject? box = context.findRenderObject();

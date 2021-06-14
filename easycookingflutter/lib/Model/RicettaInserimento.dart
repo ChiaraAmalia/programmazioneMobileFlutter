@@ -2,6 +2,10 @@ import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 
+/*
+Classe che descrive una ricetta scritta dall'utente (personale), verrà usata per permettere di salvare, eliminare e visualizzare le
+ricette nel DB
+ */
 class RicettaInserimento {
 
   final String nome_ricetta;
@@ -13,7 +17,9 @@ class RicettaInserimento {
   final String porzioni;
   final String preparazione;
 
-
+/*
+Costruttore della classe
+ */
   RicettaInserimento({
     required this.nome_ricetta,
     required this.ingredienti_ricetta,
@@ -24,6 +30,9 @@ class RicettaInserimento {
     required this.porzioni,
     required this.preparazione
   });
+  /*
+  Funzione che permette di mappare l'oggetto RicettaInserimento, per permettere le interazioni con il DB
+   */
   RicettaInserimento.fromMap(Map<String, dynamic> res)
       : nome_ricetta = res["nome_ricetta"],
         ingredienti_ricetta = res["ingredienti_ricetta"],

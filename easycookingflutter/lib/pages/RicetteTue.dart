@@ -9,7 +9,9 @@ import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
+/*
+Schermata che mostra la lista di tutte le tue ricette
+ */
 class RicetteTue extends StatefulWidget{
   RicetteTue({Key? key, this.title}) : super(key: key);
   final String? title;
@@ -115,6 +117,9 @@ class _RicetteTueState extends State<RicetteTue> {
   }
 }
 
+/*
+Classe che costituisce i dettagli da inviare con la rotta per la visualizzazione di ricette nel dettaglio
+ */
 class RicettaDettaglioArgomenti{
   final String nome_ricetta;
   final String ingredienti_ricetta;
