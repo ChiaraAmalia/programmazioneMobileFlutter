@@ -194,6 +194,33 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                       }); }, child: Text("Azzera ricerca"),
 
                       ),
+                        ElevatedButton(onPressed: () { setState(() {
+                          ricetteFilter=ricettaList;
+                          if(nomeController.text.isNotEmpty){
+                            ricetteFilter=ricettaList.where((element) {
+                              var recipe = element.nome.toLowerCase();
+                              return recipe.contains(nomeController.text);
+                            }).toList();
+                          }
+                          {
+                            if (cate != "Seleziona Categoria"){
+                              ricetteFilter = ricetteFilter.where((ric) {
+                                var recipe = ric.recipeCategory.toLowerCase();
+                                return recipe.contains(cate.toLowerCase());
+                              }).toList();
+                            }
+                          }
+                          {
+                            if (ori != "Seleziona Origine"){
+                              ricetteFilter = ricetteFilter.where((ric) {
+                                var recipe = ric.recipeCuisine.toLowerCase();
+                                return recipe.contains(ori.toLowerCase());
+                              }).toList();
+                            }
+                          }
+                        }); }, child: Text("Aggiorna ricerca"),
+
+                        ),
     ]
                       )
                     )
