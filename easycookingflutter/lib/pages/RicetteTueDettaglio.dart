@@ -99,7 +99,7 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
                                     TextStyle(color: Colors.red, fontSize: 24)),
                             TextSpan(
                                 text:
-                                    'Questa sezione sarà visibile solo agli utenti che non hanno effettuato la registrazione. Consiste di una form simile a quella che si trova all\'avvio dell\'applicazione e permette di effettuare il login oppure di registrarsi.\n',
+                                    'Questa sezione sarà visibile solo agli utenti che non hanno effettuato la registrazione. Permette di effettuare il login oppure di registrarsi.\n',
                                 style: TextStyle(
                                     fontSize: 18)),
                             TextSpan(
@@ -108,7 +108,7 @@ class _RicetteTueDettaglioState extends State<RicetteTueDettaglio> {
                                     TextStyle(color: Colors.red, fontSize: 24)),
                             TextSpan(
                                 text:
-                                    'Possiamo accedere a questa sezione semplicemente cliccando sul pulsante offline presente nelle varie aree dell\'applicazione. Qui potremo visualizzare ed accedere alle ricette che abbiamo salvato in precedenza.\n',
+                                    'Possiamo accedere a questa sezione solo se l\'utente è registrato, semplicemente cliccando sul pulsante RicetteTue. Qui potremo visualizzare ed accedere alle ricette che abbiamo salvato in precedenza.\n',
                                 style: TextStyle(
                                     fontSize: 18)),
                             TextSpan(
