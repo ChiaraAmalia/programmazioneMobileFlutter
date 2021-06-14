@@ -92,7 +92,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                 onChanged: (text) {
                   text = text.toLowerCase();
                   setState(() {
-                    ricetteFilter = ricettaList.where((ric) {
+                    ricetteFilter = ricetteFilter.where((ric) {
                       var recipe = ric.nome.toLowerCase();
                       return recipe.contains(text);
                     }).toList();
@@ -112,13 +112,13 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                     ),
                       child:
                     DropdownButton(
-                      hint: Text('Seleziona Categoria'),
+                      hint: Text('Seleziona Categ'),
                       //value: Categoria,
                       onChanged: (newCat){
                         //Categoria = newCat.toString();
                         newCat = newCat.toString().toLowerCase();
                         setState(() {
-                          ricetteFilter = ricettaList.where((ric) {
+                          ricetteFilter = ricetteFilter.where((ric) {
                             var recipe = ric.recipeCategory.toLowerCase();
                             return recipe.contains(newCat.toString());
                           }).toList();
@@ -153,7 +153,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                             //Categoria = newCat.toString();
                             newCat = newCat.toString().toLowerCase();
                             setState(() {
-                              ricetteFilter = ricettaList.where((ric) {
+                              ricetteFilter = ricetteFilter.where((ric) {
                                 var recipe = ric.recipeCuisine.toLowerCase();
                                 return recipe.contains(newCat.toString());
                               }).toList();
