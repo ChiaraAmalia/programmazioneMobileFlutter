@@ -108,6 +108,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
               SizedBox(height: 12.0),
               Column(
                 children:<Widget>[
+
                   Container(
                     width: 200.0,
                     decoration: BoxDecoration(
@@ -118,6 +119,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                     DropdownButton(
                       hint: Text(cate),
                       //value: Categoria,
+                      isExpanded: true,
                       onChanged: (newCat){
                         cate=newCat.toString();
                         //Categoria = newCat.toString();
