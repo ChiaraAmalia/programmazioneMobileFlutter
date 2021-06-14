@@ -9,8 +9,10 @@ import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'RicetteTue.dart';
-
-
+/*
+Sezione che prende in maniera randomica una ricetta dalla raccolta di Firebase e la mostra all'utente
+in cerca di ispirazione.
+ */
 class Ispirami extends StatefulWidget {
   Ispirami({Key? key}) : super(key: key);
 
