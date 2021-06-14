@@ -123,10 +123,13 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                         //Categoria = newCat.toString();
                         newCat = newCat.toString().toLowerCase();
                         setState(() {
+                          if (newCat.toString()=="Seleziona Categoria"){
+                            ricetteFilter = ricettaList;
+                          } else {
                           ricetteFilter = ricetteFilter.where((ric) {
                             var recipe = ric.recipeCategory.toLowerCase();
                             return recipe.contains(newCat.toString());
-                          }).toList();
+                          }).toList();}
 
                           });
                         },
@@ -159,10 +162,13 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                             //Categoria = newCat.toString();
                             newCat = newCat.toString().toLowerCase();
                             setState(() {
+                            if (newCat.toString()=="Seleziona Origine"){
+                             ricetteFilter = ricettaList;
+                             } else {
                               ricetteFilter = ricetteFilter.where((ric) {
                                 var recipe = ric.recipeCuisine.toLowerCase();
                                 return recipe.contains(newCat.toString());
-                              }).toList();
+                              }).toList();}
 
                             });
                           },
@@ -178,7 +184,9 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
 
                     ),
                     Container(
-                      child: ElevatedButton(onPressed: () { setState(() {
+                      child: Column(
+                      children: [
+                        ElevatedButton(onPressed: () { setState(() {
                         ricetteFilter=ricettaList;
                         cate="Seleziona Categoria";
                         ori="Seleziona Origine";
@@ -186,6 +194,8 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                       }); }, child: Text("Azzera ricerca"),
 
                       ),
+    ]
+                      )
                     )
                   ]),
               Expanded(
