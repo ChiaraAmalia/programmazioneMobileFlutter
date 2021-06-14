@@ -31,9 +31,6 @@ class _SignInState extends State<SignIn> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-  bool _isLoggedIn = false;
-  late GoogleSignInAccount _userObj;
-  GoogleSignIn _googleSignIn = GoogleSignIn();
 
   //text field state
   String email = '';
@@ -127,26 +124,6 @@ class _SignInState extends State<SignIn> {
           ),
         ),
 
-          /*
-          ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              onPrimary: Colors.red,
-
-            ),
-            icon: FaIcon(FontAwesomeIcons.google),
-            label: Text('Sign Up with Google'),
-            onPressed: (){
-              _googleSignIn.signIn().then((userData) {
-                setState(() {
-                  _isLoggedIn = true;
-                  _userObj = userData;
-                });
-              }).catchError((e) {
-                print(e);
-              });
-            },
-          ),*/
           RaisedButton(
             color: Colors.red,
             child: Text(

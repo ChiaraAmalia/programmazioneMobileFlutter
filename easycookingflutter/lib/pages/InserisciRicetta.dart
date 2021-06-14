@@ -41,6 +41,9 @@ class _InserisciRicettaState extends State<InserisciRicetta> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text('Inserisci la tua ricetta')
+      ),
       body: SingleChildScrollView(
         child:Center(
 
