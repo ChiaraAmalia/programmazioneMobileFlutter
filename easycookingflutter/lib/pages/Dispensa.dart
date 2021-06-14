@@ -129,7 +129,7 @@ class _DispensaState extends State<Dispensa> {
         });
   }
 
-  Future<void> _displaySpesaDialog(BuildContext context, List<String> mancanti) async {
+  Future<void> _displaySpesaDialog(BuildContext context, List<String> mancanti, int index) async {
     return showDialog(
         context: context,
         builder: (context) {
@@ -142,10 +142,15 @@ class _DispensaState extends State<Dispensa> {
               FlatButton(
                 color: Colors.red,
                 textColor: Colors.white,
-                child: Text('Annulla'),
+                child: Text('Non aggiungere'),
                 onPressed: () {
                   setState(() {
                     Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => RicetteDettaglio(),
+                      settings: RouteSettings(
+                        arguments: ricetteFilter[index],
+                      ),));
                   });
                 },
               ),
@@ -161,6 +166,11 @@ class _DispensaState extends State<Dispensa> {
                     //ingredientiFilter.add(prod);
 
                     Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => RicetteDettaglio(),
+                      settings: RouteSettings(
+                        arguments: ricetteFilter[index],
+                      ),));
                   });
                 },
               ),
@@ -246,20 +256,20 @@ class _DispensaState extends State<Dispensa> {
                        */
                         onTap: () async {
                           List<String> manc=[];
+                          var lista=[];
                           var ingre=ricetteFilter[index].ingredienti;
                           var listaa = await this.handler.retriveProdotti();
+                          for ( var li in listaa){
+                            lista.add(li.nome_prodotto.toLowerCase());
+                          }
+
                           for (var ing in ingre){
-                            if (!listaa.contains(ing.toString())){
+                            if (!lista.contains(ing.toString().toLowerCase())){
                               manc.add(ing.toString());
                             }
                           }
+                          _displaySpesaDialog(context, manc,index);
 
-                          _displaySpesaDialog(context, manc);
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => RicetteDettaglio(),
-                            settings: RouteSettings(
-                              arguments: ricetteFilter[index],
-                            ),));
                         },
 
                         child: CardUI(ricetteFilter[index].nome, urlImage));
