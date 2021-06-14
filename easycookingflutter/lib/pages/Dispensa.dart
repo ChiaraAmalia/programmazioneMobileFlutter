@@ -128,6 +128,46 @@ class _DispensaState extends State<Dispensa> {
           );
         });
   }
+
+  Future<void> _displaySpesaDialog(BuildContext context, List<String> mancanti) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Ti mancano:'),
+            content: Text(
+              leggiLista(mancanti)
+            ),
+            actions: <Widget>[
+              FlatButton(
+                color: Colors.red,
+                textColor: Colors.white,
+                child: Text('Annulla'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              FlatButton(
+                color: Colors.green,
+                textColor: Colors.white,
+                child: Text('Aggiungi alla\n lista della spesa'),
+                onPressed: () {
+                  setState(() {
+                    for(var pr in mancanti){
+                    Prodotto prod = Prodotto(nome_prodotto: pr);
+                    this.handler.inserisciUnoSpesa(prod);}
+                    //ingredientiFilter.add(prod);
+
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
+  }
   
   late String valueText;
   //ALERT DIALOG
@@ -204,7 +244,17 @@ class _DispensaState extends State<Dispensa> {
                       Al clic sulla card relativa ad una specifica ricetta, ti rimanda a quella ricetta nel dettaglio
                       dove sono presenti tutte le informazioni relative a quest'ultima
                        */
-                        onTap: () {
+                        onTap: () async {
+                          List<String> manc=[];
+                          var ingre=ricetteFilter[index].ingredienti;
+                          var listaa = await this.handler.retriveProdotti();
+                          for (var ing in ingre){
+                            if (!listaa.contains(ing.toString())){
+                              manc.add(ing.toString());
+                            }
+                          }
+
+                          _displaySpesaDialog(context, manc);
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) => RicetteDettaglio(),
                             settings: RouteSettings(
@@ -310,4 +360,15 @@ Widget CardUI(String nome, String image){
 
     ),
   );
+}
+/*
+  Metodo che trasforma una lista di oggetti in una stringa in modo da poterla
+  visualizzare correttamente
+   */
+String leggiLista(List<Object> lista) {
+  String str = "";
+  for (var val in lista) {
+    str = str + val.toString() + '\n';
+  }
+  return str;
 }
