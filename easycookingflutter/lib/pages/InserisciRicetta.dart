@@ -145,8 +145,6 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
                         String tot = valueTot.toString();
                         String totale = tot.substring(0, tot.indexOf('.'));
 
-
-
                         RicettaInserimento ric = RicettaInserimento(nome_ricetta: valueNome, ingredienti_ricetta: Ingredi, cookTime: cottura, prepTime: preparazione, totalTime: totale, fotoRicetta: _image!.readAsBytesSync(), porzioni: valuePorz, preparazione: valuePrepa);
                         this.handler.inserisciUnaRicetta(ric);
                         Navigator.pop(context);
@@ -169,10 +167,6 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
   late Duration valuePrep;
   late String valuePorz;
   late String valuePrepa;
-  //late String valueAppoggio;
-  //late String Ingre;
-  //late List<String> valueIngr;
-  //per la foto
 
   /*
   Metodo che prende l'immagine dalla fotocamera
