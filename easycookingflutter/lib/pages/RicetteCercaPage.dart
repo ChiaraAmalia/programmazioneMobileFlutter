@@ -159,6 +159,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                         DropdownButton(
                           hint: Text(ori),
                           //value: Categoria,
+                          isExpanded: true,
                           onChanged: (newCat){
                             ori=newCat.toString();
                             //Categoria = newCat.toString();
@@ -228,7 +229,10 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                     )
                   ]),
               Expanded(
-                  child:
+                  child: ricetteFilter.length == 0 ? Align(
+                      alignment: Alignment.center, child: Center(
+                      child:
+                      Text("Nessuna ricetta corrisponde ai criteri di ricerca", textAlign: TextAlign.center,))) :
                   ListView.builder(
                       itemCount: ricetteFilter.length,
                       itemBuilder: (_, index) {
