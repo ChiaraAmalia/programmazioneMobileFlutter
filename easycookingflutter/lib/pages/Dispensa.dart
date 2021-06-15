@@ -300,7 +300,9 @@ class _DispensaState extends State<Dispensa> {
                     ingedients.add(ingre.toString().toLowerCase());
                     //ricetteFilter.add(ric);
                   } if (ingedients.contains(ingr.nome_prodotto.toString().toLowerCase())){
-                    ricetteFilter.add(ric);
+                    if(!(ricetteFilter.contains(ric))) {
+                      ricetteFilter.add(ric);
+                    }
                    }
                 }
               }
@@ -364,7 +366,7 @@ Widget CardUI(String nome, String image){
                 fit: BoxFit.cover,
                 height: 100,
                 width: 100,
-              );//do something
+              );
             },
           ),
           //SizedBox(height: 1,),

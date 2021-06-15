@@ -42,7 +42,6 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
     DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("");
     dbRef.once().then((DataSnapshot dataSnapshot) {
       ricettaList.clear();
-      //var keys = dataSnapshot.value.keys;
       var values = dataSnapshot.value;
 
       for (var val in values) {
@@ -52,10 +51,6 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
           val["image"],
           val["Ingredienti"],
           val["intolleranze"],
-          // values[key][k]["Ingredienti"],
-          // values[key][k]["unita"],
-          // values[key][k]["quantita"],
-          //values[key][k]["keywords"],
           val["nome"],
           val["porzioni"],
           val["preparazione"],
@@ -126,11 +121,9 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                       child:
                     DropdownButton(
                       hint: Text(cate),
-                      //value: Categoria,
                       isExpanded: true,
                       onChanged: (newCat){
                         cate=newCat.toString();
-                        //Categoria = newCat.toString();
                         newCat = newCat.toString().toLowerCase();
                         setState(() {
                           /*
@@ -283,9 +276,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
     return  Card(
       elevation: 10,
       margin: EdgeInsets.all(5),
-      //color: Color(0xfff13746),
       child: Container(
-        //color: Colors.white,
         margin: EdgeInsets.all(1),
         padding: EdgeInsets.all(8),
         child: Column(
