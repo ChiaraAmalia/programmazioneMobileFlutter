@@ -3,9 +3,10 @@ import 'package:easycookingflutter/auth/authenticate/ResetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 /*
 Classe che permette all'utente già registrato di effettuare il LOGIN
+I validator vengono poi utilizzati per effettuare i test
  */
 
 class EmailValidator {

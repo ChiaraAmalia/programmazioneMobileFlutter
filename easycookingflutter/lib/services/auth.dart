@@ -4,6 +4,10 @@ import 'package:easycookingflutter/Model/user.dart';
 import 'package:easycookingflutter/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+/*
+classe che contiene tutte le funzioni che permettono il signIn o la registrazione dell'utente
+ */
+
 class AuthService {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,25 +20,10 @@ class AuthService {
   //auth change user stream
   Stream<User?> get user {
     return _auth.onAuthStateChanged
-        //.map((FirebaseUser) => _userFromFirebaseUser(user));
         .map(_userFromFirebaseUser);
   }
 
-
-
-  //sign in anon
-  Future signInAnon() async {
-    try {
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;
-      return _userFromFirebaseUser(user);
-    }catch(e) {
-      print(e.toString());
-      return null;
-    }
-  }
-
-  //sign in with email & password
+  //sign in con email & password
   Future signInWithEmailAndPassword(String email, String password) async{
     try{
       AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
@@ -47,8 +36,7 @@ class AuthService {
 
   }
 
-
-  //register with email & password
+  //registrazione email & password
   Future registerWithEmailAndPassword(String nome, String cognome, String email, String password) async{
     try{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);

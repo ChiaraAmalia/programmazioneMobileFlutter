@@ -25,7 +25,5 @@ Costruttore della classe
       this.unita,
       this.vegano
       );
-
-
 }
 

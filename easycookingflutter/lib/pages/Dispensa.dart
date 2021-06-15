@@ -50,10 +50,6 @@ class _DispensaState extends State<Dispensa> {
           val["image"],
           val["Ingredienti"],
           val["intolleranze"],
-          // values[key][k]["Ingredienti"],
-          // values[key][k]["unita"],
-          // values[key][k]["quantita"],
-          //values[key][k]["keywords"],
           val["nome"],
           val["porzioni"],
           val["preparazione"],
@@ -68,7 +64,6 @@ class _DispensaState extends State<Dispensa> {
 
         ricettaList.add(ric);
       }
-      //ricetteFilter = ricettaList;
       setState(() {
         //
       });
@@ -168,7 +163,6 @@ class _DispensaState extends State<Dispensa> {
                     for(var pr in mancanti){
                     Prodotto prod = Prodotto(nome_prodotto: pr);
                     this.handler.inserisciUnoSpesa(prod);}
-                    //ingredientiFilter.add(prod);
 
                     Navigator.pop(context);
                     Navigator.push(context, MaterialPageRoute(
@@ -298,7 +292,6 @@ class _DispensaState extends State<Dispensa> {
                   for (var ingre in ric.ingredienti){
 
                     ingedients.add(ingre.toString().toLowerCase());
-                    //ricetteFilter.add(ric);
                   } if (ingedients.contains(ingr.nome_prodotto.toString().toLowerCase())){
                     if(!(ricetteFilter.contains(ric))) {
                       ricetteFilter.add(ric);

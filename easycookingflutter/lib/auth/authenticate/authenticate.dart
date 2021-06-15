@@ -18,6 +18,8 @@ class _AuthenticateState extends State<Authenticate> {
   void toggleView() {
     setState(() => showSignIn = !showSignIn);
   }
+
+  // gestisce lo swap tra l'interfaccia di signIn e registrazione
   @override
   Widget build(BuildContext context) {
       if(showSignIn){

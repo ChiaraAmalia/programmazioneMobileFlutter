@@ -99,7 +99,8 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                         onPressed: () async{
                           share(context, args);
                         },
-                      ),                      ConstrainedBox(
+                      ),
+                      ConstrainedBox(
                         constraints: BoxConstraints.expand(height: 210.0),
                         child: Image.network("https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F"+args.image+"?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29",
                             fit: BoxFit.cover,

@@ -28,7 +28,6 @@ class _IspiramiState extends State<Ispirami> {
     DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("");
     dbRef.once().then((DataSnapshot dataSnapshot) {
       ricettaList.clear();
-      //var keys = dataSnapshot.value.keys;
       var values = dataSnapshot.value;
 
       for (var val in values) {
@@ -38,10 +37,6 @@ class _IspiramiState extends State<Ispirami> {
           val["image"],
           val["Ingredienti"],
           val["intolleranze"],
-          // values[key][k]["Ingredienti"],
-          // values[key][k]["unita"],
-          // values[key][k]["quantita"],
-          //values[key][k]["keywords"],
           val["nome"],
           val["porzioni"],
           val["preparazione"],

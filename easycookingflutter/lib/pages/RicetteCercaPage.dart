@@ -27,7 +27,6 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
   String cate="Seleziona Categoria";
   String ori="Seleziona origine";
   TextEditingController nomeController = TextEditingController();
-  //late Object Categoria;
   List<String> Categorie = [
     "Dolci", "Bevande & Cocktail", "Pane & Pizza", "Ricette base", "Marmellate & Conserve", "Secondi Piatti", "Primi"
   ];
@@ -163,11 +162,9 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                         child:
                         DropdownButton(
                           hint: Text(ori),
-                          //value: Categoria,
                           isExpanded: true,
                           onChanged: (newCat){
                             ori=newCat.toString();
-                            //Categoria = newCat.toString();
                             newCat = newCat.toString().toLowerCase();
                             setState(() {
                           /*

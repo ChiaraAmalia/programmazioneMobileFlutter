@@ -2,6 +2,7 @@ import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
 /*
 Classe che permette all'utente di registrasi e valida i dati da esso inseriti
+I validator vengono poi utilizzati per effettuare i test
  */
 class NomeFieldValidator {
   static String? validate(String value) {
