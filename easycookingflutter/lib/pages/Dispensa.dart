@@ -329,7 +329,7 @@ class _DispensaState extends State<Dispensa> {
               width:350.0,)
           Column(
           children: <Widget> [
-            child: FutureBuilder(
+            FutureBuilder(
               future: this.handler.retriveProdotti(),
               builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
                 if (snapshot.hasData) {
@@ -373,9 +373,7 @@ class _DispensaState extends State<Dispensa> {
                   return Center(child: CircularProgressIndicator());
                 }
               },
-            )),
-          ],
-          ),
+            )]),
           Expanded(
               child:
               /*
@@ -461,10 +459,9 @@ class _DispensaState extends State<Dispensa> {
             icon: const Icon(Icons.add),
             backgroundColor: Colors.redAccent,
           ),
-    )]
-    ]),
+    ]
       ),
-    );
+    ));
   }
 }
 
