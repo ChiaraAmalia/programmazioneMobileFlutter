@@ -268,6 +268,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
             ] : <Widget>[
               Column(
         children:[
+          SizedBox(height: 7,),
               Row(
                   children: <Widget>[
                     Spacer(),
