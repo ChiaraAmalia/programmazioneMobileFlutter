@@ -166,6 +166,14 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
   late String valuePorz;
   late String valuePrepa;
 
+  _noImg() async {
+    File image = await File("assets/images/coltforc.png");
+
+    setState(() {
+      _image = image;
+    });
+  }
+
   /*
   Metodo che prende l'immagine dalla fotocamera
    */
@@ -192,6 +200,7 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
 
   }
 
+
   /*
   Metodo che apre il menù, dove selezionare la modalità di inserimento dell'immagine
    */
@@ -215,6 +224,14 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
                     title: new Text('Fotocamera'),
                     onTap: () {
                       _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('no img'),
+                    onTap: () {
+                      _noImg();
                       Navigator.of(context).pop();
                     },
                   ),

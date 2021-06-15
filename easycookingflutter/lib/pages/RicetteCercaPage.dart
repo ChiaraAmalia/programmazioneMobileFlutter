@@ -253,7 +253,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                             ricetteFilter[index].image +
                             "?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
                         return GestureDetector(
-                          // Quando il child è cliccato apre la pagina istagram.
+                          // Quando il child è cliccato apre la ricetta nel dettaglio
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(
                                 builder: (context) => RicetteDettaglio(),
@@ -485,7 +485,6 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                 );//do something
               },
             ),
-            //SizedBox(height: 1,),
             Text(nome,maxLines: 3,),
 
           ],
