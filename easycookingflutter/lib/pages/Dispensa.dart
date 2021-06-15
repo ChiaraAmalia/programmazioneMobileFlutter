@@ -188,7 +188,7 @@ class _DispensaState extends State<Dispensa> {
         child:Column(
         children:[
           Expanded(child: SizedBox(
-        height:120.0,
+        height:50.0,
         child: FutureBuilder(
         future: this.handler.retriveProdotti(),
         builder: (BuildContext context, AsyncSnapshot<List<Prodotto>> snapshot) {
@@ -236,6 +236,62 @@ class _DispensaState extends State<Dispensa> {
       ),
         ),
           ),
+
+          Container(
+              child: Row(
+                  children: [
+                    Spacer(),
+                    FloatingActionButton.extended(
+                      /*
+            Bottone che se cliccato, cerca le ricette di Firebase che contengono tra gli ingredienti, gli
+             elementi presenti nella dispensa
+             */
+                      onPressed: () async {
+                        ingredientiFilter.clear();
+                        var listaa = await this.handler.retriveProdotti();
+                        ingredientiFilter.addAll(listaa);
+
+                        //ricetteFilter = ricettaList;
+                        for (var ric in ricettaList){
+                          for (var ingr in ingredientiFilter){
+
+                            List<String> ingedients = [];
+                            for (var ingre in ric.ingredienti){
+
+                              ingedients.add(ingre.toString().toLowerCase());
+                            } if (ingedients.contains(ingr.nome_prodotto.toString().toLowerCase())){
+                              if(!(ricetteFilter.contains(ric))) {
+                                ricetteFilter.add(ric);
+                              }
+                            }
+                          }
+                        }
+
+                        setState(() {
+                          //
+                        });
+                      },
+                      label: const Text('Cerca'),
+                      icon: const Icon(Icons.search),
+                      backgroundColor: Colors.redAccent,
+                    ),
+                    SizedBox(height: 12.0, width: 20.0),
+                    Spacer(),
+                    FloatingActionButton.extended(
+                      /*
+            Bottone che mostra l'Alert Dialog (descritto sopra), per aggiungere un prodotto
+            in dispensa
+             */
+                      onPressed: () {
+                        _displayTextInputDialog(context);
+                      },
+                      label: const Text('Aggiungi'),
+                      icon: const Icon(Icons.add),
+                      backgroundColor: Colors.redAccent,
+                    ),
+                    Spacer(),]
+              )),
+
           Expanded(
               child:
                   /*
@@ -274,53 +330,9 @@ class _DispensaState extends State<Dispensa> {
                         child: CardUI(ricetteFilter[index].nome, urlImage));
                   })
           ),
-          FloatingActionButton.extended(
-            /*
-            Bottone che se cliccato, cerca le ricette di Firebase che contengono tra gli ingredienti, gli
-             elementi presenti nella dispensa
-             */
-            onPressed: () async {
-              ingredientiFilter.clear();
-              var listaa = await this.handler.retriveProdotti();
-              ingredientiFilter.addAll(listaa);
 
-              //ricetteFilter = ricettaList;
-              for (var ric in ricettaList){
-              for (var ingr in ingredientiFilter){
 
-                  List<String> ingedients = [];
-                  for (var ingre in ric.ingredienti){
 
-                    ingedients.add(ingre.toString().toLowerCase());
-                  } if (ingedients.contains(ingr.nome_prodotto.toString().toLowerCase())){
-                    if(!(ricetteFilter.contains(ric))) {
-                      ricetteFilter.add(ric);
-                    }
-                   }
-                }
-              }
-
-              setState(() {
-                //
-              });
-            },
-            label: const Text('Cerca'),
-            icon: const Icon(Icons.search),
-            backgroundColor: Colors.redAccent,
-          ),
-          SizedBox(height: 12.0),
-          FloatingActionButton.extended(
-            /*
-            Bottone che mostra l'Alert Dialog (descritto sopra), per aggiungere un prodotto
-            in dispensa
-             */
-            onPressed: () {
-              _displayTextInputDialog(context);
-            },
-            label: const Text('Aggiungi'),
-            icon: const Icon(Icons.add),
-            backgroundColor: Colors.redAccent,
-          ),
       ]
         ),
       ),
