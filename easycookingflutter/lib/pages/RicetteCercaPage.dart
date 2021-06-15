@@ -81,7 +81,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
               size: 80.0,
             ))) :
         Column(
-            children: <Widget>[
+            children: MediaQuery.of(context).orientation==Orientation.portrait ? <Widget>[
               Column(
                   children: <Widget>[
               Container(
@@ -265,7 +265,189 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                             child: CardUI(ricetteFilter[index].nome, urlImage));
                       })
               )
-            ]));
+            ] : <Widget>[
+              Column(
+        children:[
+              Row(
+                  children: <Widget>[
+                    Container(
+                      width: 200.0,
+                      child: TextField(
+                        controller: nomeController,
+                        decoration: InputDecoration(
+                            hintText: 'Cerca una ricetta'
+                        ),
+                        onChanged: (text) {
+                          /*
+                  ricerca le ricette che all'interno del loro nome hanno il testo scritto
+                  nell'input text
+                   */
+                          text = text.toLowerCase();
+                          setState(() {
+                            ricetteFilter = ricetteFilter.where((ric) {
+                              var recipe = ric.nome.toLowerCase();
+                              return recipe.contains(text);
+                            }).toList();
+                          });
+                        },
+
+                      ),),
+
+                    Container(
+                        width: 200.0,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 1),
+                            borderRadius: BorderRadius.circular(15)
+                        ),
+                        child:
+                        DropdownButton(
+                          hint: Text(cate),
+                          isExpanded: true,
+                          onChanged: (newCat){
+                            cate=newCat.toString();
+                            newCat = newCat.toString().toLowerCase();
+                            setState(() {
+                              /*
+                          Se viene selezionata una categoria, mostra solo le ricette appartenenti a
+                          quest'ultima
+                           */
+                              if (newCat.toString()=="Seleziona Categoria"){
+                                ricetteFilter = ricettaList;
+                              } else {
+                                ricetteFilter = ricetteFilter.where((ric) {
+                                  var recipe = ric.recipeCategory.toLowerCase();
+                                  return recipe.contains(newCat.toString());
+                                }).toList();}
+
+                            });
+                          },
+
+                          items: Categorie.map((valueItem) {
+
+                            return DropdownMenuItem(
+                              value: valueItem,
+                              child: Text(valueItem),
+                            );
+                          }).toList(),
+                        )
+
+                    ),
+                    Container(
+                        width: 200.0,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey, width: 1),
+                            borderRadius: BorderRadius.circular(15)
+                        ),
+                        child:
+                        DropdownButton(
+                          hint: Text(ori),
+                          isExpanded: true,
+                          onChanged: (newCat){
+                            ori=newCat.toString();
+                            newCat = newCat.toString().toLowerCase();
+                            setState(() {
+                              /*
+                          Se viene selezionata un'origine, mostra solo le ricette appartenenti a
+                          quest'ultima
+                           */
+                              if (newCat.toString()=="Seleziona Origine"){
+                                ricetteFilter = ricettaList;
+                              } else {
+                                ricetteFilter = ricetteFilter.where((ric) {
+                                  var recipe = ric.recipeCuisine.toLowerCase();
+                                  return recipe.contains(newCat.toString());
+                                }).toList();}
+
+                            });
+                          },
+
+                          items: Cucine.map((valueItem) {
+
+                            return DropdownMenuItem(
+                              value: valueItem,
+                              child: Text(valueItem),
+                            );
+                          }).toList(),
+                        )
+
+                    ),]),
+
+                    Container(
+                        child: Row(
+                            children: [
+                              ElevatedButton(onPressed: () { setState(() {
+                                /*
+                          Bottone che se premuto azzera la ricerca e mostra nuovamente tutte le ricette
+                          presenti su firebase
+                           */
+                                ricetteFilter=ricettaList;
+                                cate="Seleziona Categoria";
+                                ori="Seleziona Origine";
+                                nomeController.clear();
+                              }); }, child: Text("Azzera ricerca"),
+
+                              ),
+                              ElevatedButton(onPressed: () { setState(() {
+                                /*
+                          Bottone che se premuto aggiorna la ricerca con i nuovi parametri passati
+                           */
+                                ricetteFilter=ricettaList;
+                                if(nomeController.text.isNotEmpty){
+                                  ricetteFilter=ricettaList.where((element) {
+                                    var recipe = element.nome.toLowerCase();
+                                    return recipe.contains(nomeController.text);
+                                  }).toList();
+                                }
+                                {
+                                  if (cate != "Seleziona Categoria"){
+                                    ricetteFilter = ricetteFilter.where((ric) {
+                                      var recipe = ric.recipeCategory.toLowerCase();
+                                      return recipe.contains(cate.toLowerCase());
+                                    }).toList();
+                                  }
+                                }
+                                {
+                                  if (ori != "Seleziona Origine"){
+                                    ricetteFilter = ricetteFilter.where((ric) {
+                                      var recipe = ric.recipeCuisine.toLowerCase();
+                                      return recipe.contains(ori.toLowerCase());
+                                    }).toList();
+                                  }
+                                }
+                              }); }, child: Text("Aggiorna ricerca"),
+
+                              ),
+                            ]
+                        )
+                    )
+                  ]),
+              
+              Expanded(
+                  child: ricetteFilter.length == 0 ? Align(
+                      alignment: Alignment.center, child: Center(
+                      child:
+                      Text("Nessuna ricetta corrisponde ai criteri di ricerca", textAlign: TextAlign.center,))) :
+                  ListView.builder(
+                      itemCount: ricetteFilter.length,
+                      itemBuilder: (_, index) {
+                        var urlImage = "https://firebasestorage.googleapis.com/v0/b/gino-49a3d.appspot.com/o/images%2F" +
+                            ricetteFilter[index].image +
+                            "?alt=media&token=323e6eb7-b6e6-4b59-9ce8-f8936cf3cd29";
+                        return GestureDetector(
+                          // Quando il child è cliccato apre la pagina istagram.
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => RicetteDettaglio(),
+                                settings: RouteSettings(
+                                  arguments: ricetteFilter[index],
+                                ),));
+                            },
+
+                            child: CardUI(ricetteFilter[index].nome, urlImage));
+                      })
+              )
+            ]
+        ));
   }
 }
 
