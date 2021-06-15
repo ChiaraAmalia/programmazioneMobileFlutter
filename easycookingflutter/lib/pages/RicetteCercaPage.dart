@@ -268,10 +268,8 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
             ] : <Widget>[
               Column(
         children:[
-          SizedBox(height: 7,),
               Row(
                   children: <Widget>[
-                    Spacer(),
                     Container(
                       width: 200.0,
                       child: TextField(
@@ -294,7 +292,7 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                         },
 
                       ),),
-                    SizedBox(width:12),
+
                     Container(
                         width: 200.0,
                         decoration: BoxDecoration(
@@ -334,7 +332,6 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                         )
 
                     ),
-                    SizedBox(width:12),
                     Container(
                         width: 200.0,
                         decoration: BoxDecoration(
@@ -371,16 +368,13 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                               child: Text(valueItem),
                             );
                           }).toList(),
-                        ),
+                        )
 
-
-                    ),Spacer(),]),
+                    ),]),
 
                     Container(
-
                         child: Row(
                             children: [
-                              Spacer(),
                               ElevatedButton(onPressed: () { setState(() {
                                 /*
                           Bottone che se premuto azzera la ricerca e mostra nuovamente tutte le ricette
@@ -393,7 +387,6 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                               }); }, child: Text("Azzera ricerca"),
 
                               ),
-                              Spacer(),
                               ElevatedButton(onPressed: () { setState(() {
                                 /*
                           Bottone che se premuto aggiorna la ricerca con i nuovi parametri passati
@@ -424,12 +417,11 @@ class _RicetteCercaPageState extends State<RicetteCercaPage> {
                               }); }, child: Text("Aggiorna ricerca"),
 
                               ),
-                              Spacer(),
                             ]
                         )
                     )
                   ]),
-
+              
               Expanded(
                   child: ricetteFilter.length == 0 ? Align(
                       alignment: Alignment.center, child: Center(
