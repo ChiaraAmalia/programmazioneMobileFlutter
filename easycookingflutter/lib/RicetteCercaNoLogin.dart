@@ -14,7 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:easycookingflutter/pages/Dispensa.dart';
 import 'package:path/path.dart';
 
-
+/*
+Classe contenente lo scheletro dell'applicazione, ovvero la bottom navigation bar e il drawer menù
+PER GLI UTENTI CHE NON HANNO EFFETTUATO IL LOGIN
+ */
 class Ricette extends StatelessWidget {
   // This widget is the root of your application.
   @override

@@ -128,7 +128,12 @@ class _DispensaState extends State<Dispensa> {
           );
         });
   }
-
+  /*
+  Apre un Alert Dialog mediante il quale è possibile, visionare ed aggiungere i prodotti che mancano in dispensa, per preparare una determinata
+  ricetta, alla lista della spesa
+  al click su Non aggiungere, non si effettua l'inserimento nella lista della spesa, e si prosegue visionando la ricetta selezionata
+  al click su Aggiungi alla lista della spesa viene aggiunto il prodotto alla lista della spesa e si visualizza poi la ricetta selezionata
+   */
   Future<void> _displaySpesaDialog(BuildContext context, List<String> mancanti, int index) async {
     return showDialog(
         context: context,

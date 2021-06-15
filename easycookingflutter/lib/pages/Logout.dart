@@ -13,13 +13,14 @@ class Logout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text("Easy Cooking"),
         actions: <Widget>[
           IconButton(
+            /*
+              Icona che se cliccata porta ad un'altra schermata dove si possono leggere le info relative all'applicazione
+               */
             icon: const Icon(MyFlutterApp.info_outline, color: Colors.white,),
-            tooltip: 'Go to the next page',
+            tooltip: 'Info',
             onPressed: () {
               Navigator.push(context, MaterialPageRoute<void>(
                 builder: (BuildContext context) {
@@ -82,6 +83,9 @@ class Logout extends StatelessWidget {
 
                   SizedBox(height: 30.0),
                   RaisedButton(
+                    /*
+                    Bottone che ti permette di effettuare il LOGOUT
+                     */
                       color: Colors.red,
                       child: Text(
                         'Logout',

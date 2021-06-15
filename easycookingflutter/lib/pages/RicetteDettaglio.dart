@@ -8,7 +8,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'RicetteTue.dart';
 
-
+/*
+Schermata che mostra la singola ricetta nel dettaglio, ovvero con gli ingredienti, i tempi...
+ */
 class RicetteDettaglio extends StatefulWidget {
   RicetteDettaglio({Key? key}) : super(key: key);
 
@@ -24,8 +26,7 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
 
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+
         title: Text("Easy Cooking"),
         actions: <Widget>[
           IconButton(
@@ -110,7 +111,7 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                             return Image.asset(
                               "assets/images/coltforc.png",
                               fit: BoxFit.cover,
-                            );//do something
+                            );
                           },
                         ),
                       ),

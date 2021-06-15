@@ -1,6 +1,8 @@
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
-
+/*
+Classe che permette all'utente di registrasi e valida i dati da esso inseriti
+ */
 class NomeFieldValidator {
   static String? validate(String value) {
     return value.isEmpty ? 'Nome non può essere vuoto' : null;

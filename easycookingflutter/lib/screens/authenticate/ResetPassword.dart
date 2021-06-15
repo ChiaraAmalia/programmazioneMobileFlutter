@@ -2,7 +2,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+/*
+Classe che permette all'utente già registrato di
+settare una nuova password nel caso si fosse dimenticato
+quella precedente
+ */
 class ResetScreen extends StatefulWidget {
 
   @override

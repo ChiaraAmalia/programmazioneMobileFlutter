@@ -124,9 +124,7 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
                 ),
                 Text('Ingredienti: '),
                 ..._getIngredienti(),
-                /*TextFormField(
-                  onSaved: (value) => this.Ingre = value!,
-                ),*/
+
                 RaisedButton(
                   child: Text('Salva Ricetta'),
                   /*
@@ -278,6 +276,9 @@ Metodo che permette di aggiungere dinamicamente dei campi di input per l'inserim
   }
 
 }
+/*
+Classe che gestisce il campo di testo per gli ingredienti
+ */
 class IngredienteTextFields extends StatefulWidget {
   late final int index;
   IngredienteTextFields(this.index);
@@ -304,8 +305,8 @@ class _IngredienteTextFieldsState extends State<IngredienteTextFields> {
     });
     return TextFormField(
       controller: _nameController,
-      // save text field data in friends list at index
-      // whenever text field value changes
+      // salva il campo di testo nella lista degli ingredienti al corrispondente indice
+      // ogni volta che il valore del campo di testo cambia
       onChanged: (v) => _InserisciRicettaState.ingredientiList[widget.index] = v,
       decoration: InputDecoration(
           hintText: 'Ingrediente, quantità'

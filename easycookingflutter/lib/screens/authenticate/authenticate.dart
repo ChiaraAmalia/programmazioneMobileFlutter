@@ -1,7 +1,9 @@
 import 'package:easycookingflutter/screens/authenticate/register.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/screens/authenticate/sign_in.dart';
-
+/*
+Classe per la gestione dell'autenticazione
+ */
 class Authenticate extends StatefulWidget {
   const Authenticate({Key? key}) : super(key: key);
 

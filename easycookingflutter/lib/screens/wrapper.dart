@@ -4,7 +4,10 @@ import 'package:easycookingflutter/RicetteCercaNoLogin.dart';
 import 'package:easycookingflutter/screens/authenticate/authenticate.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+/*
+Classe che mostra, a seconda del fatto che l'utente si sia autenticato o meno,
+la relativa schermata iniziale
+ */
 class Wrapper extends StatelessWidget {
   const Wrapper({Key? key}) : super(key: key);
 
