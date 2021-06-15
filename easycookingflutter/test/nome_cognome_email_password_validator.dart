@@ -1,5 +1,5 @@
-import 'package:easycookingflutter/screens/authenticate/register.dart';
-import 'package:easycookingflutter/screens/authenticate/sign_in.dart';
+import 'package:easycookingflutter/auth/authenticate/register.dart';
+import 'package:easycookingflutter/auth/authenticate/sign_in.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main () {

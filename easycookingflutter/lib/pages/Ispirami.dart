@@ -2,7 +2,7 @@ import 'package:easycookingflutter/Model/ricetta.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:easycookingflutter/MyFlutterApp.dart';
+import '../utils/MyFlutterApp.dart';
 import 'package:randomizer/randomizer.dart';
 import 'package:mailto/mailto.dart';
 import 'package:share/share.dart';

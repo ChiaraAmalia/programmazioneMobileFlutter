@@ -1,10 +1,10 @@
 
-import 'package:easycookingflutter/RicetteCercaNoLogin.dart';
+import 'RicetteCercaNoLogin.dart';
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/services/auth.dart';
 
-import '../MyFlutterApp.dart';
+import '../utils/MyFlutterApp.dart';
 
 class Logout extends StatelessWidget {
   final AuthService _auth = AuthService();

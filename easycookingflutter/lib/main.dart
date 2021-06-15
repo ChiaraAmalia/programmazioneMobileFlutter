@@ -7,7 +7,7 @@ import 'package:easycookingflutter/pages/Logout.dart';
 import 'package:easycookingflutter/pages/RicetteCercaPage.dart';
 import 'package:easycookingflutter/pages/RicetteTue.dart';
 import 'package:easycookingflutter/pages/Spesa.dart';
-import 'package:easycookingflutter/screens/wrapper.dart';
+import 'package:easycookingflutter/auth/wrapper.dart';
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

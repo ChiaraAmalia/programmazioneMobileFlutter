@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:easycookingflutter/Model/RicettaInserimento.dart';
-import 'package:easycookingflutter/MyFlutterApp.dart';
+import '../utils/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/pages/InserisciRicetta.dart';
 import 'package:easycookingflutter/pages/RicetteTueDettaglio.dart';

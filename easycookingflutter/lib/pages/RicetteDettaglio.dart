@@ -1,7 +1,7 @@
 import 'package:easycookingflutter/Model/ricetta.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:easycookingflutter/MyFlutterApp.dart';
+import '../utils/MyFlutterApp.dart';
 import 'package:mailto/mailto.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';

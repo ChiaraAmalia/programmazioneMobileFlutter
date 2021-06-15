@@ -1,7 +1,7 @@
 import 'package:easycookingflutter/Model/user.dart';
-import 'package:easycookingflutter/RicetteCerca.dart';
-import 'package:easycookingflutter/RicetteCercaNoLogin.dart';
-import 'package:easycookingflutter/screens/authenticate/authenticate.dart';
+import '../pages/RicetteCerca.dart';
+import '../pages/RicetteCercaNoLogin.dart';
+import 'package:easycookingflutter/auth/authenticate/authenticate.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 /*

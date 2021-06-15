@@ -1,5 +1,5 @@
-import 'package:easycookingflutter/RicetteCerca.dart';
-import 'package:easycookingflutter/screens/authenticate/ResetPassword.dart';
+import '../../pages/RicetteCerca.dart';
+import 'package:easycookingflutter/auth/authenticate/ResetPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:easycookingflutter/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

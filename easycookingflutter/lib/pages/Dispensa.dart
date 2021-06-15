@@ -1,5 +1,5 @@
 import 'package:easycookingflutter/Model/ricetta.dart';
-import 'package:easycookingflutter/MyFlutterApp.dart';
+import '../utils/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:firebase_database/firebase_database.dart';

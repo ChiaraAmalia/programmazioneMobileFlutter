@@ -1,4 +1,4 @@
-import 'package:easycookingflutter/MyFlutterApp.dart';
+import '../utils/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/model/Ricetta.dart';
 import 'package:easycookingflutter/pages/Contattaci.dart';
@@ -7,7 +7,7 @@ import 'package:easycookingflutter/pages/Ispirami.dart';
 import 'package:easycookingflutter/pages/RicetteCercaPage.dart';
 import 'package:easycookingflutter/pages/RicetteTue.dart';
 import 'package:easycookingflutter/pages/Spesa.dart';
-import 'package:easycookingflutter/screens/authenticate/authenticate.dart';
+import 'package:easycookingflutter/auth/authenticate/authenticate.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';

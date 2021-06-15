@@ -1,4 +1,4 @@
-import 'package:easycookingflutter/MyFlutterApp.dart';
+import '../utils/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'package:easycookingflutter/services/DatabaseHandler.dart';
 import 'package:flutter/material.dart';
