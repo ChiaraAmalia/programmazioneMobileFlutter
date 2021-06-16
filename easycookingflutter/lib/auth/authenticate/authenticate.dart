@@ -19,7 +19,7 @@ class _AuthenticateState extends State<Authenticate> {
     setState(() => showSignIn = !showSignIn);
   }
 
-  // gestisce lo swap tra l'interfaccia di signIn e registrazione
+  // gestisce lo switch tra l'interfaccia di signIn e registrazione
   @override
   Widget build(BuildContext context) {
       if(showSignIn){
