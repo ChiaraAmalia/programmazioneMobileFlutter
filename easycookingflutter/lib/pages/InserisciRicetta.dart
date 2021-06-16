@@ -1,7 +1,11 @@
 
 import 'dart:io';
 
+import 'package:flutter/services.dart' show rootServices;
+import 'package:path_provider/path_provider.dart';
+
 import 'package:easycookingflutter/Model/RicettaInserimento.dart';
+import 'package:flutter/services.dart';
 import '../utils/MyFlutterApp.dart';
 import 'package:easycookingflutter/Model/Prodotto.dart';
 import 'RicetteCerca.dart';
@@ -167,9 +171,13 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
   late String valuePrepa;
 
   _noImg() async {
-    File image = await File("assets/images/coltforc.png");
+    //File image = await File("assets/images/coltforc.png");
+    final byteData = await rootServices.load('assets/images/coltforc.png');
 
-    setState(() {
+    final file = File('${(await getTemporaryDirectory()).path}/assets/images/coltforc.png');
+    File image = await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+    setState(() async {
       _image = image;
     });
   }
