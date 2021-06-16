@@ -93,6 +93,9 @@ class Logout extends StatelessWidget {
                       ),
                     onPressed: () async{
                     await _auth.signOut();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Logout effettuato con successo"),
+                    ));
                     }
                   ),
                 ])

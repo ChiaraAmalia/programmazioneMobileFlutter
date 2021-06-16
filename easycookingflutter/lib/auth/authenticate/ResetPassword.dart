@@ -50,6 +50,9 @@ class _ResetScreenState extends State<ResetScreen> {
             onPressed: () async {
               auth.sendPasswordResetEmail(email: _email);
               Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Reset password effettuato con successo, controlla la tua mail per completare i passaggi"),
+              ));
             },
           ),
         ],

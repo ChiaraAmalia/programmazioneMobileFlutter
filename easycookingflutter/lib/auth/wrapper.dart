@@ -21,6 +21,7 @@ class Wrapper extends StatelessWidget {
     }
     else {
       return RicetteCerca(title: 'Easy Cooking');
+
     }
   }
 }

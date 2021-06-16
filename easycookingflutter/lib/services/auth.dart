@@ -46,6 +46,7 @@ class AuthService {
       await DatabaseService(uid: user.uid).updateUserData(nome, cognome);
 
       return _userFromFirebaseUser(user);
+
     } catch(e) {
       print(e.toString());
       return null;
