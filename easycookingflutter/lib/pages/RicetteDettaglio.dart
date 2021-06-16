@@ -218,7 +218,7 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                       ),
                       Text("Ingredienti:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
 
-                       Row(
+                      MediaQuery.of(context).orientation==Orientation.portrait ? Row(
 
                         children:[
 
@@ -229,7 +229,18 @@ class _RicetteDettaglioState extends State<RicetteDettaglio> {
                           Text(leggiLista(args.unita)),
 
                       ]
-                      ),
+                      ) : Row(
+
+    children:[
+    Spacer(),
+    Text(leggiLista(args.ingredienti)),
+    SizedBox(width: 7,),
+    Text(leggiLista(args.quantita)),
+    SizedBox(width: 7,),
+    Text(leggiLista(args.unita)),
+    Spacer()
+    ]
+    ),
 
 
                       Text("Procedimento:", style: TextStyle(color: Colors.red,fontSize: 24, fontStyle: FontStyle.italic)),
