@@ -172,13 +172,13 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
 
   _noImg() async {
     //File image = await File("assets/images/coltforc.png");
-    final byteData = await rootServices.load('assets/images/coltforc.png');
-
-    final file = File('${(await getTemporaryDirectory()).path}/assets/images/coltforc.png');
-    File image = await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    final bytes = await rootBundle.load('assets/images/coltforc.png');
+    String tempPath = (await getTemporaryDirectory()).path;
+    File file = File('$tempPath/coltforc.png');
+    await file.writeAsBytes(bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes));
 
     setState(() async {
-      _image = image;
+      _image = await file.writeAsBytes(bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes));
     });
   }
 
