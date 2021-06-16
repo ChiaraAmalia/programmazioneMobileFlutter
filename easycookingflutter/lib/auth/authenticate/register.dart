@@ -147,6 +147,9 @@ class _RegisterState extends State<Register> {
                             if(result == null){
                               setState(() => error = 'Inserisci un indirizzo email valido');
                             }
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Registrazione effettuata con successo"),
+                            ));
                           }
                       },
                     ),

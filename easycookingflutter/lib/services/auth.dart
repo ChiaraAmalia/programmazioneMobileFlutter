@@ -1,8 +1,9 @@
-import 'dart:collection';
+
 
 import 'package:easycookingflutter/Model/user.dart';
 import 'package:easycookingflutter/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 /*
 classe che contiene tutte le funzioni che permettono il signIn o la registrazione dell'utente

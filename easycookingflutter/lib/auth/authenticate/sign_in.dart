@@ -115,6 +115,9 @@ class _SignInState extends State<SignIn> {
                     if(result == null){
                       setState(() => error = 'Indirizzo email o password non validi');
                     }
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Login effettuato con successo"),
+                    ));
                   }
                 },
               ),
