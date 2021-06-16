@@ -68,7 +68,7 @@ class _SpesaState extends State<Spesa> {
                 child: Text('Aggiungi'),
                 onPressed: () {
                   setState(() {
-                    Prodotto prod = Prodotto(nome_prodotto: valueText);
+                    Prodotto prod = Prodotto(nome_prodotto: valueText.toLowerCase());
                     this.handler.inserisciUnoSpesa(prod);
                     _textFieldController.clear();
                     Navigator.pop(context);

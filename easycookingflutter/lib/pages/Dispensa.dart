@@ -161,7 +161,7 @@ class _DispensaState extends State<Dispensa> {
                 onPressed: () {
                   setState(() {
                     for(var pr in mancanti){
-                    Prodotto prod = Prodotto(nome_prodotto: pr);
+                    Prodotto prod = Prodotto(nome_prodotto: pr.toLowerCase());
                     this.handler.inserisciUnoSpesa(prod);}
 
                     Navigator.pop(context);
