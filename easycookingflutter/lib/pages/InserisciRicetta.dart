@@ -170,6 +170,9 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
   late String valuePorz;
   late String valuePrepa;
 
+  /*
+  metodo che consente di inserire l'immagine di default
+   */
   _noImg() async {
     //File image = await File("assets/images/coltforc.png");
     final bytes = await rootBundle.load('assets/images/coltforc.png');
@@ -236,8 +239,8 @@ Schermata mediante la quale si può inserire una ricetta, nel database contenent
                     },
                   ),
                   new ListTile(
-                    leading: new Icon(Icons.photo_camera),
-                    title: new Text('no img'),
+                    leading: new Icon(Icons.no_photography),
+                    title: new Text('Non voglio inserire immagini'),
                     onTap: () {
                       _noImg();
                       Navigator.of(context).pop();
